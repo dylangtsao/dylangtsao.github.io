@@ -1,0 +1,11 @@
+GEM
+  remote: https://dylangtsao.github.io/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+
+BUNDLED WITH
+   1.17.2
