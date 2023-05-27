@@ -548,6 +548,9 @@ input, select, textarea {
 			}
 
 		}
+	
+
+
 
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 900;
@@ -1845,6 +1848,7 @@ input, select, textarea {
 			height: 3em;
 			line-height: 3em;
 			cursor: default;
+			color: white
 		}
 
 			#header h1 a {
@@ -1875,9 +1879,17 @@ input, select, textarea {
 						text-decoration: none;
 						height: 3em;
 						line-height: 3em;
-						padding: 0 0.5em 0 0.5em;
+						padding: 0 .75em 0 .75em;
 						outline: 0;
 					}
+
+					#header nav ul li a:hover,
+					#header nav ul li a:active{
+						color: white;
+						font-weight: bold;
+						margin: 1.5px 0;
+					}
+					 
 
 		@media screen and (max-width: 736px) {
 
@@ -2249,6 +2261,11 @@ input, select, textarea {
 		background-attachment: fixed, fixed;
 		background-position: top left, bottom center;
 		background-repeat: repeat, no-repeat;
+	}
+	#links:hover,
+	#links:active {
+		color:#32a89d;
+		font-style:italic;
 	}
 
 /* One */
