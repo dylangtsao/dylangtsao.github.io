@@ -7,6 +7,7 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -416,6 +417,30 @@ input, select, textarea {
 		100% {
 			opacity: 0;
 			z-index: -1;
+		}
+	}
+
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+			transform: translateY(40px);
+		}
+
+		100% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fade-in-side {
+		0% {
+			opacity: 0;
+			transform: translateY(40px);
+		}
+
+		100% {
+			opacity: 0.45;
+			transform: translateY(0);
 		}
 	}
 
@@ -1848,7 +1873,8 @@ input, select, textarea {
 			height: 3em;
 			line-height: 3em;
 			cursor: default;
-			color: white
+			color: white;
+			opacity: 0.45;
 		}
 
 			#header h1 a {
@@ -1956,21 +1982,37 @@ input, select, textarea {
 		}
 
 		.main.style1 {
-			-moz-align-items: center;
-			-webkit-align-items: center;
-			-ms-align-items: center;
-			align-items: center;
-			-moz-justify-content: center;
-			-webkit-justify-content: center;
-			-ms-justify-content: center;
-			justify-content: center;
-			text-align: center;
-			padding: 3em 0 3em 0;
+			-moz-align-items: left;
+			-webkit-align-items: left;
+			-ms-align-items: left;
+			align-items: left;
+			-moz-justify-content: left;
+			-webkit-justify-content: left;
+			-ms-justify-content: left;
+			justify-content: left;
+			text-align: left;
+			padding: 3em 0 1em 0;
 		}
 
 			.main.style1 h2 {
-				font-size: 4.25em;
+				font-size: 4.8em;
 				line-height: 1em;
+				padding-top: 20px;
+			}
+			.main.style1 .content__intro {
+				color: white;
+				animation: fade-in 5s cubic-bezier(0.215,0.61,0.355,1) 1s forwards;
+				opacity: 0;
+				padding-bottom: 290px;
+	
+			}
+			.main.style1 .content__line {
+				
+				color: white;
+				animation: fade-in-side 1.3s cubic-bezier(0.215,0.61,0.355,1) 1s forwards;
+				opacity: 0;
+				padding-top: 5px;
+				padding-bottom: 5px;
 			}
 
 			.main.style1 > .content {
@@ -2134,7 +2176,7 @@ input, select, textarea {
 
 			.main.style2 {
 				padding: 6em 15px 6em 15px;
-			}
+			}	
 
 				.main.style2:before, .main.style2:after {
 					display: none !important;
@@ -2260,7 +2302,11 @@ input, select, textarea {
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
 		background-position: top left, bottom center;
-		background-repeat: repeat, no-repeat;
+		background-repeat: repeat, no-repeat; 
+		background: black;
+		scrollbar-highlight-color: black;
+		scrollbar-color: black;
+		
 	}
 	#links:hover,
 	#links:active {
