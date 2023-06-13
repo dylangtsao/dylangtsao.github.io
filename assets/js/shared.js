@@ -9,97 +9,76 @@ var seven = document.querySelector('.seven');
 var eight = document.querySelector('.eight');
 var nine = document.querySelector('.nine');
 var ten = document.querySelector('.ten');
+
+var intro__text = document.querySelector('.intro__text_line');
+var intro__subtitle = document.querySelector('.intro__text_subtitle');
 // var eleven = document.querySelector('.eleven');
 
 window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }
 
+function containsActive(num) {
+    if (num.classList.contains('content__line.active')) {
+        num.classList.remove('content__line.active');
+        num.classList.add('content__line_end');
+    }
+}
 window.addEventListener("scroll", (event) => {
     console.log(scrollY);
-    if (scrollY > 900) {
-        ten.classList.remove('content_line');
-        ten.classList.add('content__line.active');
-        nine.classList.remove('content__line.active');
-        nine.classList.add('content__line');
+    intro__text.style.opacity = 1 - scrollY/200;
+    intro__subtitle.style.opacity = 1 - scrollY/400;
+    if (scrollY > 1300) {
+        ten.classList = 'main.style1 content__line.active ten';
+        containsActive(nine);
     }
-    else if (scrollY > 775) {
-        ten.classList.remove('content_line');
-        ten.classList.add('content__line.active');
-        nine.classList.remove('content__line');
-        nine.classList.add('content__line.active');
-        eight.classList.remove('content__line.active');
-        eight.classList.add('content__line');
-        // ten.classList.remove('content__line.active');
-        // ten.classList.add('content__line');
+    else if (scrollY > 1149) {
+        nine.classList = 'main.style1 content__line.active nine';
+        containsActive(eight);
+        containsActive(ten);
+        containsActive(seven);
+
     }
-    else if (scrollY > 661) {
-        eight.classList.remove('content__line');
-        eight.classList.add('content__line.active');
-        seven.classList.remove('content__line.active');
-        seven.classList.add('content__line');
-        nine.classList.remove('content__line.active');
-        nine.classList.add('content__line');
+    else if (scrollY > 925) {
+        seven.classList = 'main.style1 content__line.active seven';
+        eight.classList = 'main.style1 content__line.active eight';
+        containsActive(six);
+        containsActive(five);
+        containsActive(nine);
     }
-    else if (scrollY > 562) {
-        seven.classList.remove('content__line');
-        seven.classList.add('content__line.active');
-        six.classList.remove('content__line.active');
-        six.classList.add('content__line');
-        eight.classList.remove('content__line.active');
-        eight.classList.add('content__line');
+    else if (scrollY > 670) {
+        five.classList = 'main.style1 content__line.active five';
+        six.classList = 'main.style1 content__line.active six';
+        // containsActive(five);
+        containsActive(seven);
+        containsActive(eight);
+        containsActive(four);
+        // containsActive(six);
     }
-    else if (scrollY > 483) {
-        six.classList.remove('content__line');
-        six.classList.add('content__line.active');  
-        five.classList.remove('content__line.active');
-        five.classList.add('content__line');
-        seven.classList.remove('content__line.active');
-        seven.classList.add('content__line');
+    else if (scrollY > 473) {
+        four.classList = 'main.style1 content__line.active four';
+        containsActive(three);
+        containsActive(five);
+        containsActive(six);
+
     }
-    else if (scrollY > 400) {
-        five.classList.remove('content__line');
-        five.classList.add('content__line.active');
-        four.classList.remove('content__line.active');
-        four.classList.add('content__line');
-        six.classList.remove('content__line.active');
-        six.classList.add('content__line');
+    else if (scrollY > 315) {
+        three.classList = 'main.style1 content__line.active three';
+        containsActive(two);
+        containsActive(four);
     }
-    else if (scrollY > 252) {
-        four.classList.remove('content__line');
-        four.classList.add('content__line.active');
-        three.classList.remove('content__line.active');
-        three.classList.add('content__line');
-        five.classList.remove('content__line.active');
-        five.classList.add('content__line');
+    else if (scrollY > 230) {
+        two.classList = 'main.style1 content__line.active two';
+        one.classList = 'main.style1 content__line_end one';
+        containsActive(three)
     }
-    else if (scrollY > 170) {
-        three.classList.remove('content__line');
-        three.classList.add('content__line.active');
-        two.classList.remove('content__line.active');   
-        two.classList.add('content__line');
-        four.classList.remove('content__line.active');
-        four.classList.add('content__line');
+    else if (scrollY > 150) {
+        content__intro.classList = 'main.style1 content__line_end';
+        one.classList = 'main.style1 content__line.active one';
+        containsActive(two);
     }
-    else if (scrollY > 116) {
-        // content__intro.classList = 'main.style1 content__line';
-        two.classList.remove('content__line');
-        two.classList.add('content__line.active');
-        one.classList.remove('content__line.active');
-        one.classList.add('content__line');
-        three.classList.remove('content__line.active');
-        three.classList.add('content__line');
-    }
-    else if (scrollY > 32) {
-        content__intro.classList = 'main.style1 content__line';
-        one.classList.remove('content__line');
-        one.classList.add('content__line.active');
-        two.classList.remove('content__line.active');
-        two.classList.add('content__line');
-    } else {
+    else {
         content__intro.classList = 'main.style1 content__line.active';
-        one.classList.remove('content__line.active');
-        one.classList.add('content__line');
-        
+        containsActive(one);
     }
 });
