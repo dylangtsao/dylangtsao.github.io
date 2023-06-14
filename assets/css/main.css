@@ -661,8 +661,11 @@ input, select, textarea {
 /* Box */
 
 	.box {
-		background: #ffffff;
-		color: #39454b;
+		/* background: #ffffff;
+		color: #39454b; */
+		background: black;
+		color:rgb(187, 209, 255);
+		/* color: rgb(142, 223, 255); */
 		padding: 2em;
 	}
 
@@ -2112,12 +2115,15 @@ input, select, textarea {
 		}
 
 			.main.style2 .roles h2{
+				color: rgba(187, 209, 255,0.45);
 				font-weight: 600;
 				padding: 0.5em;
+
 			}
 			
 			.main.style2 .roles__instruction {
-				color: black;
+				color: white;
+				font-weight: 200;
 				animation: fade-in 4s cubic-bezier(0.215,0.61,0.355,1) 0.2s forwards;
 			}
 
@@ -2406,7 +2412,8 @@ input, select, textarea {
 /* Two */
 
 	#two {
-		background: url("images/overlay.png"), url("../../images/third.jpeg");
+		/* background: url("images/overlay.png"), url("../../images/third.jpeg"); */
+		background: black;
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
 		background-position: top left, center center;
