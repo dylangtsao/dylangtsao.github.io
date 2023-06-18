@@ -107,6 +107,22 @@ input, select, textarea {
 			-ms-transition: none !important;
 			transition: none !important;
 		}
+/* Backdrop */
+.backdrop {
+    position: fixed;
+    /* display: none; */
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0);
+}
+
+.backdrop h1 {
+	color: white;
+	padding-top: 2.5em;
+}
 
 /* Spinner */
 
