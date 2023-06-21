@@ -2425,12 +2425,13 @@ input, select, textarea {
 /* Intro */
 
 	#intro {
-		background: url("images/overlay.png"), url("../../images/intro2.png");
+		/* background: url("images/overlay.png"), url("../../images/intro2.png"); */
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
 		background-position: top left, bottom center;
 		background-repeat: repeat, no-repeat; 
 		background: black;
+		/* background: linear-gradient(black,rgb(255,255,255)); */
 		scrollbar-highlight-color: black;
 		scrollbar-color: black;
 		
@@ -2449,8 +2450,9 @@ input, select, textarea {
 	#one {
 		/* background: url("images/overlay.png"), url("../../images/second.png"); */
 		background: black;
-		background-size: 256px 256px, cover;
-		background-attachment: fixed, fixed;
+		/* background: linear-gradient(white 15%, black 85%); */
+		/* background-size: 256px 256px, cover; */
+		/* background-attachment: fixed, fixed; */
 		background-position: top left, center center;
 	}
 
