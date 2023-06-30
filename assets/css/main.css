@@ -1519,6 +1519,13 @@ input, select, textarea {
 			color: rgba(187, 209, 255,0.45);
 		}
 
+		.from-right h2:hover,
+		.from-right h2:active,
+		.from-left h2:active,
+		.from-left h2:hover {
+			color: rgb(97, 157, 217);
+		}
+
 
 		.gallery article {
 			-moz-transition: -moz-transform 1s ease, opacity 1s ease;
