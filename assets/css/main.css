@@ -2075,6 +2075,13 @@ input, select, textarea {
 			animation:cubic-bezier(0.895, 0.03, 0.685, 0.22) 1s 1 normal forwards running fade-in;
 		}
 
+		.intro__text__l:hover {
+			color:rgb(97, 157, 217);
+			text-decoration: wavy overline;
+			cursor: pointer;
+
+		}
+
 		.intro__text_subtitle {
 			padding-top: 0.6em;
 			margin-block-start: none;
