@@ -2075,12 +2075,12 @@ input, select, textarea {
 			animation:cubic-bezier(0.895, 0.03, 0.685, 0.22) 1s 1 normal forwards running fade-in;
 		}
 
-		.intro__text__l:hover {
+		/* .intro__text__l:hover {
 			color:rgb(97, 157, 217);
 			text-decoration: wavy overline;
 			cursor: pointer;
 
-		}
+		} */
 
 		.intro__text_subtitle {
 			padding-top: 0.6em;
@@ -2122,6 +2122,7 @@ input, select, textarea {
 				/* padding: 50px; */
 	
 			}
+
 			.main.style1 .content__line {
 				
 				/* color: white;
@@ -2256,6 +2257,10 @@ input, select, textarea {
 
 			.main.dark a {
 				color: inherit;
+			}
+
+			.main.dark a:hover {
+				color:rgb(0, 113, 226);
 			}
 
 			.main.dark .button.style2 {
