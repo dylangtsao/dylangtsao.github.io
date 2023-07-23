@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+    background: rgb(228, 228, 228);
+    /* background: rgb(97, 157, 217); */
+    color: black;
+    /* cursor: none; */
+    flex-direction: column;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    /* justify-content: left;
+    align-items: first baseline; */
+    /* padding: 25px 50px 65px 50px; */
+
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* display: none; */
+}
+
+.back {
+    position: fixed;
+    right: 0;
+    top: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: 100vh;
+    padding: 10rem 10rem;
+}
+
+.project {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 40vw;
+    height: 85vh;
+    padding: 50px 50px;
+    box-shadow: 0 20px 20px rgba(0,0,0,0.2), 0 0 50px rgba(0,0,0,0.2);
+    background: white;
+    /* transform: none; */
+    transform-style: preserve-3d;
+}
+
+.project .image {
+    max-width: 30vw;
+    max-height: auto;
+    margin: 5rem 2rem;
+    /* padding: 0px 50px; */
+    transition: all 0.75s ease-out;
+    box-shadow: 0 20px 20px rgba(0,0,0,0.2), 0 0 50px rgba(0,0,0,0.2);
+}
+
+.two .image {
+    max-width: 30vw;
+    max-height: auto;
+    margin: 3rem 2rem;
+    /* padding: 0px 50px; */
+    transition: all 0.75s ease-out;
+    box-shadow: 0 20px 20px rgba(0,0,0,0.2), 0 0 50px rgba(0,0,0,0.2);
+}
+
+.three .image {
+    max-width: 30vw;
+    max-height: 25vh;
+    margin: 2rem 2rem;
+    /* padding: 0px 50px; */
+    transition: all 0.75s ease-out;
+    box-shadow: 0 20px 20px rgba(0,0,0,0.2), 0 0 50px rgba(0,0,0,0.2);
+}
+
+
+.project .title{
+    font-size: 3rem;
+    padding: 20px 20px;
+    transition: all 0.75s ease-out;
+}
+.project .description{
+    font-size: 1.1rem;
+    padding: 1rem 1rem;
+    margin-bottom: 2rem;
+}
+
+.project .link {
+    padding: 0.5rem 2rem;
+    background: none;
+    border: none;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2); 
+    border-radius: 30px;
+    cursor: pointer; 
+    font-weight: bold;
+    text-decoration: none;
+    max-width: 50vw;
+    text-align: center;
+
+}
