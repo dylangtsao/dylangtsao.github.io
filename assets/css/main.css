@@ -24,11 +24,14 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+	
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;}
+	display: block;
+}
 
 body {
 	line-height: 1;
@@ -487,7 +490,7 @@ input, select, textarea {
 			transform-origin: 50% 50%;
 			-moz-osx-font-smoothing: grayscale;
 			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
+			font-family: 'Montserrat', sans-serif;
 			font-style: normal;
 			font-weight: normal;
 			text-transform: none !important;
@@ -553,7 +556,7 @@ input, select, textarea {
 /* Type */
 
 	body, input, textarea, select {
-		font-family: "Source Sans Pro", "sans-serif";
+		font-family: 'Montserrat', sans-serif;
 		font-weight: 300;
 		font-size: 18pt;
 		line-height: 1.75em;
@@ -1262,7 +1265,8 @@ input, select, textarea {
 
 /* Sections/Article */
 
-	header {
+	header {'
+		/* font-family: 'Montserrat', sans-serif; */
 		margin-bottom: 1em;
 	}
 
@@ -1339,7 +1343,7 @@ input, select, textarea {
 				animation: spinner-rotate 0.75s infinite linear !important;
 				-moz-osx-font-smoothing: grayscale;
 				-webkit-font-smoothing: antialiased;
-				font-family: FontAwesome;
+				font-family: 'Montserrat', sans-serif;
 				font-style: normal;
 				font-weight: normal;
 				text-transform: none !important;
@@ -1946,6 +1950,7 @@ input, select, textarea {
 
 			#header h1 a {
 				font-size: 1.25em;
+				
 			}
 
 		#header nav {
@@ -1968,7 +1973,7 @@ input, select, textarea {
 
 					#header nav ul li a {
 						display: block;
-						color: inherit;
+						color: rgba(255, 255, 255, 0.5);
 						text-decoration: none;
 						height: 3em;
 						line-height: 3em;
@@ -2179,6 +2184,7 @@ input, select, textarea {
 
 			.main.style2 .roles h2{
 				color: rgba(187, 209, 255,0.45);
+				font-size: 2.5rem;
 				font-weight: 600;
 				padding: 0.5em;
 
@@ -2186,7 +2192,7 @@ input, select, textarea {
 			
 			.main.style2 .roles__instruction {
 				color: white;
-				font-weight: 200;
+				font-size: 1.2rem;
 				animation: fade-in 4s cubic-bezier(0.215,0.61,0.355,1) 0.2s forwards;
 			}
 
