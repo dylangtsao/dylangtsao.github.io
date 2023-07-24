@@ -9,7 +9,7 @@ for (let i = 0; i < containers.length; i++) {
     containers[i].addEventListener('mousemove', (e) => {
         let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
         let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-        console.log(xAxis);
+        // console.log(xAxis);
         if (i==1) {
             project[i].style.transform = `rotateY(${xAxis}deg) rotateX(${(yAxis/3)}deg)`;
         } else if (i==2) {
