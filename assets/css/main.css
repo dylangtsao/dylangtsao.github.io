@@ -2083,7 +2083,7 @@ input, select, textarea {
 		@media (min-width: 40rem) {
 			.intro__text__l {
 				font-size: 5em;
-			}
+			} 
 		}
 
 		/* .intro__text__l:hover {
