@@ -82,3 +82,15 @@ window.addEventListener("scroll", (event) => {
         containsActive(one);
     }
 });
+
+const navSlide = () => {
+    const mobileNav = document.querySelector('.mobile-nav');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileNav.addEventListener('click', () => {
+        console.log('clicked');
+        navLinks.style.transform = 'translateX(0%)'
+    });
+}
+
+navSlide();

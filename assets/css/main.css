@@ -1937,6 +1937,24 @@ input, select, textarea {
 		box-shadow: 0 0 0.15em 0 rgba(0, 0, 0, 0.1);
 	}
 
+		#header .mobile-nav {
+			padding-top: 0.1em;
+			padding-left: 0.25em;
+			display: none;
+		}
+
+		#header .line{
+			display: block;
+			width: 25px;
+			height: 3.2px;
+			background-color: white;
+			margin: 5px;
+			/* padding-left: 5rem; */
+			/* right: 0; */
+		}
+
+		
+
 		#header h1 {
 			position: absolute;
 			left: 1em;
@@ -1994,13 +2012,20 @@ input, select, textarea {
 			#header {
 				height: 2.5em;
 				line-height: 2.5em;
-			}
+			}	
+				#header .mobile-nav {
+					display:  block;
+					cursor: pointer;
+				}
 
 				#header h1 {
-					text-align: center;
-					position: relative;
-					left: 0;
-					top: 0;
+					/* display: flex; */
+					/* justify-content: center; */
+					/* align-items: center; */
+					/* text-align: center; */
+					/* position: relative; */
+					left: 43.5%;
+					/* top: 0; */
 					height: 2.5em;
 					line-height: 2.5em;
 				}
@@ -2009,11 +2034,38 @@ input, select, textarea {
 						font-size: 1em;
 					}
 
-				#header nav {
+				/* #header nav {
 					display: none;
+				} */
+				#header .nav-links {
+					background-color: black;
+					display: flex;
+					position: absolute;
+					right: 0;
+					height: 92vh;
+					top: 8vh;
+					justify-content: space-around;
+					flex-direction: column;
+					align-items: center;
+					padding: 0 380px;
+					width: 30%;
+					transform: translateX(100%);
+					transition: transform 0.5s ease-in;
 				}
 
+				#header .nav-links li {
+					opacity: 0;
+				}
+				
+				.nav-active {
+					transform: translateX(0);
+				}
+
+				
+
 		}
+
+		
 
 	body {
 		padding-top: 3em;
