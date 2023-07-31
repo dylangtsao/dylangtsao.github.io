@@ -14,6 +14,8 @@ var intro__text = document.querySelector('.intro__text_line');
 var intro__subtitle = document.querySelector('.intro__text_subtitle');
 // var eleven = document.querySelector('.eleven');
 
+var backdrop = document.querySelector('.backdrop');
+
 window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }
@@ -88,8 +90,20 @@ const navSlide = () => {
     const navLinks = document.querySelector('.nav-links');
 
     mobileNav.addEventListener('click', () => {
-        console.log('clicked');
-        navLinks.style.transform = 'translateX(0%)'
+        if (backdrop.style.display == 'block') {
+            navLinks.style.transform = 'translateX(100%)'
+            backdrop.style.display = 'none';
+        } else {
+            // console.log('clicked');
+            navLinks.style.transform = 'translateX(50%)'
+            backdrop.style.display = 'block';
+        }
+        
+    });
+
+    backdrop.addEventListener('click', () => {
+        navLinks.style.transform = 'translateX(100%)'
+        backdrop.style.display = 'none';
     });
 }
 
