@@ -113,13 +113,13 @@ input, select, textarea {
 /* Backdrop */
 .backdrop {
     position: fixed;
-    /* display: none; */
+    display: none;
     top: 0;
     left: 0;
     z-index: 100;
     width: 100vw;
     height: 100vh;
-    background: rgba(0,0,0,0);
+    background: rgba(66, 66, 66, 0.5);
 }
 
 .backdrop h1 {
@@ -2415,6 +2415,7 @@ input, select, textarea {
 
 				.main.style1 h2 {
 					font-size: 3em;
+					padding-top: 0;
 				}
 
 			.main.style2 {
