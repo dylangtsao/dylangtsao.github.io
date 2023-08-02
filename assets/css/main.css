@@ -113,7 +113,7 @@ input, select, textarea {
 /* Backdrop */
 .backdrop {
     position: fixed;
-    display: none;
+    /* display: none; */
     top: 0;
     left: 0;
     z-index: 100;
@@ -2012,6 +2012,7 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 
 			#header {
+				z-index: 10001;
 				height: 2.5em;
 				line-height: 2.5em;
 			}	
@@ -2022,6 +2023,7 @@ input, select, textarea {
 					align-items: end;
 					/* display:  block; */
 					cursor: pointer;
+					/* z-index: 10001; */
 				}
 
 				#header h1 {
@@ -2034,10 +2036,15 @@ input, select, textarea {
 					/* top: 0; */
 					height: 2.5em;
 					line-height: 2.5em;
+					/* z-index: 10001; */
 				}
 
 				#header nav ul li a {
 					padding: 0 11.75em 0 .75em;
+					color: white;
+					animation: none;
+					opacity: 0;
+					z-index: 10001;
 				}
 				#header nav ul li a:hover {
 					color: white;
@@ -2056,7 +2063,7 @@ input, select, textarea {
 					position: absolute;
 					right: -8px;
 					height: 100vh;
-					top: 3em;
+					top: 2.5em;
 					justify-content: space-around;
 					flex-direction: column;
 					align-items: center;
