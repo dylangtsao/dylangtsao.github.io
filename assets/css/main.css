@@ -2197,6 +2197,9 @@ input, select, textarea {
 				padding-top: 10rem;
 				padding-left: 0.7em;
 				padding-bottom: 250px;
+				background: linear-gradient(to bottom, #fff 0%, #83ecd7 25%, #5dd2f3 50%, #7c9ff6 75%, #4b7de2 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
 			}
 			.main.style1 .content__intro {
 				color: white;
@@ -2220,9 +2223,11 @@ input, select, textarea {
 			}
 
 			.main.style1 .content__line_end {
-				color:rgb(97, 157, 217);
+				/* color:rgb(97, 157, 217); */
+				color: white;
 				opacity: 0.45;
 				transition: opacity 850ms cubic-bezier(0, 0.7, 0.63, 0.2);
+				-webkit-text-fill-color:white;
 			}
 
 			.main.style1 .content__line.active {
