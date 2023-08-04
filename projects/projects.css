@@ -28,7 +28,7 @@ body {
 
     font-size: 1.5rem;
     font-weight: bold;
-    z-index: 1;
+    z-index: 2;
     /* display: none; */
 }
 
@@ -39,7 +39,7 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
-    z-index: 1;
+    z-index: 2;
 }
 
 .container {
@@ -86,7 +86,21 @@ body {
 @media (min-width: 40rem) {
     .project {
         width: 40vw;
-        height: 85vh;
+        height: 90vh;
+    }
+    .three {
+        width: 40vw;
+        height: 110vh;
+    }
+    .esp {
+        padding-bottom: 15rem;
+    }
+}
+
+@media (min-width: 830px) {
+    .three {
+        width: 40vw;
+        height: 95vh;
     }
 }
 
@@ -176,7 +190,7 @@ body {
     .project .description{
         font-size: 1.1rem;
         /* padding: 1rem 1rem; */
-        margin-bottom: ;
+        /* margin-bottom: ; */
     }
     
 }
@@ -184,17 +198,24 @@ body {
 .one .description {
     font-size: 1.1rem;
     padding: 1rem 1rem;
-    margin-bottom: 8rem;
+    margin-bottom: 4rem;
+}
+
+@media screen and (min-width: 736px) {
+    .one .description {
+        margin-bottom: 2rem;
+    }
 }
 
 .two .description {
     font-size: 1.1rem;
     padding: 1rem 1rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .project .link {
-    padding: 0.5rem 2rem;
+    margin-top: 30px;
+    padding: 1rem 2rem;
     background: none;
     border: none;
     box-shadow: 0px 5px 10px rgba(0,0,0,0.2); 
@@ -202,7 +223,40 @@ body {
     cursor: pointer; 
     font-weight: bold;
     text-decoration: none;
-    max-width: 50vw;
+    /* max-width: 50vw; */
+    width: 40vw;
     text-align: center;
 
+}
+.one .links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80;
+    padding: 0rem 0.5rem;
+    margin: 10px;
+}
+
+.project .link-normal {
+    margin-top: 30px;
+    padding: 1rem 2rem;
+    background: none;
+    border: none;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.2); 
+    border-radius: 30px;
+    cursor: pointer; 
+    font-weight: bold;
+    text-decoration: none;
+    max-width: 100vw;
+    text-align: center;
+}
+.backdrop {
+    top:0;
+    left:0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+    background: rgba(90, 89, 89, 0.25);
+    display: none;
 }
