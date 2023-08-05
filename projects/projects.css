@@ -259,4 +259,5 @@ body {
     position: fixed;
     background: rgba(90, 89, 89, 0.25);
     display: none;
+    backdrop-filter: blur(15px);
 }
