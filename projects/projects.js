@@ -34,11 +34,13 @@ for (let i = 0; i < containers.length; i++) {
     });
     images[i].addEventListener('click', (e) => {
         backdrop.style.display='block';
-        images[i].style.maxWidth = "100vw";
+        // images[i].style.maxWidth = "100vw";
+        images[i].style.zIndex = "2";
     });
     backdrop.addEventListener('click', (e) => {
         backdrop.style.display='none';
         images[i].style.maxWidth = "75vw";
+        images[i].style.zIndex = "0";
     });
 }
 

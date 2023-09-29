@@ -18,6 +18,8 @@ var backdrop = document.querySelector('.backdrop');
 
 var mobile_nav_links = document.querySelectorAll('#header ul li a');
 
+// var images = document.querySelectorAll('
+
 window.onbeforeunload = function () {
     window.scrollTo(0, 0);
 }
@@ -32,6 +34,7 @@ window.addEventListener("scroll", (event) => {
     console.log(scrollY);
     intro__text.style.opacity = 1 - scrollY/200;
     intro__subtitle.style.opacity = 1 - scrollY/400;
+    var start = 150;
     if (scrollY > 1300) {
         ten.classList = 'main.style1 content__line.active ten';
         containsActive(nine);
@@ -66,22 +69,24 @@ window.addEventListener("scroll", (event) => {
         containsActive(six);
 
     }
-    else if (scrollY > 315) {
+    // else if (scrollY > 315) {
+    else if (scrollY > start + 160) {
         three.classList = 'main.style1 content__line.active three';
         containsActive(two);
         containsActive(four);
     }
-    else if (scrollY > 230) {
+    // else if (scrollY > 230) {
+    else if (scrollY > start + 80) {
         two.classList = 'main.style1 content__line.active two';
         one.classList = 'main.style1 content__line_end one';
         containsActive(three)
     }
-    else if (scrollY > 150) {
+    else if (scrollY > start) {
         content__intro.classList = 'main.style1 content__line_end';
         one.classList = 'main.style1 content__line.active one';
         containsActive(two);
     }
-    else {
+    else if (scrollY > start-50) {
         content__intro.classList = 'main.style1 content__line.active';
         containsActive(one);
     }
