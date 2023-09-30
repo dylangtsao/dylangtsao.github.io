@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
-	
+	<div class="temp_backdrop"></div>
 	<body class="is-preload">
 		<div class="backdrop">
 			<!-- <h1>Note: My phone number +1 (925)699-3939 is currently unavaliable to recieve calls or texts. Please email at dylangt2@illinois.edu OR contact +886 966501953. Sorry for the inconvenience!</h1>
@@ -18,7 +18,12 @@
 		</div>
 		<!-- Header -->
 			<header id="header">
-				<h1>Dylan T.</h1>
+				<h1>OAST</h1>
+				<div class="box_eye">
+					<div class="eye"></div>
+					<div class="eye"></div>
+				</div>
+				<script src="./assets/js/e.js"></script>
 				<nav>
 					<ul class="nav-links">
 						<li><a href="#text">Intro</a></li>
@@ -36,40 +41,41 @@
 					<div class="line"></div>
 					<div class="line"></div>
 				</div>
-
+					
 			</header>
 
 			
 			
-			<div id= "text" class=intro__text">
+			<div id= "text" class=intro__text" style="background:black">
 				<h1 class="intro__text_line">
-					<span class="intro__text__l">Welcome!</span>
-					<h2 class="intro__text_subtitle"></h2>
+					<span class="intro__text__l">Hello!
+						<h2 class="intro__text_subtitle">I'm Dylan Tsao</h2>
+					</span>
 				</h1>
+				
 			</div>
 			<!-- experiment with vanta.js -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
 			<script>
-			VANTA.BIRDS({
-			el: "body",
-			mouseControls: true,
-			touchControls: true,
-			gyroControls: false,
-			minHeight: 200.00,
-			minWidth: 200.00,
-			scale: 1.00,
-			scaleMobile: 1.00,
-			backgroundColor: 0x0,
-			color1: 0x619DD9,
-			color2: 0xd1ff,
-			birdSize: 1.20,
-			separation: 14.00,
-			alignment: 4.00,
-			cohesion: 29.00,
-			quantity: 3.00,
-			
-			})
+				VANTA.BIRDS({
+				el: ".temp_backdrop",
+				mouseControls: true,
+				touchControls: true,
+				gyroControls: false,
+				minHeight: 200.00,
+				minWidth: 200.00,
+				scale: 1.00,
+				scaleMobile: 1.00,
+				backgroundColor: 0x0,
+				color1: 0x90606,
+				color2: 0x242a2d,
+				colorMode: "variance",
+				wingSpan: 14.00,
+				separation: 14.00,
+				alignment: 23.00,
+				quantity: 3.00
+				})
 			</script>
 
 		<!-- Intro -->
@@ -77,8 +83,8 @@
 				<div class="content">
 					<header>
 						<h2>
-							<span class="content__intro"><a href="./eye/index.html">I</a>'m Dylan Tsao.</span>
-							<span class="content__line one">20 years old.</span>
+							<!-- <span class="content__intro"><a href="./eye/index.html">I</a>'m Dylan Tsao.</span> -->
+							<!-- <span class="content__line one">20 years old.</span> -->
 							<span class="content__line two"><a href="./eye/index.html">I</a> am currently a Jun<a href="./eye/index.html">i</a>or at the</span>
 							<span class="content__line three">Un<a href="./eye/index.html">i</a>vers<a href="./eye/index.html">i</a>ty of <a href="./eye/index.html">I</a>ll<a href="./eye/index.html">i</a>no<a href="./eye/index.html">i</a>s at Urbana-Champa<a href="./eye/index.html">i</a>gn</span>
 							<span class="content__line four">study<a href="./eye/index.html">i</a>ng Mathemat<a href="./eye/index.html">i</a>cs & Computer Sc<a href="./eye/index.html">i</a>ence.</span> 
@@ -104,10 +110,11 @@
 				<div class="content box style2" style="background: transparent;">
 					<header>
 						<h2>Experiences</h2>
+						<p>I recommend to download a copy of my <a href="./images/DylanTsaoResume.pdf" id="links">RESUME</a>.</p>
 					</header>
-					<p>I recommend to download a copy of my <a href="./images/DylanTsaoResume.pdf" id="links">RESUME</a>.</p>
+					
 				</div>
-				<section class="main style2 left dark fullscreen cs124">
+				<section class="main style2 right dark fullscreen cs124">
 					<div class="content box style3">
 						<header class="roles">
 							<h2>CS124 Course Assistant</h2>
@@ -176,61 +183,7 @@
 					<li>new version of experience page</li>
 				</div>
 			</section>
-		<!-- Work -->
-			<!-- <section id="work" class="main style3 primary">
-				<div class="content">
-					<header>
-						<h2>My Work</h2>
-						<p>Each of my individual project also availiable at my <a href="https://github.com/dylangtsao" id="links">Github</a> </p>
-					</header>
-
-					<!-- Gallery  -->
-						<!-- <div class="gallery">
-							<article class="from-left">
-								<a href="images/fulls/01.jpg" class="image fit"><img src="images/thumbs/01.jpg" title="The Anonymous Red" alt="" /></a>
-							</article>
-							<article class="from-right">
-								<a href="images/fulls/02.jpg" class="image fit"><img src="images/thumbs/02.jpg" title="Airchitecture II" alt="" /></a>
-							</article>
-							<article class="from-left">
-								<a href="images/fulls/03.jpg" class="image fit"><img src="images/thumbs/03.jpg" title="Air Lounge" alt="" /></a>
-							</article>
-							<article class="from-right">
-								<a href="images/fulls/04.jpg" class="image fit"><img src="images/thumbs/04.jpg" title="Carry on" alt="" /></a>
-							</article>
-							<article class="from-left">
-								<a href="images/fulls/05.jpg" class="image fit"><img src="images/thumbs/05.jpg" title="The sparkling shell" alt="" /></a>
-							</article>
-							<article class="from-right">
-								<a href="images/fulls/06.jpg" class="image fit"><img src="images/thumbs/06.jpg" title="Bent IX" alt="" /></a>
-							</article>
-						</div>
-
-				</div>
-			<!-- </section> -->
-
-		<!-- Contact
-			<section id="contact" class="main style3 secondary">
-				<div class="content">
-					<header>
-						<h2>Contact me.</h2>
-						<p>Email Address: dylangt2@illinois.edu</p>
-					</header>
-					<div class="box">
-						<form method="post" action="#">
-							<div class="fields">
-								<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
-								<div class="field half"><input type="email" name="email" placeholder="Email" /></div>
-								<div class="field"><textarea name="message" placeholder="Message" rows="6"></textarea></div>
-							</div>
-							<ul class="actions special">
-								<li><input type="submit" value="Send Message" /></li>
-							</ul>
-						</form>
-					</div>
-				</div>
-			</section> -->
-
+	
 		<!-- Footer -->
 			<footer id="footer">
 
