@@ -34,8 +34,10 @@ function containsActive(num) {
   }
 }
 window.addEventListener("scroll", (event) => {
-  console.log(scrollY);
-  intro__text.style.opacity = 1 - scrollY / 200;
+  if (scrollY > 0) {
+    intro__text.style.opacity = 1 - scrollY / 200;
+  }
+
   // intro__subtitle.style.opacity = 1 - scrollY/400;
   var start = 150;
   // if (scrollY > 1300) {
@@ -109,7 +111,6 @@ window.addEventListener("scroll", function () {
     content_box.style.opacity = opacity;
   }
 });
-
 
 const navSlide = () => {
   const mobileNav = document.querySelector(".mobile-nav");
