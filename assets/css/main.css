@@ -818,7 +818,7 @@ table {
 .box.style2 {
   color: white;
   height: auto;
-  padding: 0.5em 2.5em 0 2.5em;
+  padding: 0.5em 2.5em 2em 2.5em;
 }
 
 @media screen and (max-width: 736px) {
@@ -2794,42 +2794,64 @@ body.is-touch .main {
 }
 
 .experience.one_e{
-  display: flex;
+  display: none;
+  justify-content: center;
   flex-direction: column;
-  align-items: center;
+  align-items: baseline;
   height: 65vh;
   width: 48%;
-  padding: 4em 2em;
-  border: rgb(97, 157, 217) solid 1px;
+  padding: 8em 4em;
+  /* border: rgb(97, 157, 217) solid 1px; */
   /* box-shadow: 0 0 10px 5px rgba(97, 157, 217, 0.5); */
   box-shadow: none;
-  background-color: black;
+  /* background-color: black; */
+  background: linear-gradient(to right bottom, rgb(0, 0, 0), rgb(43, 89, 195));
   color: black;
   border-radius: 20px;
   z-index: 1;
+  cursor: pointer;
 }
 
+.experience.one_e:hover {
+  /* background: transparent;
+  transition: background 2s ease-in-out; */
+  border: rgb(255, 255, 255) solid 1px;
+  box-shadow: 0 0 10px 5px rgba(97, 157, 217, 0.5);
+}
+
+.active {
+  background: transparent !important;
+  transition: all 0.5s ease-in-out;
+  /* transform: rotateY(180deg); */
+}
 
 .experience.two_e{
-	display: flex;
+	display: none;
+  justify-content: center;
 	flex-direction: column;
-	align-items: center;
+	align-items: baseline;
 	height: 65vh;
 	width: 48%;
 	padding: 4em 2em;
-	border: rgb(97, 157, 217) solid 1px;
-	background-color: black;
+	/* border: rgb(97, 157, 217) solid 1px; */
+	/* background-color: black; */
+  background: linear-gradient(to right bottom, rgb(42, 106, 255), rgb(0, 0, 0));
 	color: black;
 	border-radius: 20px;
 	z-index: 1;
+  cursor: pointer;
   }
-  
+  .experience.two_e:hover {
+    border: rgb(255, 255, 255) solid 1px;
+    box-shadow: 0 0 10px 5px rgba(97, 157, 217, 0.5);
+  }
 
 .one_e h1 {
-  font-size: 2.5em;
+  font-size: 3em;
   color: white;
   display: flex;
   line-height: 0.9;
+  font-weight: bold;
   /* display: none; */
   justify-content: center;
   text-align: center;
@@ -2839,35 +2861,49 @@ body.is-touch .main {
 }
 
 .two_e h1 {
-	font-size: 2.5em;
+	font-size: 3em;
 	color: white;
 	display: flex;
 	line-height: 0.9;
 	/* display: none; */
 	justify-content: center;
-	text-align: center;
+	text-align: right;
 	/* background: transparent; */
 	/* padding-top: 1em; */
 	z-index: 2;
   }
 
+/* .experience_button {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+} */
+
 .button_124_plus {
-  display: fixed;
-  /* display: none; */
+  /* position: fixed; */
+  /* display: flex; */
+  display: none;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   color: white;
   width: 30px;
   height: 30px;
-  border-radius: 40px;
-  margin-top: 25rem;
-  margin-left: 16rem;
+  /* border-radius: 40px; */
+  /* margin-top: 25rem; */
+  /* margin-left: 16rem; */
   /* margin-left: 25rem; */
   /* border: rgb(97, 157, 217) solid 1px; */
   cursor: pointer
+}
+
+.button_margin {
+  display: fixed;
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 16rem;
 }
 
 .button_124_exit {
@@ -2894,6 +2930,12 @@ body.is-touch .main {
 	display: none;
 	text-align: left;
 	color: white;
+}
+
+.two_e p {
+  display: none;
+  text-align: right;
+  color: white;
 }
 
 .button_sosp {
@@ -2925,12 +2967,16 @@ body.is-touch .main {
 	}
 }
 @media screen and (min-width: 1920px) {
-  /* .experience.one_e {
-    height: 65vh;
+  .cs124 {
+    display: none;
+  }
+  .experience.one_e {
+    display: flex;
   }
   .experience.two_e {
-	height: 65vh;
-  } */
+	/* height: 65vh; */
+    display: flex;
+  } 
   .button_124_plus {
     margin-top: 23rem;
     margin-left: 35rem;
@@ -2939,4 +2985,5 @@ body.is-touch .main {
     margin-top: 20.7rem;
     margin-left: 37rem;
   }
+
 }

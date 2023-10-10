@@ -22,8 +22,12 @@ var mobile_nav_links = document.querySelectorAll("#header ul li a");
 var content_box = document.querySelector(".box.style2");
 
 var experience_one = document.querySelector(".experience.one_e");
+var experience_two = document.querySelector(".experience.two_e");
+var two_h1 = document.querySelector(".two_e h1");
 var experience_header = document.querySelector(".one_e h1");
+var two_header = document.querySelector(".two_e h1");
 var experience_one_p = document.querySelectorAll(".one_e p");
+var experience_two_p = document.querySelectorAll(".two_e p");
 var button_124 = document.querySelector(".button_124");
 var button_124_plus = document.querySelector(".button_124_plus");
 var button_124_exit = document.querySelector(".button_124_exit");
@@ -162,18 +166,16 @@ const navSlide = () => {
   }
 };
 
-button_124_plus.addEventListener("click", function () {
-  console.log("Button 124 clicked");
-  experience_one.style.border = "rgb(0, 122, 244) solid 1px";
-  experience_one.style.boxShadow = "0 0 10px 5px rgba(97, 157, 217, 0.5)";
-  experience_one.style.backgroundColor = "transparent";
-  experience_one.style.transition = "all 0.5s ease";
-  experience_one.style.transform = "scale(1.05)";
+experience_one.addEventListener("click", function () {
+  // if (button_124_plus.style.display = "flex") {
+  //   return;
+
+  // }
+  console.log("clicked");
+  // experience_one.classList.add(".active");
+  experience_one.style.background = "transparent";
   experience_one.style.transform = "rotateY(180deg)";
   experience_one.style.transition = "transform 1s";
-  //   button_124_exit.style.display = "fixed";
-  // button_124_plus.style.display = "none";
-
   experience_header.style.display = "none";
   for (let i = 0; i < experience_one_p.length; i++) {
     experience_one_p[i].style.display = "block";
@@ -181,10 +183,45 @@ button_124_plus.addEventListener("click", function () {
       "opacity 0.5s ease-in-out, transform 1s";
     experience_one_p[i].style.opacity = "1";
     experience_one_p[i].style.transform = "rotateY(180deg)";
-    
   }
 });
 
+experience_two.addEventListener("click", function () {
+  two_header.style.display="none";
+
+  experience_two.style.background = "transparent";
+  experience_two.style.transform = "rotateY(180deg)";
+  experience_two.style.transition = "transform 1s";
+  for (let i = 0; i < experience_two_p.length; i++) {
+    experience_two_p[i].style.display = "block";
+    experience_two_p[i].style.transition =
+      "opacity 0.5s ease-in-out, transform 1s";
+    experience_two_p[i].style.opacity = "1";
+    experience_two_p[i].style.transform = "rotateY(180deg)";
+  }
+});
+
+button_124_plus.addEventListener("click", function() {
+  console.log("Button 124 plus clicked");
+  experience_one.style.border = "rgb(97, 157, 217) solid 1px";
+  experience_one.style.boxShadow = "none";
+  experience_one.style.backgroundColor = "black";
+  experience_one.style.transform = "scale(1)";
+  experience_one.style.transform = "rotateY(0deg)";
+  experience_one.style.transition = "transform 1s";
+  // button_124_exit.style.display = "none";
+  // button_124_plus.style.display = "none";
+  experience_header.style.display = "flex";
+  for (let i = 0; i < experience_one_p.length; i++) {
+    experience_one_p[i].style.display = "none";
+    experience_one_p[i].style.transition =
+      "opacity 0.5s ease-in-out, transform 1s";
+    experience_one_p[i].style.opacity = "0";
+    experience_one_p[i].style.transform = "rotateY(0deg)";
+  }
+  button_124_plus.style.display = "none";
+  button_124.style.display = "flex";
+});
 // experience_one.addEventListener("click", function () {
 //   // console.log("hi");
 //   if (button_124.style.display == "none") {
