@@ -28,7 +28,11 @@ html,body {
     /* padding: 1em 3em; */
 }
 .project.grape {
-    background: linear-gradient(to bottom, white, purple);  
+    /* background: linear-gradient(to bottom, white, purple);   */
+    background-image:url("../images/fulls/grape-card.webp");
+    background-position:  center;
+    /* background-size: 115%; */
+    background-repeat: no-repeat;
 }
 .project.left,
 .project.right{
@@ -40,7 +44,11 @@ html,body {
     text-align:left;
 }
 .project.grape h1 {
-    color: rgb(163, 77, 170);
+    /* color: rgb(163, 77, 170); */
+    background: -webkit-linear-gradient(bottom,rgb(0, 0, 0),rgb(75, 7, 222));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
 }
 .project.right h1 {
     text-align: right;
@@ -111,4 +119,16 @@ html,body {
     background: -webkit-linear-gradient(bottom, white,rgb(203, 38, 38));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+.project.schedule {
+    background-image: url("../images/fulls/scholar.png");
+    background-position: center center;
+    background-size: 40%;
+    background-repeat: no-repeat;
+}
+@media screen and (max-width: 768px) {
+    .project.schedule {
+        background-size: 60%;
+    }
+    
 }
