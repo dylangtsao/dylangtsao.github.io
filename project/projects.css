@@ -5,9 +5,13 @@ html,body {
     overflow-x: hidden;
 }
 .nav-bar {
+    background: black;
     display: flex;
-    justify-content: space-between;
-    padding: 0 2em;
+    justify-content: space-around;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
 }
 .nav-bar h1 {
     color: white;
@@ -34,6 +38,9 @@ html,body {
     /* background-size: 115%; */
     background-repeat: no-repeat;
 }
+.project.grapev2 {
+    background-image: url("../images/fulls/grape-back-bg.png")
+}
 .project.left,
 .project.right{
     flex-direction: column;
@@ -45,7 +52,7 @@ html,body {
 }
 .project.grape h1 {
     /* color: rgb(163, 77, 170); */
-    background: -webkit-linear-gradient(bottom,rgb(0, 0, 0),rgb(75, 7, 222));
+    background: -webkit-linear-gradient(left,rgb(22, 2, 65),rgb(75, 7, 222));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
@@ -100,7 +107,7 @@ html,body {
     font-size: 2em;
 }
 .project.grape p.default {
-    color: white;
+    color: black;
 }
 .project.resume {
     background-image: url("../images/fulls/resume.png");
@@ -131,4 +138,95 @@ html,body {
         background-size: 60%;
     }
     
+}
+.backdrop {
+    background-color: black;
+    color: white;
+    top: 0;
+    left: 0;
+    /* background: rgba(0,0,0,0.5); */
+    /* backdrop-filter: blur(15px); */
+    display: none;
+    justify-content: top;
+    flex-direction: column;
+    text-align: left;
+    position: fixed;
+    z-index: 2;
+    padding: 3em 3em;
+    /* width: 100vw; */
+    height: 100vh;
+    /* overflow-y: hidden; */
+}
+.backdrop h1 {
+    padding-top: 1rem;
+}
+.backdrop p{
+    font-size: 1.5rem;
+    color: white;
+    text-align: left;
+    padding-bottom: 2rem;
+    /* padding: 1rem 1rem; */
+    /* padding-right: 2rem; */
+    /* width: 100vw; */
+}
+.backdrop button:hover {
+    color: rgb(255,255,255,0.25);
+}
+.backdrop button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    left: 0.5em;
+    top: 0.5em;
+    position: absolute;
+    /* position: absolute; */
+    
+    padding: 0.5em 0.5em;
+}
+.grape-d {
+    display: none;
+}
+.resume-d {
+    display: none;
+}
+.flash-d {
+    display: none;
+}
+.scholar-d {
+    display: none;
+}
+/*
+.backdropbox {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid white;
+    width: 50vw;
+    height: 65vh;
+    border-radius: 20px;
+    overflow-y: hidden;
+}
+.backdropbox h1,
+.backdropbox p {
+    color: white;
+}
+*/
+.github:hover {
+    font-size: 1.55rem;
+    /* font-weight: bold; */
+}
+.github {
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 0.24em;
+    border-radius: 10%;
+}
+.prevent-scroll {
+    height: 100%;
+    overflow: hidden;
 }
