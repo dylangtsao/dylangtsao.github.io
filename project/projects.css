@@ -190,6 +190,7 @@ html,body {
 }
 .project.flashv2 {
     background: black;
+    border: 1px solid white;
 }
 .project.flash h1 {
     background: -webkit-linear-gradient(right,rgb(255, 255, 255),rgb(235, 96, 96));
