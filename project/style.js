@@ -13,6 +13,8 @@ resume_d = document.querySelector(".resume-d");
 flash_d = document.querySelector(".flash-d");
 scholar_d = document.querySelector(".scholar-d");
 
+overlay = document.querySelector(".overlay");
+
 let mediaQuery = window.matchMedia("(max-width: 768px)");
 
 function largeViewportClick() {
@@ -83,13 +85,21 @@ function smallViewportClick() {
 
 function handleViewpointChange(e) {
     for (let i=0; i < projects.length; i++) {
-        project = projects[i];
+        // project = projects[i];
         backdrop.style.display = "none";
-        project.addEventListener("click", () => {
-            html.classList.add("prevent-scroll");
-            backdrop.style.display = (backdrop.style.display == "none") ? "flex" : "none";
+        projects[i].addEventListener("click", () => {
+            // if (html.classList.contains("prevent-scroll")) {
+            //     html.classList.remove("prevent-scroll");
+            // } else {
+            //     html.classList.add("prevent-scroll");
+            // }
+            // console.log("clicked");
+            
+            // 
             scrollPosition = window.scrollY || document.documentElement.scrollTop;
             if (e.matches) {
+                backdrop.style.display = (backdrop.style.display == "none") ? "flex" : "none";
+                html.classList.add("prevent-scroll");
                 if (projects[i].classList.contains("grape")) {
                     grape_d.style.display = "block";
                 } else if (projects[i].classList.contains("resume")) {
@@ -100,12 +110,21 @@ function handleViewpointChange(e) {
                     scholar_d.style.display = "block";
                 }
             } else {
-                h1s[i].style.display = (h1s[i].style.display == "none") ? "block" : "none";
-                ps[i].style.display = (ps[i].style.display == "none") ? "block" : "none";
-                
+                projects[i].classList.add("flipped");
+                overlay.style.display = "block";
+                projects[i].style.zIndex ="100";
+                if (projects[i].classList.contains("resume")) {
+                    projects[i].classList.add("resumev2");
+                } else if (projects[i].classList.contains("flash")) {
+                    projects[i].classList.add("flashv2");
+                } else if (projects[i].classList.contains("schedule")) {
+                    projects[i].classList.add("scholarv2");
+                }
             }
             mediaQuery.addEventListener("change", (e) => {
                 if (e.matches) {
+                    backdrop.style.display = (backdrop.style.display == "none") ? "flex" : "none";
+                    html.classList.add("prevent-scroll");
                     if (projects[i].classList.contains("grape")) {
                         grape_d.style.display = "block";
                     } else if (projects[i].classList.contains("resume")) {
@@ -116,8 +135,16 @@ function handleViewpointChange(e) {
                         scholar_d.style.display = "block";
                     }
                 } else {
-                    h1s[i].style.display = (h1s[i].style.display == "none") ? "block" : "none";
-                    ps[i].style.display = (ps[i].style.display == "none") ? "block" : "none";
+                    projects[i].classList.add("flipped");
+                    overlay.style.display = "block";
+                    projects[i].style.zIndex ="100";
+                    if (projects[i].classList.contains("resume")) {
+                        projects[i].classList.add("resumev2");
+                    } else if (projects[i].classList.contains("flash")) {
+                        projects[i].classList.add("flashv2");
+                    } else if (projects[i].classList.contains("schedule")) {
+                        projects[i].classList.add("scholarv2");
+                    }
                 }    
             });
             backdrop_button.addEventListener("click", () => {
@@ -133,12 +160,39 @@ function handleViewpointChange(e) {
                 window.scrollTo(0, scrollPosition);
             });
         });
+        if (!e.matches) {
+            let flipbackButton = projects[i].querySelector(".flip-back");
+            flipbackButton.addEventListener("click", (e) => {
+                projects[i].classList.remove("flipped");
+                overlay.style.display = "none";
+                projects[i].classList.remove("resumev2");
+                projects[i].classList.remove("flashv2");
+                projects[i].classList.remove("scholarv2");
+                projects[i].style.zIndex ="0";
+                e.stopPropagation();
+            });
+            // let navbar = document.querySelector(".nav-bar");
+            window.addEventListener("scroll", () => {
+                let projectRect = projects[i].getBoundingClientRect();
+                // let navbarHeight = navbar.offsetHeight;
+                if (projectRect.bottom < 0 || projectRect.top-projectRect.height > window.innerHeight) {
+                    projects[i].classList.remove("flipped");
+                    overlay.style.display = "none";
+                    projects[i].classList.remove("resumev2");
+                    projects[i].classList.remove("flashv2");
+                    projects[i].classList.remove("scholarv2");
+                    projects[i].style.zIndex ="0";
+                }
+            });
+        }
+        
         // if (e.matches) {
         //     project.addEventListener("click", smallViewportClick);
         // } else {
         //     project.addEventListener("click", largeViewportClick);
         // }
     }
+    
     
 }
 

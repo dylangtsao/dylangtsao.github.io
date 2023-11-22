@@ -12,6 +12,7 @@ html,body {
     left: 0;
     top: 0;
     width: 100vw;
+    z-index: 1000;
 }
 .nav-bar h1 {
     color: white;
@@ -31,6 +32,57 @@ html,body {
 
     /* padding: 1em 3em; */
 }
+
+.back-face {
+    transform: rotateX(180deg);
+}
+.project.flipped .front-face {
+    transform: rotateX(180deg);
+}
+.grape .back-face p {
+    color: white;
+    font-size: 2em;
+}
+.resume .back-face p {
+    color: black;
+    font-size: 2.8em;
+}
+.flash .back-face p {
+    color: white;
+    font-size: 2em;
+}
+.flash .p2 {
+    text-align: right;
+}
+.resume .back-face .button {
+    color: black;
+}
+.schedule .back-face p {
+    color: black;
+    font-size: 2.8em;
+}
+.flip-back {
+    font-family: 'Montserrat', sans-serif;
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.flip-back:hover {
+    color: rgb(255,255,255,0.25);
+}
+.resume .flip-back,
+.schedule .flip-back {
+    color: black;
+}
+.resume .flip-back:hover,
+.schedule .flip-back:hover {
+    color: rgb(0,0,0,0.25);
+}
+.project.flipped .back-face {
+    transform: rotateX(0);
+    cursor: default;
+}
 .project.grape {
     /* background: linear-gradient(to bottom, white, purple);   */
     background-image:url("../images/fulls/grape-card.webp");
@@ -39,7 +91,8 @@ html,body {
     background-repeat: no-repeat;
 }
 .project.grapev2 {
-    background-image: url("../images/fulls/grape-back-bg.png")
+    background-image: url("../images/fulls/grape-back-bg.png");
+    background-size: cover;
 }
 .project.left,
 .project.right{
@@ -73,6 +126,18 @@ html,body {
     cursor: pointer;
     margin-bottom: 4em;
     transform: none;
+    z-index: 0;
+}
+.project-face {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    flex-direction: column;
+    position: absolute;
+    width: 50vw;
+    height: 65vh;
+    backface-visibility: hidden;
+    transition: transform 0.6s;
 }
 .project h1 {
     display: block;
@@ -90,7 +155,7 @@ html,body {
     color: white;
     font-family: "Montserrat", sans-serif;;
     font-size: 1.5rem;
-    text-decoration: none;
+    text-decoration: underline;
 }
 .project.right p.default {
     display: flex;
@@ -106,16 +171,25 @@ html,body {
     text-align: right;
     font-size: 2em;
 }
+
 .project.grape p.default {
     color: black;
 }
 .project.resume {
     background-image: url("../images/fulls/resume.png");
-    background-position: c center;
+    /* background-position: c center; */
+    background-position: right right 70;
+    /* background-repeat: no-repeat; */
+}
+.project.resumev2 {
+    background: white;
 }
 .project.flash {
     background-image: url('../images/fulls/flash-bg.png');
     background-position: center right 30%;
+}
+.project.flashv2 {
+    background: black;
 }
 .project.flash h1 {
     background: -webkit-linear-gradient(right,rgb(255, 255, 255),rgb(235, 96, 96));
@@ -132,6 +206,9 @@ html,body {
     background-position: center center;
     background-size: 40%;
     background-repeat: no-repeat;
+}
+.project.scholarv2 {
+    background: white;
 }
 @media screen and (max-width: 768px) {
     .project.schedule {
@@ -230,4 +307,19 @@ html,body {
     height: 100%;
     overflow: hidden;
 }
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: none;
+    z-index: 1;
+}
 
+.footer {
+    color: white;
+    height: 30vh;
+    text-align:end;
+}
