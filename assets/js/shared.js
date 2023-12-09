@@ -46,9 +46,10 @@ function containsActive(num) {
   }
 }
 window.addEventListener("scroll", (event) => {
-  if (scrollY > 0) {
-    intro__text.style.opacity = 1 - scrollY / 200;
-  }
+  // if (scrollY >= 0) {
+  //   console.log("scroll");
+  //   intro__text.style.opacity = 1 - scrollY / 200;
+  // }
 
   // intro__subtitle.style.opacity = 1 - scrollY/400;
   var start = 150;
@@ -234,8 +235,8 @@ button_124_plus.addEventListener("click", function() {
 //   }
 // });
 
-button_sosp.addEventListener("click", function () {
-  console.log("Button SOSP clicked");
-});
+// button_sosp.addEventListener("click", function () {
+//   console.log("Button SOSP clicked");
+// });
 
 navSlide();

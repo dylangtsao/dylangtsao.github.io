@@ -1636,6 +1636,9 @@ body.is-touch .poptrox-popup .closer {
   max-width: 100%;
   margin: 0 auto 2em auto;
 }
+.gallery p {
+  font-size: 1rem;
+}
 
 .from-right h2,
 .from-left h2 {
@@ -2271,7 +2274,8 @@ body {
   justify-content: left;
   align-items: baseline;
   flex-direction: column;
-  background: black;
+  background: transparent;
+  
   /* padding-top: 300 */
 }
 
@@ -2282,16 +2286,22 @@ body {
   height: 50vh;
   margin: 0 auto;
   margin-top: 300px;
+  opacity: 1;
+  z-index: 2;
+  font-size:5em;
+  background: transparent;
+  line-height: normal;
 }
 
 .intro__text__l {
   /* text-align: center; */
   background: transparent;
+  display: block;
   color: white;
   align-items: middle;
   width: 50vw;
   /* padding: 1em 1em 0em 1em; */
-  font-size: 4.5em;
+  /* font-size: 4.5em; */
   /* animation: fade-in 3s cubic-bezier(0.5,0.61,0.355,1) 1s backwards; */
   animation: cubic-bezier(0.895, 0.03, 0.685, 0.22) 1s 1 normal forwards running
     fade-in;
@@ -2302,7 +2312,7 @@ body {
     /* z-index: -1; */
   }
   .intro__text__l {
-    font-size: 5em;
+    font-size: 7rem;
     width: auto;
   }
 }
@@ -2319,6 +2329,7 @@ body {
   color: white;
   font-size: 0.5em;
   text-align: left;
+  line-height: 0.8;
   /* z-index: -1; */
   background: transparent;
   /* padding-top: 0.5em; */
