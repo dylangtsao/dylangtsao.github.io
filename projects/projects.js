@@ -5,6 +5,7 @@ const images = document.querySelectorAll('.image');
 const descriptions = document.querySelectorAll('.description');
 const buttons = document.querySelectorAll('.link');
 const backdrop = document.querySelector('.backdrop');
+const backdrop_but = document.querySelector('.backdrop button');
 for (let i = 0; i < containers.length; i++) {
     containers[i].addEventListener('mousemove', (e) => {
         let xAxis = (window.innerWidth / 2 - e.pageX) / 25;

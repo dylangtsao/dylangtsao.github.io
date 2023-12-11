@@ -110,6 +110,16 @@ function handleViewpointChange(e) {
                     scholar_d.style.display = "block";
                 }
             } else {
+                for (let j=0; j < projects.length; j++) {
+                    if (projects[j].classList.contains("flipped")) {
+                        projects[j].classList.remove("flipped");
+                        // overlay.style.display = "none";
+                        projects[j].classList.remove("resumev2");
+                        projects[j].classList.remove("flashv2");
+                        projects[j].classList.remove("scholarv2");
+                        projects[j].style.zIndex ="0";
+                    }
+                }
                 projects[i].classList.add("flipped");
                 overlay.style.display = "block";
                 projects[i].style.zIndex ="100";
@@ -175,8 +185,10 @@ function handleViewpointChange(e) {
             window.addEventListener("scroll", () => {
                 let projectRect = projects[i].getBoundingClientRect();
                 // let navbarHeight = navbar.offsetHeight;
-                if (projectRect.bottom < 0 || projectRect.top-projectRect.height > window.innerHeight) {
+                if ((projectRect.bottom < 0 || projectRect.top-projectRect.height > window.innerHeight)
+                    && projects[i].classList.contains("flipped")) {
                     projects[i].classList.remove("flipped");
+                    // console.log("in");
                     overlay.style.display = "none";
                     projects[i].classList.remove("resumev2");
                     projects[i].classList.remove("flashv2");
