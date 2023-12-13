@@ -102,6 +102,7 @@ function handleViewpointChange(e) {
             // 
             scrollPosition = window.scrollY || document.documentElement.scrollTop;
             if (e.matches) {
+
                 backdrop.style.display = (backdrop.style.display == "none") ? "flex" : "none";
                 html.classList.add("prevent-scroll");
                 if (projects[i].classList.contains("grape")) {
@@ -115,6 +116,7 @@ function handleViewpointChange(e) {
                 } else if (projects[i].classList.contains("neural")) {
                     neural_d.style.display = "block";
                 }
+                
             } else {
                 for (let j=0; j < projects.length; j++) {
                     if (projects[j].classList.contains("flipped")) {

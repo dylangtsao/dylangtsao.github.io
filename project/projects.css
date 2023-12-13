@@ -65,6 +65,11 @@ html,body {
     color: white;
     font-size: 1.7em;
 }
+@media screen and (max-width:1000px) {
+    .neural .back-face p{
+        font-size: 1.3em;
+    }
+}
 .neural .p2 {
     padding-top:5.5em;
     text-align: right;
