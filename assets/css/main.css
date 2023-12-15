@@ -3001,3 +3001,7 @@ body.is-touch .main {
   }
 
 }
+
+.none {
+  display: none
+}
