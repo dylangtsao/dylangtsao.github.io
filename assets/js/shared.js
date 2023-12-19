@@ -185,6 +185,7 @@ experience_one.addEventListener("click", function () {
     experience_one_p[i].style.opacity = "1";
     experience_one_p[i].style.transform = "rotateY(180deg)";
   }
+  button_124_plus.style.display = "flex";
 });
 
 experience_two.addEventListener("click", function () {
@@ -204,9 +205,10 @@ experience_two.addEventListener("click", function () {
 
 button_124_plus.addEventListener("click", function() {
   console.log("Button 124 plus clicked");
+  experience_one.style.background= "linear-gradient(to right bottom, rgb(0, 0, 0), rgb(43, 89, 195))";
   experience_one.style.border = "rgb(97, 157, 217) solid 1px";
   experience_one.style.boxShadow = "none";
-  experience_one.style.backgroundColor = "black";
+  // experience_one.style.backgroundColor = "black";
   experience_one.style.transform = "scale(1)";
   experience_one.style.transform = "rotateY(0deg)";
   experience_one.style.transition = "transform 1s";
@@ -215,13 +217,13 @@ button_124_plus.addEventListener("click", function() {
   experience_header.style.display = "flex";
   for (let i = 0; i < experience_one_p.length; i++) {
     experience_one_p[i].style.display = "none";
-    experience_one_p[i].style.transition =
-      "opacity 0.5s ease-in-out, transform 1s";
-    experience_one_p[i].style.opacity = "0";
-    experience_one_p[i].style.transform = "rotateY(0deg)";
+    // experience_one_p[i].style.transition =
+    //   "opacity 0.5s ease-in-out, transform 1s";
+    // experience_one_p[i].style.opacity = "0";
+    // experience_one_p[i].style.transform = "rotateY(0deg)";
   }
   button_124_plus.style.display = "none";
-  button_124.style.display = "flex";
+  // button_124.style.display = "flex";
 });
 // experience_one.addEventListener("click", function () {
 //   // console.log("hi");

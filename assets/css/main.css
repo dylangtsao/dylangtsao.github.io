@@ -2797,33 +2797,41 @@ body.is-touch .main {
 .experiences {
   display: none;
   /* display: none; */
-  justify-content: space-evenly;
-  align-items: normal;
-  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
   width: 100vw;
   padding: 1em 3em;
+  padding-bottom: 5rem;
   /* border:rgb(97, 157, 217) solid 1px; */
   box-shadow: 1px 1px rgba(0, 0, 0, 0.25);
   z-index: 1;
 }
 
-.experience.one_e{
+.experience {
   display: none;
   justify-content: center;
   flex-direction: column;
   align-items: baseline;
-  height: 65vh;
-  width: 45%;
+  height: 70vh;
+  width: 65%;
   padding: 8em 4em;
-  /* border: rgb(97, 157, 217) solid 1px; */
-  /* box-shadow: 0 0 10px 5px rgba(97, 157, 217, 0.5); */
   box-shadow: none;
-  /* background-color: black; */
-  background: linear-gradient(to right bottom, rgb(0, 0, 0), rgb(43, 89, 195));
   color: black;
   border-radius: 20px;
   z-index: 1;
   cursor: pointer;
+}
+
+  @media screen and (min-width: 1050px) {
+    .experience {
+      width: 50%;
+    }
+}
+
+.experience.one_e{
+  background: linear-gradient(to right bottom, rgb(0, 0, 0), rgb(43, 89, 195));
+  margin-bottom: 3rem;
 }
 
 .experience.one_e:hover {
@@ -2840,20 +2848,7 @@ body.is-touch .main {
 }
 
 .experience.two_e{
-	display: none;
-  justify-content: center;
-	flex-direction: column;
-	align-items: baseline;
-	height: 65vh;
-	width: 45%;
-	padding: 4em 2em;
-	/* border: rgb(97, 157, 217) solid 1px; */
-	/* background-color: black; */
   background: linear-gradient(to right bottom, rgb(42, 106, 255), rgb(0, 0, 0));
-	color: black;
-	border-radius: 20px;
-	z-index: 1;
-  cursor: pointer;
   }
   .experience.two_e:hover {
     border: rgb(255, 255, 255) solid 1px;
@@ -2886,7 +2881,7 @@ body.is-touch .main {
 	/* padding-top: 1em; */
 	z-index: 2;
   }
-
+ 
 /* .experience_button {
   display: flex;
   justify-content: right;
@@ -2950,6 +2945,7 @@ body.is-touch .main {
   display: none;
   text-align: right;
   color: white;
+  font-size: 0.8rem;
 }
 
 .button_sosp {
@@ -2972,6 +2968,9 @@ body.is-touch .main {
 .experience h2 {
   text-align: center;
 }
+.cs124 {
+  display: block;
+}
 @media screen and (min-width: 736px) {
   /* .cs124 {
     display: none;
@@ -2981,16 +2980,13 @@ body.is-touch .main {
 	}
 }
 @media screen and (min-width: 1920px) {
-  .cs124 {
-    display: none;
-  }
-  .experience.one_e {
+  /* .experience.one_e {
     display: flex;
   }
   .experience.two_e {
 	/* height: 65vh; */
-    display: flex;
-  } 
+    /* display: flex; */
+  /* }  */
   .button_124_plus {
     margin-top: 23rem;
     margin-left: 35rem;

@@ -13,6 +13,7 @@ resume_d = document.querySelector(".resume-d");
 flash_d = document.querySelector(".flash-d");
 scholar_d = document.querySelector(".scholar-d");
 neural_d = document.querySelector(".neural-d");
+auth_d = document.querySelector(".auth-d");
 
 overlay = document.querySelector(".overlay");
 
@@ -51,6 +52,8 @@ function smallViewportClick() {
                 scholar_d.style.display = "block";
             } else if (projects[i].classList.containas("neural")) {
                 neural_d.style.display = "block";
+            } else if (projects[i].classList.contains("auth")) {
+                auth_d.style.display = "block";
             }
             // body.bind('touchmove', function(e){e.preventDefault()});
             
@@ -82,6 +85,7 @@ function smallViewportClick() {
         resume_d.style.display = "none";
         scholar_d.style.display = "none";
         neural_d.style.display = "none";
+        auth_d.style.display = "none";
         window.scrollTo(0, scrollPosition);
     });
 } 
@@ -115,6 +119,8 @@ function handleViewpointChange(e) {
                     scholar_d.style.display = "block";
                 } else if (projects[i].classList.contains("neural")) {
                     neural_d.style.display = "block";
+                } else if (projects[i].classList.contains("auth")) {
+                    auth_d.style.display = "block";
                 }
                 
             } else {
@@ -156,6 +162,8 @@ function handleViewpointChange(e) {
                         scholar_d.style.display = "block";
                     } else if (projects[i].classList.contains("neural")) {
                         neural_d.style.display = "block";
+                    } else if (projects[i].classList.contains("auth")) {
+                        auth_d.style.display = "block";
                     }
                 } else {
                     projects[i].classList.add("flipped");
@@ -181,6 +189,7 @@ function handleViewpointChange(e) {
                 resume_d.style.display = "none";
                 scholar_d.style.display = "none";
                 neural_d.style.display="none";
+                auth_d.style.display = "none";
                 h1s[i].style.display = "block";
                 ps[i].style.display = "block";
                 window.scrollTo(0, scrollPosition);
