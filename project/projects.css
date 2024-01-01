@@ -104,6 +104,9 @@ html,body {
     transform: rotateX(0);
     cursor: default;
 }
+.project.auth {
+    background: linear-gradient(to bottom, rgb(19, 77, 213), orange);
+}
 .project.grape {
     /* background: linear-gradient(to bottom, white, purple);   */
     background-image:url("../images/fulls/grape-card.webp");
