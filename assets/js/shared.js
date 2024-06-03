@@ -33,7 +33,6 @@ var button_124_plus = document.querySelector(".button_124_plus");
 var button_124_exit = document.querySelector(".button_124_exit");
 var button_sosp = document.querySelector(".button_sosp");
 
-// var images = document.querySelectorAll('
 
 window.onbeforeunload = function () {
   window.scrollTo(0, 0);
@@ -46,38 +45,36 @@ function containsActive(num) {
   }
 }
 window.addEventListener("scroll", (event) => {
-  // if (scrollY >= 0) {
-  //   console.log("scroll");
-  //   intro__text.style.opacity = 1 - scrollY / 200;
-  // }
-
-  // intro__subtitle.style.opacity = 1 - scrollY/400;
   var start = 150;
   // if (scrollY > 1300) {
   if (scrollY > 800) {
-    ten.classList = "main.style1 content__line.active ten";
-    containsActive(nine);
+    // eight.classList = "main.style1 content__line.active eight";
+    // containsActive(nine);
+    // containsActive(eight);
+    containsActive(seven);
   }
   // else if (scrollY > 1149) {
   else if (scrollY > 670) {
-    nine.classList = "main.style1 content__line.active nine";
-    containsActive(eight);
-    containsActive(ten);
-    containsActive(seven);
+    seven.classList = "main.style1 content__line.active seven";
+    // containsActive(eight);
+    // containsActive(ten);
+    // containsActive(seven);
+    containsActive(six);
   }
   // else if (scrollY > 925) {
   else if (scrollY > 550) {
-    seven.classList = "main.style1 content__line.active seven";
-    eight.classList = "main.style1 content__line.active eight";
-    containsActive(six);
+    
+    six.classList = "main.style1 content__line.active six";
+    // containsActive(six);
     containsActive(five);
-    containsActive(nine);
+    containsActive(seven);
+    // containsActive(nine);
   } else if (scrollY > 420) {
     five.classList = "main.style1 content__line.active five";
-    six.classList = "main.style1 content__line.active six";
+    
     // containsActive(five);
     containsActive(seven);
-    containsActive(eight);
+    // containsActive(eight);
     containsActive(four);
     // containsActive(six);
   } else if (scrollY > 320) {
@@ -96,14 +93,25 @@ window.addEventListener("scroll", (event) => {
   else if (scrollY > start) {
     two.classList = "main.style1 content__line.active two";
     one.classList = "main.style1 content__line_end one";
-    containsActive(three);
+    // containsActive(three);
   } else if (scrollY > start) {
     // content__intro.classList = 'main.style1 content__line_end';
-    // one.classList = 'main.style1 content__line.active one';
-    containsActive(two);
+    one.classList = 'main.style1 content__line.active one';
+    // containsActive(two);
   } else if (scrollY > start - 50) {
     // content__intro.classList = 'main.style1 content__line.active';
     containsActive(one);
+  } else {
+    containsActive(one);
+    containsActive(two);
+    containsActive(three);
+    containsActive(four);
+    containsActive(five);
+    containsActive(six);
+    containsActive(seven);
+    // containsActive(eight);
+    // containsActive(nine);
+    // containsActive(ten);
   }
 });
 window.addEventListener("scroll", function () {
