@@ -8,6 +8,7 @@ html = document.querySelector("html");
 // prs = document.querySelectorAll(".project.right p.default");
 p_desc = document.querySelectorAll(".project p.descrpt");
 
+neuralbook_d = document.querySelector(".neuralbook-d");
 grape_d = document.querySelector(".grape-d");
 resume_d = document.querySelector(".resume-d");
 flash_d = document.querySelector(".flash-d");
@@ -54,6 +55,8 @@ function smallViewportClick() {
                 neural_d.style.display = "block";
             } else if (projects[i].classList.contains("auth")) {
                 auth_d.style.display = "block";
+            } else if (projects[i].classList.contains("neuralbook")) {
+                neuralbook_d.style.display = "block";
             }
             // body.bind('touchmove', function(e){e.preventDefault()});
             
@@ -83,6 +86,7 @@ function smallViewportClick() {
         grape_d.style.display = "none";
         flash_d.style.display = "none";
         resume_d.style.display = "none";
+        neuralbook_d.style.display = "none";
         scholar_d.style.display = "none";
         neural_d.style.display = "none";
         auth_d.style.display = "none";
@@ -121,6 +125,8 @@ function handleViewpointChange(e) {
                     neural_d.style.display = "block";
                 } else if (projects[i].classList.contains("auth")) {
                     auth_d.style.display = "block";
+                } else if (projects[i].classList.contains("neuralbook")) {
+                    neuralbook_d.style.display = "block";
                 }
                 
             } else {
@@ -132,6 +138,7 @@ function handleViewpointChange(e) {
                         projects[j].classList.remove("flashv2");
                         projects[j].classList.remove("scholarv2");
                         projects[j].classList.remove("neuralv2");
+                        projects[j].classList.remove("neuralbookv2");
                         projects[j].style.zIndex ="0";
                     }
                 }
@@ -146,6 +153,8 @@ function handleViewpointChange(e) {
                     projects[i].classList.add("scholarv2");
                 } else if (projects[i].classList.contains("neural")) {
                     projects[i].classList.add("neuralv2");
+                } else if (projects[i].classList.contains("neuralbook")) {
+                    projects[i].classList.add("neuralbookv2");
                 }
             }
             mediaQuery.addEventListener("change", (e) => {
@@ -164,6 +173,8 @@ function handleViewpointChange(e) {
                         neural_d.style.display = "block";
                     } else if (projects[i].classList.contains("auth")) {
                         auth_d.style.display = "block";
+                    } else if (projects[i].classList.contains("neuralbook")) {
+                        neuralbook_d.style.display = "block";
                     }
                 } else {
                     projects[i].classList.add("flipped");
@@ -177,6 +188,8 @@ function handleViewpointChange(e) {
                         projects[i].classList.add("scholarv2");
                     } else if (projects[i].classList.contains("neural")) {
                         projects[i].classList.add("neuralv2");
+                    } else if (projects[i].classList.contains("neuralbook")) {
+                        projects[i].classList.add("neuralbookv2");
                     }
                 }    
             });
@@ -192,6 +205,7 @@ function handleViewpointChange(e) {
                 auth_d.style.display = "none";
                 h1s[i].style.display = "block";
                 ps[i].style.display = "block";
+                neuralbook_d.style.display = "none";
                 window.scrollTo(0, scrollPosition);
             });
         });
@@ -204,6 +218,7 @@ function handleViewpointChange(e) {
                 projects[i].classList.remove("flashv2");
                 projects[i].classList.remove("scholarv2");
                 projects[i].classList.remove("neuralv2");
+                projects[i].classList.remove("neuralbookv2");
                 projects[i].style.zIndex ="0";
                 e.stopPropagation();
             });
@@ -218,6 +233,7 @@ function handleViewpointChange(e) {
                     overlay.style.display = "none";
                     projects[i].classList.remove("resumev2");
                     projects[i].classList.remove("flashv2");
+                    projects[i].classList.remove("neuralbookv2");
                     projects[i].classList.remove("scholarv2");
                     projects[i].classList.remove("neuralv2");
                     projects[i].style.zIndex ="0";

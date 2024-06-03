@@ -1,353 +1,394 @@
-html,body {
-    background-color: black;
-    font-family: 'Montserrat', sans-serif;
-    max-width: 100%;
-    overflow-x: hidden;
+html,
+body {
+  background-color: black;
+  font-family: "Montserrat", sans-serif;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 .nav-bar {
-    background: black;
-    display: flex;
-    justify-content: space-around;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    z-index: 1000;
+  background: black;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  z-index: 1000;
 }
 .nav-bar h1 {
-    color: white;
+  color: white;
 }
 .nav-bar h1 a {
-    color: white;
-    text-decoration: none;
+  color: white;
+  text-decoration: none;
 }
 .projects {
-    background: black;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    padding: 5em 0;
+  background: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 5em 0;
 
-    /* padding: 1em 3em; */
+  /* padding: 1em 3em; */
 }
 
 .back-face {
-    transform: rotateX(180deg);
+  transform: rotateX(180deg);
 }
 .project.flipped .front-face {
-    transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}
+.neuralbook .back-face p {
+  color: black;
+  font-size: 2em;
+}
+.neuralbook .p2 {
+  text-align: right;
 }
 .grape .back-face p {
-    color: white;
-    font-size: 2em;
+  color: white;
+  font-size: 2em;
 }
 .resume .back-face p {
-    color: black;
-    font-size: 2em;
+  color: black;
+  font-size: 2em;
 }
 .flash .back-face p {
-    color: white;
-    font-size: 1.5em;
+  color: white;
+  font-size: 1.5em;
 }
 .flash .p2 {
-    text-align: right;
+  text-align: right;
 }
-.resume .back-face .button {
-    color: black;
+.resume .back-face .button,
+.neuralbook .back-face .button {
+  color: black;
+}
+.neuralbook .back-face p {
+  font-size: 1.5em;
 }
 .schedule .back-face p {
-    color: black;
-    font-size: 2.3em;
+  color: black;
+  font-size: 2.3em;
 }
 .neural .back-face p {
-    color: white;
-    font-size: 1.7em;
+  color: white;
+  font-size: 1.7em;
 }
 .auth .back-face p {
-    color: black;
-    font-size: 2.3em;
+  color: black;
+  font-size: 2.3em;
 }
-@media screen and (max-width:1000px) {
-    .neural .back-face p{
-        font-size: 1.3em;
-    }
+@media screen and (max-width: 1000px) {
+  .neural .back-face p {
+    font-size: 1.3em;
+  }
+  .neuralbook .back-face p {
+    font-size: 1em;
+  }
+  .neuralbook .front-face h1 {
+    font-size: 2.1em;
+  }
 }
 .neural .p2 {
-    padding-top:5.5em;
-    text-align: right;
+  padding-top: 5.5em;
+  text-align: right;
 }
 .flip-back {
-    font-family: 'Montserrat', sans-serif;
-    background: transparent;
-    color: white;
-    border: none;
-    cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  background: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 .flip-back:hover {
-    color: rgb(255,255,255,0.25);
+  color: rgb(255, 255, 255, 0.25);
 }
+.neuralbook .flip-back,
 .resume .flip-back,
 .schedule .flip-back,
 .neural .flip-back,
 .auth .flip-back {
-    color: black;
+  color: black;
 }
+.neuralbook .flip-back:hover,
 .resume .flip-back:hover,
 .schedule .flip-back:hover,
 .neural .flip-back:hover,
 .auth .flip-back:hover {
-    color: rgb(0,0,0,0.25);
+  color: rgb(0, 0, 0, 0.25);
 }
 .project.flipped .back-face {
-    transform: rotateX(0);
-    cursor: default;
+  transform: rotateX(0);
+  cursor: default;
 }
 .project.auth {
-    background: linear-gradient(to bottom, rgb(19, 77, 213), orange);
+  background: linear-gradient(to bottom, rgb(19, 77, 213), orange);
+}
+.project.neuralbook {
+  background-image: url("../images/fulls/neuralbook.png");
+  background-position: center;
+  background-size: 45%;
+  background-repeat: no-repeat;
+}
+.project.neuralbookv2 {
+  background-image: url("../images/fulls/neuralbook.png");
+  background-position: bottom right;
+  background-size: 20%;
+  background-repeat: no-repeat;
 }
 .project.grape {
-    /* background: linear-gradient(to bottom, white, purple);   */
-    background-image:url("../images/fulls/grape-card.webp");
-    background-position:  center;
-    /* background-size: 115%; */
-    background-repeat: no-repeat;
+  /* background: linear-gradient(to bottom, white, purple);   */
+  background-image: url("../images/fulls/grape-card.webp");
+  background-position: center;
+  /* background-size: 115%; */
+  background-repeat: no-repeat;
 }
 .project.grapev2 {
-    background-image: url("../images/fulls/grape-back-bg.png");
-    background-size: cover;
+  background-image: url("../images/fulls/grape-back-bg.png");
+  background-size: cover;
 }
 .project.left,
-.project.right{
-    flex-direction: column;
-    justify-content: space-between;
-    padding-bottom: 0;
+.project.right {
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 0;
 }
 .project.left h1 {
-    text-align:left;
+  text-align: left;
 }
 .project.grape h1 {
-    /* color: rgb(163, 77, 170); */
-    background: -webkit-linear-gradient(left,rgb(22, 2, 65),rgb(75, 7, 222));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    
+  /* color: rgb(163, 77, 170); */
+  background: -webkit-linear-gradient(left, rgb(22, 2, 65), rgb(75, 7, 222));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .project.right h1 {
-    text-align: right;
+  text-align: right;
 }
 .project {
-    background: white;
-    display: flex;
-    justify-content:baseline-flex;
-    flex-direction: column;
-    width: 50vw;
-    height: 65vh;
-    /* width: 100%; */
-    padding: 0em 2em;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-bottom: 4em;
-    transform: none;
-    z-index: 0;
+  background: white;
+  display: flex;
+  justify-content: baseline-flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 65vh;
+  /* width: 100%; */
+  padding: 0em 2em;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 4em;
+  transform: none;
+  z-index: 0;
 }
 
 .project-face {
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
-    flex-direction: column;
-    position: absolute;
-    width: 50vw;
-    height: 65vh;
-    backface-visibility: hidden;
-    transition: transform 0.6s;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  flex-direction: column;
+  position: absolute;
+  width: 50vw;
+  height: 65vh;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
 }
 @media screen and (min-height: 1000px) {
-    .project {
-        height: 50vh;
-    }
-    .project-face {
-        height: 50vh;
-    }
+  .project {
+    height: 50vh;
+  }
+  .project-face {
+    height: 50vh;
+  }
 }
 @media screen and (min-height: 1400px) {
-    .project {
-        height: 40vh;
-    }
-    .project-face {
-        height: 40vh;
-    }
+  .project {
+    height: 40vh;
+  }
+  .project-face {
+    height: 40vh;
+  }
 }
 .project h1 {
-    display: block;
-    font-size: 3.5em;
-    font-weight:600;
-    text-align: center;
+  display: block;
+  font-size: 3.5em;
+  font-weight: 600;
+  text-align: center;
 }
 .project p.descrpt {
-    display: none;
-    text-align: left;
-    font-size: 1.5em;
-    color: black;
+  display: none;
+  text-align: left;
+  font-size: 1.5em;
+  color: black;
 }
 .project .button {
-    color: white;
-    font-family: "Montserrat", sans-serif;;
-    font-size: 1.5rem;
-    text-decoration: underline;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  text-decoration: underline;
 }
 .project.right p.default {
-    display: flex;
-    align-items: bottom;
-    text-align:left;
-    font-size: 2em;
+  display: flex;
+  align-items: bottom;
+  text-align: left;
+  font-size: 2em;
 }
 
 .project.left p.default {
-    display: flex;
-    justify-content: flex-end;
-    align-items: bottom;
-    text-align: right;
-    font-size: 2em;
+  display: flex;
+  justify-content: flex-end;
+  align-items: bottom;
+  text-align: right;
+  font-size: 2em;
 }
 
 .project.grape p.default {
-    color: black;
+  color: black;
 }
 .project.resume {
-    background-image: url("../images/fulls/resume.png");
-    /* background-position: c center; */
-    background-position: right right 70;
-    /* background-repeat: no-repeat; */
+  background-image: url("../images/fulls/resume.png");
+  /* background-position: c center; */
+  background-position: right right 70;
+  /* background-repeat: no-repeat; */
 }
 .project.resumev2 {
-    background: white;
+  background: white;
 }
 .project.flash {
-    background-image: url('../images/fulls/flash-bg.png');
-    background-position: center right 30%;
+  background-image: url("../images/fulls/flash-bg.png");
+  background-position: center right 30%;
 }
 .project.flashv2 {
-    background: black;
-    border: 1px solid white;
+  background: black;
+  border: 1px solid white;
 }
 .project.neural {
-    background-image: url('../images/fulls/neural.png');
-    background-position: center;
-    background-size: cover;
+  background-image: url("../images/fulls/neural.png");
+  background-position: center;
+  background-size: cover;
 }
 .project.neuralv2 {
-    background: white;
-    border: 1px solid black;
+  background: white;
+  border: 1px solid black;
 }
 .project.neural h1,
 .project.neural p {
-    color: black;
+  color: black;
 }
-@media screen and (min-width:1400px) {
-    .project.neural h1,
-    .project.neural p {
-        color: white;
-    }
-    .project.neuralv2 {
-        background: black;
-        border: 1px solid white;
-    }
-    .neural .flip-back {
-        color: white;
-    }
-    .neural .flip-back:hover {
-        color: rgb(255,255,255,0.25);
-    }
+@media screen and (min-width: 1400px) {
+  .project.neural h1,
+  .project.neural p {
+    color: white;
+  }
+  .project.neuralv2 {
+    background: black;
+    border: 1px solid white;
+  }
+  .neural .flip-back {
+    color: white;
+  }
+  .neural .flip-back:hover {
+    color: rgb(255, 255, 255, 0.25);
+  }
 }
 .project.flash h1 {
-    background: -webkit-linear-gradient(right,rgb(255, 255, 255),rgb(235, 96, 96));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(
+    right,
+    rgb(255, 255, 255),
+    rgb(235, 96, 96)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .project.flash p.default {
-    background: -webkit-linear-gradient(bottom, white,rgb(203, 38, 38));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  background: -webkit-linear-gradient(bottom, white, rgb(203, 38, 38));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .project.schedule {
-    background-image: url("../images/fulls/scholar.png");
-    background-position: center center;
-    background-size: 40%;
-    background-repeat: no-repeat;
+  background-image: url("../images/fulls/scholar.png");
+  background-position: center center;
+  background-size: 40%;
+  background-repeat: no-repeat;
 }
 .project.scholarv2 {
-    background: white;
+  background: white;
 }
 @media screen and (max-width: 768px) {
-    .project.schedule {
-        background-size: 60%;
-    }
-    
+  .project.schedule {
+    background-size: 60%;
+  }
 }
 .backdrop {
-    background-color: black;
-    color: white;
-    top: 0;
-    left: 0;
-    /* background: rgba(0,0,0,0.5); */
-    /* backdrop-filter: blur(15px); */
-    display: none;
-    justify-content: top;
-    flex-direction: column;
-    text-align: left;
-    position: fixed;
-    z-index: 2;
-    padding: 3em 3em;
-    /* width: 100vw; */
-    height: 100vh;
-    /* overflow-y: hidden; */
+  background-color: black;
+  color: white;
+  top: 0;
+  left: 0;
+  /* background: rgba(0,0,0,0.5); */
+  /* backdrop-filter: blur(15px); */
+  display: none;
+  justify-content: top;
+  flex-direction: column;
+  text-align: left;
+  position: fixed;
+  z-index: 2;
+  padding: 3em 3em;
+  /* width: 100vw; */
+  height: 100vh;
+  /* overflow-y: hidden; */
 }
 .backdrop h1 {
-    padding-top: 1rem;
+  padding-top: 1rem;
 }
-.backdrop p{
-    font-size: 1.5rem;
-    color: white;
-    text-align: left;
-    padding-bottom: 2rem;
-    /* padding: 1rem 1rem; */
-    /* padding-right: 2rem; */
-    /* width: 100vw; */
+.backdrop .neuralbook-d p {
+  font-size: 1.1rem;
+}
+.backdrop p {
+  font-size: 1.5rem;
+  color: white;
+  text-align: left;
+  padding-bottom: 2rem;
+  /* padding: 1rem 1rem; */
+  /* padding-right: 2rem; */
+  /* width: 100vw; */
 }
 .backdrop button:hover {
-    color: rgb(255,255,255,0.25);
+  color: rgb(255, 255, 255, 0.25);
 }
 .backdrop button {
-    background: transparent;
-    border: none;
-    color: white;
-    font-size: 1.5em;
-    cursor: pointer;
-    right: 2.5em;
-    bottom: 5em;
-    position: absolute;
-    /* position: absolute; */
-    
-    padding: 0.5em 0.5em;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  right: 2.5em;
+  bottom: 5em;
+  position: absolute;
+  /* position: absolute; */
+
+  padding: 0.5em 0.5em;
 }
 .grape-d {
-    display: none;
+  display: none;
 }
 .resume-d {
-    display: none;
+  display: none;
 }
 .flash-d {
-    display: none;
+  display: none;
 }
 .scholar-d {
-    display: none;
+  display: none;
 }
 .neural-d {
-    display: none;
+  display: none;
 }
+.neuralbook-d {
+  display: none;
+}
+
 /*
 .backdropbox {
     display: none;
@@ -365,34 +406,34 @@ html,body {
 }
 */
 .github:hover {
-    font-size: 1.55rem;
-    /* font-weight: bold; */
+  font-size: 1.55rem;
+  /* font-weight: bold; */
 }
 .github {
-    font-size: 1.5rem;
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-    border: 1px solid white;
-    padding: 0.24em;
-    border-radius: 10%;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid white;
+  padding: 0.24em;
+  border-radius: 10%;
 }
 .prevent-scroll {
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.5);
-    display: none;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1;
 }
 .footer {
-    color: white;
-    height: 30vh;
-    text-align:end;
+  color: white;
+  height: 30vh;
+  text-align: end;
 }
