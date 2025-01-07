@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   const terms = [
-    "UIUC Senior",
+    "UIUC Graduate",
     "Software Engineer",
     "Developer",
     "Learner",
-    "Math&CS Student",
+    "Math&CS Enthusiast",
   ];
 
   let termIndex = 0;
