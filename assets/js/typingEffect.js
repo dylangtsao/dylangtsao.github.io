@@ -1,17 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   const terms = [
-    "UIUC Graduate",
-    "Software Engineer",
-    "Developer",
-    "Learner",
-    "Math&CS Enthusiast",
+    "Welcome to my website!",
+    "I love building things",
+    "Let's connect!"
   ];
 
   let termIndex = 0;
   let charIndex = 0;
-  const typingSpeed = 150;
-  const erasingSpeed = 120;
-  const delayBetweenTerms = 2000;
+  const typingSpeed = 80;
+  const erasingSpeed = 60;
+  const delayBetweenTerms = 1500;
   const typingElement = document.querySelector(".typing-effect");
 
   function type() {

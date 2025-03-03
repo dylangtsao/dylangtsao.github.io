@@ -136,43 +136,103 @@ window.addEventListener("scroll", function () {
 const navSlide = () => {
   const mobileNav = document.querySelector(".mobile-nav");
   const navLinks = document.querySelector(".nav-links");
+  const navItems = document.querySelectorAll(".nav-links li");
+  
+  // Create menu overlay if it doesn't exist
+  let menuOverlay = document.querySelector('.menu-overlay');
+  if (!menuOverlay) {
+    menuOverlay = document.createElement('div');
+    menuOverlay.className = 'menu-overlay';
+    document.body.appendChild(menuOverlay);
+  }
 
   mobileNav.addEventListener("click", () => {
-    if (backdrop.style.display == "block" && mobileNav != null) {
+    // Toggle the open class for the animation
+    mobileNav.classList.toggle("open");
+    
+    // Toggle menu visibility
+    if (navLinks.style.transform === "translateX(0%)" || navLinks.style.transform === "translateX(50%)") {
+      // Close menu
       navLinks.style.transform = "translateX(100%)";
-      backdrop.style.display = "none";
-      for (let i = 0; i < mobile_nav_links.length; i++) {
-        mobile_nav_links[i].style.animation = "none";
-        mobile_nav_links[i].style.opacity = "0";
-      }
+      menuOverlay.classList.remove('active');
+      navLinks.classList.remove('active');
+      
+      // Reset backdrop if it exists
+      if (backdrop) backdrop.style.display = "none";
+      
+      // Animate out menu items
+      navItems.forEach(item => {
+        item.style.opacity = "0";
+        item.style.transform = "translateX(50px)";
+        item.style.visibility = "hidden";
+      });
     } else {
-      // console.log('clicked');
-      navLinks.style.transform = "translateX(50%)";
-      backdrop.style.display = "block";
-      for (let i = 0; i < mobile_nav_links.length; i++) {
-        mobile_nav_links[
-          i
-        ].style.animation = `fade-in ${2}s cubic-bezier(0.215,0.61,0.355,1) 0.5s forwards`;
-      }
+      // Open menu - force visibility with !important-like behavior
+      navLinks.style.transform = "translateX(0%)";
+      navLinks.style.display = "flex";
+      navLinks.style.visibility = "visible";
+      menuOverlay.classList.add('active');
+      
+      // Show backdrop if it exists
+      if (backdrop) backdrop.style.display = "block";
+      
+      // Immediately make all nav items visible
+      navItems.forEach(item => {
+        item.style.display = "block";
+      });
+      
+      // Add active class after small delay to trigger animations
+      setTimeout(() => {
+        navLinks.classList.add('active');
+        // Explicitly set opacity for all menu items with a more aggressive approach
+        navItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.style.opacity = "1";
+            item.style.transform = "translateX(0)";
+            item.style.visibility = "visible";
+            // Force in-line color to ensure it's visible
+            const link = item.querySelector('a');
+            if (link) {
+              link.style.color = "#ffffff";
+              link.style.display = "block";
+              link.style.fontSize = "2rem";
+              link.style.fontWeight = "700";
+            }
+          }, 100 * index);
+        });
+      }, 100);
     }
   });
-
-  backdrop.addEventListener("click", () => {
-    if (mobileNav != null) {
-      navLinks.style.transform = "translateX(100%)";
-      backdrop.style.display = "none";
-    }
-  });
-
-  for (let i = 0; i < mobile_nav_links.length; i++) {
-    mobile_nav_links[i].addEventListener("click", () => {
-      console.log("nav");
-      if (backdrop.style.display == "block") {
-        navLinks.style.transform = "translateX(100%)";
-        backdrop.style.display = "none";
-      }
+  
+  // Close menu when clicking on overlay
+  menuOverlay.addEventListener('click', () => {
+    navLinks.style.transform = "translateX(100%)";
+    menuOverlay.classList.remove('active');
+    navLinks.classList.remove('active');
+    mobileNav.classList.remove("open");
+    
+    // Reset backdrop if it exists
+    if (backdrop) backdrop.style.display = "none";
+    
+    // Animate out menu items
+    navItems.forEach(item => {
+      item.style.opacity = "0";
+      item.style.transform = "translateX(50px)";
     });
-  }
+  });
+  
+  // Close menu when clicking on a menu item
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      navLinks.style.transform = "translateX(100%)";
+      menuOverlay.classList.remove('active');
+      navLinks.classList.remove('active');
+      mobileNav.classList.remove("open");
+      
+      // Reset backdrop if it exists
+      if (backdrop) backdrop.style.display = "none";
+    });
+  });
 };
 
 experience_one.addEventListener("click", function () {

@@ -10,20 +10,206 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<link rel="icon" type="image/webp" href="images/logo.webp" />
-	</head>
-	<div class="temp_backdrop"></div>
-	<div id="text" class="intro__text" style="background:black">
-		
-		<h1 class="intro__text_line">
-			<span class="intro__text__l">Hello!
-				<h2 class="intro__text_subtitle">I'm Dylan Tsao,</h2>
-				<h2 class="intro__text_subtitle_mobile">I'm Dylan,</h2>
-				<h2 class="intro__text_subtitle_"><span class="typing-effect"></span></h2>
+		<style>
+			.hero-section {
+				height: 100vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				background-color: rgba(0, 0, 0, 0.75);
+				overflow: hidden;
+			}
+			
+			.hero-content {
+				z-index: 10;
+				text-align: center;
+				max-width: 800px;
+				padding: 0 2rem;
+			}
+			
+			.hero-greeting {
+				font-size: 4rem;
+				margin-bottom: 0.5rem;
+				animation: fadeInUp 1s ease;
+				color: #fff;
+			}
+			
+			.hero-name {
+				font-size: 2.5rem;
+				margin-bottom: 1.5rem;
+				animation: fadeInUp 1.2s ease;
+				color: #fff;
+			}
+			
+			.typing-container {
+				height: 3rem;
+				margin: 1.5rem 0;
+				animation: fadeInUp 1.4s ease;
+			}
+			
+			.typing-effect {
+				font-size: 1.8rem;
+				color: #64ffda;
+				border-right: 3px solid #64ffda;
+				padding-right: 5px;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			
+			.hero-cta {
+				margin-top: 2rem;
+				animation: fadeInUp 1.6s ease;
+			}
+			
+			.social-links {
+				display: flex;
+				justify-content: center;
+				gap: 1.5rem;
+				margin-top: 2.5rem;
+				animation: fadeInUp 1.8s ease;
+			}
+			
+			.social-link {
+				font-size: 2.5rem;
+				color: #fff;
+				transition: all 0.3s ease;
+				display: inline-block;
+				opacity: 1 !important;
+			}
+			
+			.social-link:hover {
+				color: #64ffda;
+				transform: translateY(-3px);
+			}
+			
+			.scroll-indicator {
+				position: absolute;
+				bottom: 2rem;
+				left: 50%;
+				transform: translateX(-50%);
+				animation: bounce 2s infinite;
+				cursor: pointer;
+				color: #fff;
+				font-size: 1.5rem;
+			}
+			
+			.scroll-indicator i {
+				opacity: 1 !important;
+			}
+			
+			.content-lines {
+				margin: 1.5rem 0;
+				animation: fadeInUp 1.5s ease;
+				line-height: 1.6;
+			}
+			
+			.content-line {
+				display: block;
+				margin-bottom: 0.5rem;
+				transition: all 0.3s ease;
+			}
+			
+			.content-line:hover {
+				color: #64ffda;
+				transform: translateX(5px);
+			}
+			
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			
+			@keyframes bounce {
+				0%, 20%, 50%, 80%, 100% {
+					transform: translateY(0) translateX(-50%);
+				}
+				40% {
+					transform: translateY(-20px) translateX(-50%);
+				}
+				60% {
+					transform: translateY(-10px) translateX(-50%);
+				}
+			}
+			
+			/* Mobile Styles (non-navigation) */
+			@media (max-width: 768px) {
+				.hero-greeting {
+					font-size: 3rem;
+				}
 				
-			</span>
-		</h1>
-		
-	</div>
+				.hero-name {
+					font-size: 2rem;
+				}
+				
+				.typing-effect {
+					font-size: 1.5rem;
+				}
+			}
+			
+			/* Ensure all Font Awesome icons are visible */
+			.fa, .fas, .far, .fal, .fab {
+				opacity: 1 !important;
+				display: inline-block !important;
+				font-size: inherit;
+				height: 1em;
+				overflow: visible;
+				vertical-align: -0.125em;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+			}
+			
+			/* Fix GitHub & LinkedIn icons in particular */
+			.fa-github, .fa-linkedin {
+				font-size: 2.5rem;
+				color: #ffffff;
+				text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+			}
+			
+			.fa-chevron-down {
+				font-size: 1.5rem;
+				color: #ffffff;
+				text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+			}
+		</style>
+	</head>
+	<div class="temp_backdrop" style="display: none !important; visibility: hidden !important; opacity: 0 !important; pointer-events: none !important; z-index: -999 !important;"></div>
+	
+	<!-- New Hero Section -->
+	<section class="hero-section" id="text">
+		<div class="hero-content">
+			<h1 class="hero-greeting">Hello!</h1>
+			<h2 class="hero-name">I'm Dylan Tsao</h2>
+			<div class="typing-container">
+				<span class="typing-effect"></span>
+			</div>
+			<div class="content-lines">
+				<span class="content-line">I was a Software Engineer Intern at SymptomTrace implementing a 5G ZTP workflow in embedded Linux</span>
+				<span class="content-line">and developing AI-based radar signal processing for medical IoT.</span>
+				<span class="content-line">Also, I have graduated in December 2024 with a B.S. in</span>
+				<span class="content-line">Mathematics & Computer Science from the University of Illinois at Urbana-Champaign.</span>
+				<span class="content-line">In my off hours, I am building DrinkEase and Neuralbook.</span>
+			</div>
+			<div class="social-links">
+				<a href="https://github.com/dylangtsao" class="social-link" id="links">
+					<i class="fab fa-github"></i>
+				</a>
+				<a href="https://www.linkedin.com/in/dylan-tsao/" class="social-link" id="links">
+					<i class="fab fa-linkedin"></i>
+				</a>
+			</div>
+		</div>
+		<div class="scroll-indicator">
+			<i class="fas fa-chevron-down"></i>
+		</div>
+	</section>
 	
 	<body class="is-preload">
 		<div class="backdrop">
@@ -31,251 +217,289 @@
 			<h1>Working on Mobile View right now.</h1> -->
 		</div>
 		<!-- Header -->
-			<header id="header">
-				<h1>OAST</h1>
-				<div class="box_eye" style="display: none;">
-					<div class="eye"></div>
-					<div class="eye"></div>
-				</div>
-				<script src="./assets/js/e.js"></script>
-				<nav>
-					<ul class="nav-links">
-						<li><a href="#text">Intro</a></li>
-						<li><a href="#one">Experiences</a></li>
-						<!-- <li><a href="./projects/index.html">Projects</a></li> -->
-						<li><a href="./project/index.html">Projects</a></li>
-						<li><a href="https://resume-nextjs-tailwind.vercel.app/">Resume</a></li>
-						<!-- <li><a href="#todo">Todo</a></li> -->
-						<!-- <li><a href="#work">Projects</a></li> -->
-						<!-- <li><a href="#contact">Why</a></li> -->
-					</ul>
-				</nav>
+		<header id="header">
+			<h1>OAST</h1>
+			<div class="box_eye" style="display: none;">
+				<div class="eye"></div>
+				<div class="eye"></div>
+			</div>
+			<script src="./assets/js/e.js"></script>
+			<nav>
+				<ul class="nav-links" style="display: none !important; visibility: hidden !important; pointer-events: none !important; opacity: 0 !important;">
+					<li><a href="#text">Intro</a></li>
+					<li><a href="#one">Experiences</a></li>
+					<!-- <li><a href="./projects/index.html">Projects</a></li> -->
+					<li><a href="./project/index.html">Projects</a></li>
+					<li><a href="https://resume-nextjs-tailwind.vercel.app/">Resume</a></li>
+					<!-- <li><a href="#todo">Todo</a></li> -->
+					<!-- <li><a href="#work">Projects</a></li> -->
+					<!-- <li><a href="#contact">Why</a></li> -->
+				</ul>
+			</nav>
+				
+		</header>
 
-				<div class="mobile-nav">
-					<div class="line"></div>
-					<div class="line"></div>
-					<div class="line"></div>
+		<!-- experiment with vanta.js -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+		<!-- Replace outdated FontAwesome with latest version -->
+		<script src="https://kit.fontawesome.com/3b0f6c2be6.js" crossorigin="anonymous"></script>
+		<script>
+			VANTA.BIRDS({
+			el: ".hero-section",
+			mouseControls: true,
+			touchControls: true,
+			gyroControls: false,
+			minHeight: 200.00,
+			minWidth: 200.00,
+			scale: 1.00,
+			scaleMobile: 1.00,
+			backgroundColor: 0x0,
+			color1: 0x90606,
+			color2: 0x242a2d,
+			colorMode: "variance",
+			wingSpan: 14.00,
+			separation: 14.00,
+			alignment: 23.00,
+			quantity: 3.00
+			})
+			
+			// Scroll functionality
+			document.querySelector('.scroll-indicator').addEventListener('click', function() {
+				document.getElementById('one').scrollIntoView({ behavior: 'smooth' });
+			});
+		</script>
+
+	<!-- Intro (Removing this section since we have a new hero section) -->
+		<!-- <section id="intro" class="main style1 dark fullscreen">
+			<div class="content">
+				<header>
+					<h2>
+						<span class="content__line two">I was a Software Engineer Intern at SymptomTrace implementing a 5G ZTP workflow in embedded Linux</span>
+						<span class="content__line three">and developing AI-based radar signal processing for medical IoT.</span>
+						<span class="content__line four">Also, I have graduated in December 2024 with a B.S. in</span>
+						<span class="content__line five">Mathematics & Computer Science from the University of Illinois at Urbana-Champaign.</span>
+						<span class="content__line six">In my off hours, I am building DrinkEase and Neuralbook.</span>
+						<span class="content__line seven">Connect with me @ <a href="https://github.com/dylangtsao" id="links">Github</a> and <a href="https://www.linkedin.com/in/dylan-tsao/" id="links">Linkedln</a>.</span> 
+					</h2>
+				</header>
+			</div>
+		</section> -->
+
+	<!-- One -->
+		<section id="one" class="main style2 right dark fullscreen">
+			<div class="content box style2" style="background: transparent;">
+				<header>
+					<h2>Experiences</h2>
+					<!-- <p>I recommend to download a copy of my <a href="./images/DylanTsaoResume.pdf" id="links">RESUME</a>.</p> -->
+				</header>
+				
+			</div>
+			<section class="main style2 right dark fullscreen cs124">
+				<div class="content box style3">
+					<header class="roles">
+						<h2>Software Engineer Intern</h2>
+						<h3>SymptomTrace | Feb 2025 - Present</h3>
+					</header>
+					<p class="roles__instruction"><i><u>Designing</u></i> and implementing a 5G standalone Zero Touch Provisioning (ZTP) workflow in embedded Linux to
+						automate device setup, enabling patient vitals monitoring on ST platform
+					</p>
+					<p class="roles__instruction"><i><u>Developing</u></i> AI-based radar signal processing for medical IoT to improve R-R peak detection accuracy, facilitating
+						active heart-rate tracking and user acceptance testing at hospitals in East Asia
+					</p>
 				</div>
+				<div class="content box style3">
+					<header class="roles">
+						<h2>Software Engineer</h2>
+						<h3>Intel Corporation | Feb 2024 - Dec 2024</h3>
+					</header>
+					<p class="roles__instruction"><i><u>Enhanced</u></i> system performance and efficiency by configuring, setting up, and debugging Intel architecture-based
+						customer PC systems.
+					</p>
+					<p class="roles__instruction"><i><u>Achieved</u></i> best-in-class status as measured by system analysis and evaluation through the development and
+						deployment of automation code
+					</p>
+				</div>
+				<div class="content box style3">
+					<header class="roles">
+						<h2>Undergraduate Course Assistant</h2>
+						<h3>University of Illinois at Urbana-Champaign | Aug 2022 - Dec 2022</h3>
+					</header>
+					<p class="roles__instruction"><i><u>Coordinated</u></i> weekly office hours, effectively clarifying course concepts for 30+ students per week, answering questions on quizzes, and guiding machine projects, resulting in an increased understanding of course material </ul>
+					<p class="roles__instruction"><i><u>Demonstrated</u></i> exceptional time management by dedicating 10 hours weekly, enhancing the quality of student support services, as evidenced by an increase in student satisfaction ratings </p>
+					<p class="roles__instruction"><i><u>Accomplished</u></i> strong communication skills by making complex computer science principles accessible, as noticeable by an increase in student comprehensive rates based on pre- and post-lecture surveys </p>
+				</div>
+				<div class="content box style3">
+					<header class="roles">
+						<h2>Software Developer</h2>
+						<h3>Summer of Side Projects 2022 | June 2022 - July 2022</h3>
+					</header>
+					<p class="roles__instruction"><i><u>Completed</u></i> a month-long comprehensive technical program, enhancing skill sets and fostering innovative thinking, demonstrated by successfully completing five complex projects that incorporated advanced technical concepts </p>
+					<p class="roles__instruction"><i><u>Participated</u></i> in tutorials on Chatbots, Flask, CLI, and Game Development, applying hands-on techniques to develop four distinct projects, including a Discord Bot and Flappy Bird </p>
+					<p class="roles__instruction"><i><u>Leveraged</u></i> in-depth knowledge of command-line interfaces to develop user-friendly command-line programs, improving operational efficiency by 25% in testing scenarios </p>	
+
+				</div>
+			</section>
+			<section class="experiences">
+				<div class="experience one_e">
+					<h1>SymptomTrace</h1>
+					<p><i><u>Designing</u></i> and implementing a 5G standalone Zero Touch Provisioning (ZTP) workflow in embedded Linux to automate device setup, enabling patient vitals monitoring on ST platform</p>
+					<p><i><u>Developing</u></i> AI-based radar signal processing for medical IoT to improve R-R peak detection accuracy, facilitating active heart-rate tracking and user acceptance testing at hospitals in East Asia</p>
+					<div class="experience_button button_sympt">
+						<button class="button_sympt_plus">x</button>
+						<h2 class="button_sympt_exit">x</h2>
+					</div>
+				</div>
+				<div class="experience one_e">
+					<h1>CS124 CA</h1>
+					<p><i><u>Coordinated</u></i> and led weekly office hours effectively clarifying course concepts, answering questions regarding quizzes, and providing guidance on machine projects. </ul>
+					<p><i><u>Demonstrated</u></i> ability to effectively manage time and commitments, regularly dedicating an average of 10 hours weekly to ensure the high quality of student support services. </p>
+					<p><i><u>Established</u></i>  strong communication and interpersonal skills by explaining complex computer science principles in an accessible manner. </p>
+					<div class="experience_button button_124">
+						<button class="button_124_plus">x</button>
+						<!-- <h2 class="button_124_plus">+</h2> -->
+						<h2 class="button_124_exit">x</h2>
+					</div>
 					
-			</header>
+				</div>
+				<div class="experience two_e">
+					<h1>Summer Of Side Projects 2022</h1>
+					<!-- <div class="experience_button button_sosp"> -->
+						<!-- <h2>+</h2> -->
+					<!-- </div> -->
+					<p><i><u>Completed</u></i> a month-long comprehensive technical program, enhancing skill sets and fostering innovative thinking, demonstrated by successfully completing five complex projects that incorporated advanced technical concepts </p>
+					<p><i><u>Participated</u></i> in tutorials on Chatbots, Flask, CLI, and Game Development, applying hands-on techniques to develop four distinct projects, including a Discord Bot and Flappy Bird </p>
+					<p><i><u>Leveraged</u></i> in-depth knowledge of command-line interfaces to develop user-friendly command-line programs, improving operational efficiency by 25% in testing scenarios </p>	
 
-			
-			
-			
-			<!-- experiment with vanta.js -->
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
-			<script>
-				VANTA.BIRDS({
-				el: ".temp_backdrop",
-				mouseControls: true,
-				touchControls: true,
-				gyroControls: false,
-				minHeight: 200.00,
-				minWidth: 200.00,
-				scale: 1.00,
-				scaleMobile: 1.00,
-				backgroundColor: 0x0,
-				color1: 0x90606,
-				color2: 0x242a2d,
-				colorMode: "variance",
-				wingSpan: 14.00,
-				separation: 14.00,
-				alignment: 23.00,
-				quantity: 3.00
-				})
-			</script>
-
-		<!-- Intro -->
-			<section id="intro" class="main style1 dark fullscreen">
-				<div class="content">
-					<header>
-						<h2>
-							<span class="content__line two">I was a Software Engineer Intern at Intel Corporation with a specialization in automation and debug. </span>
-							<span class="content__line three">Also, I have graduated in December 2024 with a B.S. in</span>
-							<span class="content__line four">Mathematics & Computer Science from the University of Illinois at Urbana-Champaign.</span>
-							<span class="content__line five">In my off hours, I am building neuralbook: AI-powered daily journaling app. More information coming!</span>
-							<!-- <span class="content__line six">I am actively recruiting for full-time roles in SWE/SDE positions looking to start Jan 2025.</span> -->
-							<span class="content__line seven">Connect with me @ <a href="https://github.com/dylangtsao" id="links">Github</a> and <a href="https://www.linkedin.com/in/dylan-tsao/" id="links">Linkedln</a>.</span> 
-						</h2>
-					</header>
-					<!-- <p><strong>Hello!</strong> I am currently a student at UIUC studying Mathematics & Computer Science.<br /> -->
-						<!-- Feel free to checkout my projects at my <a href="https://github.com/dylangtsao" id="links">Github</a> and also my <a href="https://www.linkedin.com/in/dylan-tsao/" id="links">Linkedln</a>.<br /> -->
-						<!-- **Actively searching for internships**</p> -->
-					<!-- <footer>
-						<a href="#one" class="button style2 down">More</a>
-					</footer> -->
+				</div>
 				</div>
 			</section>
+			<!-- <a href="#two" class="button style2 down anchored">Next</a> -->
+		</section>
 
-		<!-- One -->
-			<section id="one" class="main style2 right dark fullscreen">
-				<div class="content box style2" style="background: transparent;">
-					<header>
-						<h2>Experiences</h2>
-						<!-- <p>I recommend to download a copy of my <a href="./images/DylanTsaoResume.pdf" id="links">RESUME</a>.</p> -->
-					</header>
-					
-				</div>
-				<section class="main style2 right dark fullscreen cs124">
-					<div class="content box style3">
-						<header class="roles">
-							<h2>Software Engineer</h2>
-							<h3>Intel Corporation</h3>
-						</header>
-						<p class="roles__instruction"><i><u>Enhanced</u></i> system performance and efficiency by configuring, setting up, and debugging Intel architecture-based
-							customer PC systems.
-						</p>
-						<p class="roles__instruction"><i><u>Achieved</u></i> best-in-class status as measured by system analysis and evaluation through the development and
-							deployment of automation code
-						</p>
-					</div>
-					<div class="content box style3">
-						<header class="roles">
-							<h2>Undergraduate Course Assistant</h2>
-							<h3>University of Illinois at Urbana-Champaign</h3>
-						</header>
-						<p class="roles__instruction"><i><u>Coordinated</u></i> weekly office hours, effectively clarifying course concepts for 30+ students per week, answering questions on quizzes, and guiding machine projects, resulting in an increased understanding of course material </ul>
-						<p class="roles__instruction"><i><u>Demonstrated</u></i> exceptional time management by dedicating 10 hours weekly, enhancing the quality of student support services, as evidenced by an increase in student satisfaction ratings </p>
-						<p class="roles__instruction"><i><u>Accomplished</u></i> strong communication skills by making complex computer science principles accessible, as noticeable by an increase in student comprehensive rates based on pre- and post-lecture surveys </p>
-					</div>
-					<div class="content box style3">
-						<header class="roles">
-							<h2>Software Developer</h2>
-							<h3>Summer of Side Projects 2022</h3>
-						</header>
-						<p class="roles__instruction"><i><u>Completed</u></i> a month-long comprehensive technical program, enhancing skill sets and fostering innovative thinking, demonstrated by successfully completing five complex projects that incorporated advanced technical concepts </p>
-						<p class="roles__instruction"><i><u>Participated</u></i> in tutorials on Chatbots, Flask, CLI, and Game Development, applying hands-on techniques to develop four distinct projects, including a Discord Bot and Flappy Bird </p>
-						<p class="roles__instruction"><i><u>Leveraged</u></i> in-depth knowledge of command-line interfaces to develop user-friendly command-line programs, improving operational efficiency by 25% in testing scenarios </p>	
+		
+		
 
-					</div>
-				</section>
-				<section class="experiences">
-					<div class="experience one_e">
-						<h1>CS124 CA</h1>
-						<p><i><u>Coordinated</u></i> and led weekly office hours effectively clarifying course concepts, answering questions regarding quizzes, and providing guidance on machine projects. </ul>
-						<p><i><u>Demonstrated</u></i> ability to effectively manage time and commitments, regularly dedicating an average of 10 hours weekly to ensure the high quality of student support services. </p>
-						<p><i><u>Established</u></i>  strong communication and interpersonal skills by explaining complex computer science principles in an accessible manner. </p>
-						<div class="experience_button button_124">
-							<button class="button_124_plus">x</button>
-							<!-- <h2 class="button_124_plus">+</h2> -->
-							<h2 class="button_124_exit">x</h2>
-						</div>
-						
-					</div>
-					<div class="experience two_e">
-						<h1>Summer Of Side Projects 2022</h1>
-						<!-- <div class="experience_button button_sosp"> -->
-							<!-- <h2>+</h2> -->
-						<!-- </div> -->
-						<p><i><u>Completed</u></i> a month-long comprehensive technical program, enhancing skill sets and fostering innovative thinking, demonstrated by successfully completing five complex projects that incorporated advanced technical concepts </p>
-						<p><i><u>Participated</u></i> in tutorials on Chatbots, Flask, CLI, and Game Development, applying hands-on techniques to develop four distinct projects, including a Discord Bot and Flappy Bird </p>
-						<p><i><u>Leveraged</u></i> in-depth knowledge of command-line interfaces to develop user-friendly command-line programs, improving operational efficiency by 25% in testing scenarios </p>	
+	<!-- Two -->√
+		<section id="two" class="main style2 left dark fullscreen none">
+			<div class="content box style2">
+				<header>
+					<h2>Projects</h2>
+				</header>
+				<p>All avaliable to view on <a href="https://github.com/dylangtsao" id="links">Github</a></p>
+				<p>Check out the NEW *work-in-progress* <a href="./project/index.html" id="links">projects</a> page</p>
+			</div>
+			<div class="gallery">
+				<article class="from-left one" style="padding-top: 0.5em;">
+					<a href="images/fulls/grape-card.webp" class="image fit "><img src="images/fulls/grape-card.webp" title="Grape Card via ChatGPT" alt="" /></a>
+				</article>
+				<article class="from-right" style="padding-left: 1em;">
+					<h2>Grape Card</h2>
+					<p>Developing a <strong style="text-decoration:underline;">credit card website</strong> by accurately mimicking the design and functionality of the Apple Card to
+						showcase and enhance front-end development skills</p>
+					<!-- <p>A custom <strong style="color: rgb(97, 157, 217);">New Tab Page</strong> aimed to provide students a detailed view of their schedule. Also features a todo-list that the user can add and remove items easily. </p> -->
+				</article>
+				<article class="from-left">
+					<h2>NextGen Resume</h2>
+					<p>Developed a responsive <strong style="text-decoration: underline">digital resume</strong> by focusing on creating a visually appealing and adaptable layout across various
+						devices to showcase personal qualifications and experiences</p>
+				</article>
+				<article class="from-right")>
+					<a href="images/fulls/digital-resume.webp" class="image fit"><img src="images/fulls/digital-resume.webp" title="NextGen Resume via ChatGPT" alt=""/></a>
+				</article>
+				<article class="from-left">
+					<a href="images/fulls/flashcard.png" class="image fit"><img src="images/fulls/flashcard.png" title="Alter-Flash via ChatGPT" alt="" /></a>
+				</article>
+				<article class="from-right" style="padding-left: 1em;">
+					<h2 >Alter-Flash</h2>
+					<p>
+						Co-developed a unique <strong style="text-decoration: underline">flash-card program</strong> by enabling students to switch between various subject topics, thereby
+						enhancing memorization to maximize prolonged studying
+				</article>
+				<!-- <article class="from-left">
+					<h2>cli-news-channel-script</h2>
+					<p>
+						A <strong style="color: rgb(97, 157, 217);">Command Line Interface (CLI)</strong> tool that generates pre-written scripts for news broadcasters, encompassing daily forecast, news, high-interest stories, etc. It features functionality to modify or delete scripts as per requirements.</p>
+				</article>
+				<article class="from-right">
+					<a href="images/fulls/two.png" class="image fit"><img src="images/fulls/two.png" title="cli-news-channel-script" alt=""/></a>
+				</article>
+				<article class="from-left">
+					<a href="images/fulls/three.png" class="image fit"><img src="images/fulls/three.png" title="schedule-bot" alt="" /></a>
+				</article>
+				<article class="from-right" style="padding-left: 1em;">
+					<h2 >schedule-bot</h2>
+					<p>
+						A <strong style="color: rgb(97, 157, 217);">Discord Bot</strong> developed to assist students with schedule management, grade tracking, and daily reminders, equipped with functionalities like class addition/deletion, reminders management, and grade point average calculation. Its accessible commands include '!addClass', '!removeClass', '!addReminder', '!removeReminder', '!reminders', '!gpa', and '!changeGrade.'</p>
+				</article> -->
+			</div>
+			<!-- <a href="#work" class="button style2 down anchored">Next</a> -->
+		<!-- </section>
 
-					</div>
-					</div>
-				</section>
-				<!-- <a href="#two" class="button style2 down anchored">Next</a> -->
-			</section>
+		<section id="todo" class="popup">
+			<div class="todo_list">
+				<h1>TODO:</h1>
+				<li>media queries for mobile view of home page</li>
+				<li>mobile first view for home page popout</li>
+				<li>new version of experience page</li>
+			</div>
+		</section>
 
+	<!-- Footer -->
+		<footer id="footer">
+
+		<!-- Icons -->
+			<ul class="icons">
+				<!-- <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li> -->
+				<!-- <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li> -->
+				<!-- <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li> -->
+				<!-- <li><a href="https://www.linkedin.com/in/dylan-tsao/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li> -->
+				<!-- <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li> -->
+				<!-- <li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li> -->
+			</ul>
+
+		<!-- Menu -->
+			<ul class="menu">
+				<li>&copy; Dylan Tsao</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+			</ul>
+
+	</footer>
+
+<!-- Scripts -->
+	<script src="assets/js/shared.js"></script>
+	<script>
+		// Better targeting of the override to avoid breaking the new menu
+		window.addEventListener('DOMContentLoaded', function() {
+			// Disable only the old menu functionality without affecting the new one
+			if (window.toggleMobileMenu) {
+				window.toggleMobileMenu = function() { return false; };
+			}
 			
+			// Hide the backdrop
+			const backdrop = document.querySelector('.temp_backdrop');
+			if (backdrop) {
+				backdrop.style.display = 'none';
+				backdrop.style.opacity = '0';
+				backdrop.style.visibility = 'hidden';
+			}
 			
-
-		<!-- Two -->√
-			<section id="two" class="main style2 left dark fullscreen none">
-				<div class="content box style2">
-					<header>
-						<h2>Projects</h2>
-					</header>
-					<p>All avaliable to view on <a href="https://github.com/dylangtsao" id="links">Github</a></p>
-					<p>Check out the NEW *work-in-progress* <a href="./project/index.html" id="links">projects</a> page</p>
-				</div>
-				<div class="gallery">
-					<article class="from-left one" style="padding-top: 0.5em;">
-						<a href="images/fulls/grape-card.webp" class="image fit "><img src="images/fulls/grape-card.webp" title="Grape Card via ChatGPT" alt="" /></a>
-					</article>
-					<article class="from-right" style="padding-left: 1em;">
-						<h2>Grape Card</h2>
-						<p>Developing a <strong style="text-decoration:underline;">credit card website</strong> by accurately mimicking the design and functionality of the Apple Card to
-							showcase and enhance front-end development skills</p>
-						<!-- <p>A custom <strong style="color: rgb(97, 157, 217);">New Tab Page</strong> aimed to provide students a detailed view of their schedule. Also features a todo-list that the user can add and remove items easily. </p> -->
-					</article>
-					<article class="from-left">
-						<h2>NextGen Resume</h2>
-						<p>Developed a responsive <strong style="text-decoration: underline">digital resume</strong> by focusing on creating a visually appealing and adaptable layout across various
-							devices to showcase personal qualifications and experiences</p>
-					</article>
-					<article class="from-right")>
-						<a href="images/fulls/digital-resume.webp" class="image fit"><img src="images/fulls/digital-resume.webp" title="NextGen Resume via ChatGPT" alt=""/></a>
-					</article>
-					<article class="from-left">
-						<a href="images/fulls/flashcard.png" class="image fit"><img src="images/fulls/flashcard.png" title="Alter-Flash via ChatGPT" alt="" /></a>
-					</article>
-					<article class="from-right" style="padding-left: 1em;">
-						<h2 >Alter-Flash</h2>
-						<p>
-							Co-developed a unique <strong style="text-decoration: underline">flash-card program</strong> by enabling students to switch between various subject topics, thereby
-							enhancing memorization to maximize prolonged studying
-					</article>
-					<!-- <article class="from-left">
-						<h2>cli-news-channel-script</h2>
-						<p>
-							A <strong style="color: rgb(97, 157, 217);">Command Line Interface (CLI)</strong> tool that generates pre-written scripts for news broadcasters, encompassing daily forecast, news, high-interest stories, etc. It features functionality to modify or delete scripts as per requirements.</p>
-					</article>
-					<article class="from-right">
-						<a href="images/fulls/two.png" class="image fit"><img src="images/fulls/two.png" title="cli-news-channel-script" alt=""/></a>
-					</article>
-					<article class="from-left">
-						<a href="images/fulls/three.png" class="image fit"><img src="images/fulls/three.png" title="schedule-bot" alt="" /></a>
-					</article>
-					<article class="from-right" style="padding-left: 1em;">
-						<h2 >schedule-bot</h2>
-						<p>
-							A <strong style="color: rgb(97, 157, 217);">Discord Bot</strong> developed to assist students with schedule management, grade tracking, and daily reminders, equipped with functionalities like class addition/deletion, reminders management, and grade point average calculation. Its accessible commands include '!addClass', '!removeClass', '!addReminder', '!removeReminder', '!reminders', '!gpa', and '!changeGrade.'</p>
-					</article> -->
-				</div>
-				<!-- <a href="#work" class="button style2 down anchored">Next</a> -->
-			<!-- </section>
-
-			<section id="todo" class="popup">
-				<div class="todo_list">
-					<h1>TODO:</h1>
-					<li>media queries for mobile view of home page</li>
-					<li>mobile first view for home page popout</li>
-					<li>new version of experience page</li>
-				</div>
-			</section>
-	
-		<!-- Footer -->
-			<footer id="footer">
-
-				<!-- Icons -->
-					<ul class="icons">
-						<!-- <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li> -->
-						<!-- <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li> -->
-						<!-- <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li> -->
-						<!-- <li><a href="https://www.linkedin.com/in/dylan-tsao/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li> -->
-						<!-- <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-						<!-- <li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li> -->
-					</ul>
-
-				<!-- Menu -->
-					<ul class="menu">
-						<li>&copy; Dylan Tsao</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-					</ul>
-
-			</footer>
-
-		<!-- Scripts -->
-			<script src="assets/js/shared.js"></script>
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.poptrox.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/typingEffect.js"></script>
-	</body>
+			// Make sure the menu-overlay is never active initially
+			const menuOverlay = document.querySelector('.menu-overlay');
+			if (menuOverlay) {
+				menuOverlay.classList.remove('active');
+				menuOverlay.style.opacity = '0';
+				menuOverlay.style.visibility = 'hidden';
+			}
+		});
+	</script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.poptrox.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/typingEffect.js"></script>
+</body>
 </html>
