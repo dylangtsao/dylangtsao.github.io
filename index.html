@@ -103,9 +103,9 @@
 			}
 			
 			.content-lines {
-				margin: 1.5rem 0;
+				margin: 1rem 0;
 				animation: fadeInUp 1.5s ease;
-				line-height: 1.6;
+				line-height: 1.1;
 			}
 			
 			.content-line {
@@ -198,15 +198,15 @@
 			</div>
 			<div class="content-lines">
 				<span class="content-line">I am a Software Engineer at Google</span>
-				<span class="content-line">working on the Android Automotive Perception team.</span>
+				<span class="content-line">working with the Android Automotive Perception team</span>
 				<span class="content-line">I have graduated in December 2024 with a B.S. in</span>
 				<span class="content-line">Mathematics & Computer Science from the University of Illinois at Urbana-Champaign.</span>
 				<span class="content-line">Please feel free to connect with me on Linkedln</a>.</span>
 			</div>
 			<div class="social-links">
-				<a href="https://github.com/dylangtsao" class="social-link" id="links">
+				<!-- <a href="https://github.com/dylangtsao" class="social-link" id="links">
 					<i class="fab fa-github"></i>
-				</a>
+				</a> -->
 				<a href="https://www.linkedin.com/in/dylan-tsao/" class="social-link" id="links">
 					<i class="fab fa-linkedin"></i>
 				</a>
@@ -305,7 +305,7 @@
 				<div class="content box style3">
 					<header class="roles">
 						<h2>SWE</h2>
-						<h3>Googe | Aug 2025 - </h3>
+						<h3>Googe | Aug 2025 - Present</h3>
 					</header>
 				</div>
 				<div class="content box style3">
@@ -592,5 +592,86 @@ architecture and a unified design system, reducing clinician task flows and enha
 	<script src="assets/js/typingEffect.js"></script>
 	<script src="assets/js/projectCubes.js"></script>
 	<script src="assets/js/scrollHighlight.js"></script>
+	
+	<!-- Prevent external navigation - keep users on index page only -->
+	<script>
+		// Prevent all external navigation and direct URL access
+		document.addEventListener('DOMContentLoaded', function() {
+			// Check if user is trying to access a restricted path
+			const currentPath = window.location.pathname;
+			if (currentPath !== '/' && currentPath !== '/index.html' && currentPath !== '') {
+				// Redirect to home page if accessing restricted paths like /projects, /eye, etc.
+				window.history.replaceState(null, '', '/');
+			}
+			
+			// Intercept all link clicks
+			document.addEventListener('click', function(e) {
+				const link = e.target.closest('a');
+				if (link) {
+					const href = link.getAttribute('href');
+					
+					// Allow internal anchor links (same page navigation)
+					if (href && href.startsWith('#')) {
+						return; // Allow these to work normally
+					}
+					
+					// Allow social media links (LinkedIn, etc.)
+					if (href && (href.includes('linkedin.com') || href.includes('github.com'))) {
+						return; // Allow these to work normally
+					}
+					
+					// Block all other external navigation
+					e.preventDefault();
+					e.stopPropagation();
+					
+					// Optional: Show a message or redirect to top of page
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+					
+					return false;
+				}
+			});
+			
+			// Prevent browser back/forward navigation to other pages
+			window.addEventListener('popstate', function(e) {
+				// If user tries to navigate away, keep them on this page
+				if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') {
+					window.history.pushState(null, '', '/');
+				}
+			});
+			
+			// Override window.location changes
+			const originalAssign = window.location.assign;
+			const originalReplace = window.location.replace;
+			const originalHref = Object.getOwnPropertyDescriptor(window.location, 'href');
+			
+			window.location.assign = function(url) {
+				if (url === '/' || url === '/index.html' || url.includes('#')) {
+					return originalAssign.call(this, url);
+				}
+				// Block external navigation
+				return;
+			};
+			
+			window.location.replace = function(url) {
+				if (url === '/' || url === '/index.html' || url.includes('#')) {
+					return originalReplace.call(this, url);
+				}
+				// Block external navigation
+				return;
+			};
+			
+			// Prevent direct URL changes
+			Object.defineProperty(window.location, 'href', {
+				set: function(url) {
+					if (url === '/' || url === '/index.html' || url.includes('#')) {
+						return originalHref.set.call(this, url);
+					}
+					// Block external navigation
+					return;
+				},
+				get: originalHref.get
+			});
+		});
+	</script>
 </body>
 </html>
