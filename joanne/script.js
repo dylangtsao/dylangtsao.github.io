@@ -1,20 +1,19 @@
 /* ==========================================================================
-   National Couples Day - Interactive Experience for Joanne
+   National Couples Day - Graphic & Visual Experience for Joanne
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initParticleBackground();
-  initEnvelope();
-  initSurpriseButton();
-  initLoveCounter();
-  initAudioPlayer();
-  initPolaroidEffects();
+  initParticleCanvas();
+  initTapSpawner();
+  initBlastButton();
+  initArtCards();
+  initStickers();
 });
 
 /* ==========================================================================
-   1. Floating Particle & Heart Canvas
+   1. Dynamic Background Particles
    ========================================================================== */
-function initParticleBackground() {
+function initParticleCanvas() {
   const canvas = document.getElementById('particle-canvas');
   if (!canvas) return;
 
@@ -28,13 +27,13 @@ function initParticleBackground() {
   });
 
   const particles = [];
-  const particleCount = window.innerWidth < 768 ? 25 : 45;
+  const count = window.innerWidth < 600 ? 30 : 50;
 
-  const heartColors = [
-    'rgba(255, 101, 132, ',
-    'rgba(255, 182, 193, ',
-    'rgba(244, 143, 177, ',
-    'rgba(254, 205, 211, '
+  const colors = [
+    'rgba(255, 117, 140, ',
+    'rgba(255, 64, 113, ',
+    'rgba(255, 204, 213, ',
+    'rgba(255, 209, 102, '
   ];
 
   class Particle {
@@ -45,33 +44,28 @@ function initParticleBackground() {
     reset(initial = false) {
       this.x = Math.random() * width;
       this.y = initial ? Math.random() * height : height + 20;
-      this.size = Math.random() * 14 + 8;
-      this.speedY = Math.random() * 0.8 + 0.4;
+      this.size = Math.random() * 12 + 6;
+      this.speedY = Math.random() * 0.9 + 0.4;
       this.speedX = (Math.random() - 0.5) * 0.6;
-      this.opacity = Math.random() * 0.6 + 0.2;
-      this.colorBase = heartColors[Math.floor(Math.random() * heartColors.length)];
+      this.opacity = Math.random() * 0.5 + 0.2;
+      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.isHeart = Math.random() > 0.4;
       this.rotation = Math.random() * Math.PI * 2;
-      this.rotationSpeed = (Math.random() - 0.5) * 0.02;
-      this.type = Math.random() > 0.4 ? 'heart' : 'sparkle';
     }
 
     update() {
       this.y -= this.speedY;
-      this.x += this.speedX + Math.sin(this.y * 0.01) * 0.3;
-      this.rotation += this.rotationSpeed;
-
-      if (this.y < -30 || this.x < -30 || this.x > width + 30) {
-        this.reset();
-      }
+      this.x += this.speedX + Math.sin(this.y * 0.02) * 0.4;
+      if (this.y < -30) this.reset();
     }
 
     draw() {
       ctx.save();
       ctx.translate(this.x, this.y);
       ctx.rotate(this.rotation);
-      ctx.fillStyle = `${this.colorBase}${this.opacity})`;
+      ctx.fillStyle = `${this.color}${this.opacity})`;
 
-      if (this.type === 'heart') {
+      if (this.isHeart) {
         const s = this.size / 15;
         ctx.beginPath();
         ctx.moveTo(0, 0);
@@ -79,11 +73,10 @@ function initParticleBackground() {
         ctx.bezierCurveTo(20 * s, 5 * s, 10 * s, -10 * s, 0, 0);
         ctx.fill();
       } else {
-        // Glowing sparkle / star
         ctx.beginPath();
-        ctx.arc(0, 0, this.size * 0.25, 0, Math.PI * 2);
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = '#ff6584';
+        ctx.arc(0, 0, this.size * 0.3, 0, Math.PI * 2);
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = '#ff4071';
         ctx.fill();
       }
 
@@ -91,283 +84,180 @@ function initParticleBackground() {
     }
   }
 
-  for (let i = 0; i < particleCount; i++) {
+  for (let i = 0; i < count; i++) {
     particles.push(new Particle());
   }
 
-  function animate() {
+  function render() {
     ctx.clearRect(0, 0, width, height);
-    for (let i = 0; i < particles.length; i++) {
-      particles[i].update();
-      particles[i].draw();
+    for (let p of particles) {
+      p.update();
+      p.draw();
     }
-    requestAnimationFrame(animate);
+    requestAnimationFrame(render);
   }
 
-  animate();
+  render();
+}
 
-  // Gentle touch/cursor sparkle
-  window.addEventListener('pointermove', (e) => {
-    if (Math.random() > 0.7) {
-      createCursorSparkle(e.clientX, e.clientY);
-    }
+/* ==========================================================================
+   2. Tap Anywhere to Spawn Floating Graphics
+   ========================================================================== */
+function initTapSpawner() {
+  const graphicPool = ['💖', '❤️', '🌸', '✨', '🧸', '🌹', '🥰', '💐', '🎀', '💋'];
+
+  window.addEventListener('pointerdown', (e) => {
+    // Avoid double spawning when tapping buttons
+    if (e.target.closest('button')) return;
+    spawnPopGraphic(e.clientX, e.clientY, graphicPool[Math.floor(Math.random() * graphicPool.length)]);
   });
 }
 
-function createCursorSparkle(x, y) {
-  const sparkle = document.createElement('div');
-  sparkle.innerText = Math.random() > 0.5 ? '✨' : '💖';
-  sparkle.style.position = 'fixed';
-  sparkle.style.left = `${x}px`;
-  sparkle.style.top = `${y}px`;
-  sparkle.style.pointerEvents = 'none';
-  sparkle.style.fontSize = '14px';
-  sparkle.style.zIndex = '999';
-  sparkle.style.transform = 'translate(-50%, -50%) scale(1)';
-  sparkle.style.transition = 'all 0.8s ease-out';
-  sparkle.style.opacity = '1';
-  document.body.appendChild(sparkle);
+function spawnPopGraphic(x, y, emoji) {
+  const el = document.createElement('div');
+  el.textContent = emoji;
+  el.style.position = 'fixed';
+  el.style.left = `${x}px`;
+  el.style.top = `${y}px`;
+  el.style.pointerEvents = 'none';
+  el.style.fontSize = '24px';
+  el.style.zIndex = '9999';
+  el.style.transform = 'translate(-50%, -50%) scale(0.4)';
+  el.style.transition = 'all 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+  el.style.opacity = '1';
+  document.body.appendChild(el);
+
+  const deltaX = (Math.random() - 0.5) * 80;
+  const deltaY = -60 - Math.random() * 60;
+  const rot = (Math.random() - 0.5) * 60;
 
   requestAnimationFrame(() => {
-    sparkle.style.transform = `translate(-50%, ${-30 - Math.random() * 20}px) scale(1.4)`;
-    sparkle.style.opacity = '0';
+    el.style.transform = `translate(calc(-50% + ${deltaX}px), calc(-50% + ${deltaY}px)) scale(1.6) rotate(${rot}deg)`;
+    el.style.opacity = '0';
   });
 
-  setTimeout(() => sparkle.remove(), 800);
+  setTimeout(() => el.remove(), 900);
 }
 
 /* ==========================================================================
-   2. Interactive Love Letter Envelope
+   3. Big Love Blast Button & Toast
    ========================================================================== */
-function initEnvelope() {
-  const envelope = document.getElementById('love-envelope');
-  const closedState = document.getElementById('envelope-closed');
-  const letterContent = document.getElementById('letter-content');
-  const closeBtn = document.getElementById('letter-close-btn');
-
-  if (!envelope || !closedState || !letterContent) return;
-
-  function openLetter(e) {
-    if (e) e.stopPropagation();
-    closedState.style.display = 'none';
-    letterContent.classList.add('active');
-    triggerHeartConfetti(window.innerWidth / 2, window.innerHeight / 2, 25);
-  }
-
-  function closeLetter(e) {
-    if (e) e.stopPropagation();
-    letterContent.classList.remove('active');
-    setTimeout(() => {
-      closedState.style.display = 'flex';
-    }, 300);
-  }
-
-  envelope.addEventListener('click', () => {
-    if (!letterContent.classList.contains('active')) {
-      openLetter();
-    }
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeLetter);
-  }
-}
-
-/* ==========================================================================
-   3. Surprise Kiss & Hug Explosion Button
-   ========================================================================== */
-const sweetNotes = [
-  "Joanne, you make every single day brighter! ✨",
-  "Sending you 1,000 hugs and kisses right now! 💋",
-  "You're my absolute favorite human in the world 🌎❤️",
-  "Happy National Couples Day, my love! 🌹",
-  "You have the sweetest smile ever 🥰",
-  "Forever grateful to have you by my side 💕",
-  "Can't wait for our next adventure together! ✈️✨",
-  "I love you more than words can say! 💌"
+const cuteToasts = [
+  { emoji: '💖', text: "Joanne, you're the absolute cutest!" },
+  { emoji: '🌹', text: "Happy National Couples Day, my love!" },
+  { emoji: '✨', text: "You make every day 1000x brighter!" },
+  { emoji: '🥰', text: "Forever thankful for you, Joanne!" },
+  { emoji: '🧸', text: "Big hugs and infinite kisses for you!" },
+  { emoji: '💫', text: "My favorite adventure is being with you!" }
 ];
 
-function initSurpriseButton() {
-  const hugBtn = document.getElementById('hug-btn');
-  const kissCountEl = document.getElementById('kiss-count');
-  const toast = document.getElementById('love-toast');
+function initBlastButton() {
+  const btn = document.getElementById('love-blast-btn');
+  const countEl = document.getElementById('heart-count');
+  const toast = document.getElementById('toast');
+  const toastEmoji = document.getElementById('toast-emoji');
   const toastText = document.getElementById('toast-text');
 
-  let kisses = parseInt(localStorage.getItem('joanne_kisses') || '0', 10);
-  if (kissCountEl) kissCountEl.textContent = kisses;
+  let total = parseInt(localStorage.getItem('joanne_graphic_hearts') || '0', 10);
+  if (countEl) countEl.textContent = total;
 
-  if (!hugBtn) return;
+  if (!btn) return;
 
-  hugBtn.addEventListener('click', (e) => {
-    kisses++;
-    localStorage.setItem('joanne_kisses', kisses);
-    if (kissCountEl) kissCountEl.textContent = kisses;
+  btn.addEventListener('click', () => {
+    total += 10;
+    localStorage.setItem('joanne_graphic_hearts', total);
+    if (countEl) countEl.textContent = total;
 
-    // Trigger explosive heart confetti
-    const rect = hugBtn.getBoundingClientRect();
-    triggerHeartConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2, 40);
+    // Full screen blast
+    const rect = btn.getBoundingClientRect();
+    const startX = rect.left + rect.width / 2;
+    const startY = rect.top + rect.height / 2;
 
-    // Show rotating sweet toast message
-    const randomNote = sweetNotes[Math.floor(Math.random() * sweetNotes.length)];
-    if (toast && toastText) {
-      toastText.textContent = randomNote;
+    const emojis = ['❤️', '💖', '💕', '✨', '🌹', '🥰', '💐', '🌸', '💋', '🧸', '🎀'];
+
+    for (let i = 0; i < 40; i++) {
+      const el = document.createElement('div');
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      el.style.position = 'fixed';
+      el.style.left = `${startX}px`;
+      el.style.top = `${startY}px`;
+      el.style.pointerEvents = 'none';
+      el.style.fontSize = `${Math.random() * 20 + 20}px`;
+      el.style.zIndex = '9999';
+      el.style.transition = 'all 1.4s cubic-bezier(0.25, 1, 0.5, 1)';
+      el.style.opacity = '1';
+      el.style.transform = 'translate(-50%, -50%) scale(0.3)';
+      document.body.appendChild(el);
+
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = Math.random() * 280 + 100;
+      const destX = Math.cos(angle) * velocity;
+      const destY = Math.sin(angle) * velocity - 120;
+      const rot = (Math.random() - 0.5) * 360;
+
+      requestAnimationFrame(() => {
+        el.style.transform = `translate(calc(-50% + ${destX}px), calc(-50% + ${destY}px)) rotate(${rot}deg) scale(${Math.random() * 0.8 + 1.2})`;
+        el.style.opacity = '0';
+      });
+
+      setTimeout(() => el.remove(), 1400);
+    }
+
+    // Show popup
+    const item = cuteToasts[Math.floor(Math.random() * cuteToasts.length)];
+    if (toast && toastEmoji && toastText) {
+      toastEmoji.textContent = item.emoji;
+      toastText.textContent = item.text;
       toast.classList.add('show');
       clearTimeout(window.toastTimer);
-      window.toastTimer = setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3500);
-    }
-  });
-}
-
-function triggerHeartConfetti(startX, startY, count = 30) {
-  const emojis = ['❤️', '💖', '💕', '✨', '🌹', '🥰', '💌', '🌸', '💋'];
-
-  for (let i = 0; i < count; i++) {
-    const el = document.createElement('div');
-    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-    el.style.position = 'fixed';
-    el.style.left = `${startX}px`;
-    el.style.top = `${startY}px`;
-    el.style.pointerEvents = 'none';
-    el.style.fontSize = `${Math.random() * 18 + 16}px`;
-    el.style.zIndex = '9999';
-    el.style.transition = 'all 1.2s cubic-bezier(0.25, 1, 0.5, 1)';
-    el.style.opacity = '1';
-    el.style.transform = 'translate(-50%, -50%) scale(0.5)';
-    document.body.appendChild(el);
-
-    const angle = Math.random() * Math.PI * 2;
-    const velocity = Math.random() * 220 + 80;
-    const destX = Math.cos(angle) * velocity;
-    const destY = Math.sin(angle) * velocity - 100;
-    const rot = (Math.random() - 0.5) * 360;
-
-    requestAnimationFrame(() => {
-      el.style.transform = `translate(calc(-50% + ${destX}px), calc(-50% + ${destY}px)) rotate(${rot}deg) scale(${Math.random() * 0.8 + 1})`;
-      el.style.opacity = '0';
-    });
-
-    setTimeout(() => el.remove(), 1200);
-  }
-}
-
-/* ==========================================================================
-   4. Love Counter / Relationship Milestone
-   ========================================================================== */
-function initLoveCounter() {
-  const daysEl = document.getElementById('count-days');
-  const hoursEl = document.getElementById('count-hours');
-  const minutesEl = document.getElementById('count-minutes');
-  const secondsEl = document.getElementById('count-seconds');
-
-  if (!daysEl) return;
-
-  // Customizable anniversary start date (default to 1 year back or current date celebration)
-  // Dylan can customize this date easily in the HTML or script
-  const startDateAttr = document.getElementById('love-counter')?.dataset?.startDate;
-  const startDate = startDateAttr ? new Date(startDateAttr) : new Date('2024-01-01T00:00:00');
-
-  function updateCounter() {
-    const now = new Date();
-    const diff = Math.abs(now - startDate);
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    if (daysEl) daysEl.textContent = days;
-    if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-    if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
-    if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
-  }
-
-  updateCounter();
-  setInterval(updateCounter, 1000);
-}
-
-/* ==========================================================================
-   5. Ambient Romantic Audio Synth / Music Player
-   ========================================================================== */
-function initAudioPlayer() {
-  const musicBtn = document.getElementById('music-toggle-btn');
-  if (!musicBtn) return;
-
-  let isPlaying = false;
-  let audioContext = null;
-  let synthInterval = null;
-
-  // Gentle romantic pentatonic notes for soothing ambient music
-  const notes = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33, 659.25]; // C D E G A C D E
-
-  function playAmbientChime() {
-    if (!audioContext) return;
-    try {
-      const osc = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-
-      const note = notes[Math.floor(Math.random() * notes.length)];
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(note, audioContext.currentTime);
-
-      gain.gain.setValueAtTime(0.001, audioContext.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.06, audioContext.currentTime + 0.3);
-      gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 3.0);
-
-      osc.connect(gain);
-      gain.connect(audioContext.destination);
-
-      osc.start();
-      osc.stop(audioContext.currentTime + 3.0);
-    } catch (e) {
-      console.warn(e);
-    }
-  }
-
-  function startMusic() {
-    if (!audioContext) {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      audioContext = new AudioCtx();
-    }
-    if (audioContext.state === 'suspended') {
-      audioContext.resume();
-    }
-
-    isPlaying = true;
-    musicBtn.classList.add('playing');
-    musicBtn.innerHTML = '🎵';
-
-    // Play a gentle chord / chime immediately, then every few seconds
-    playAmbientChime();
-    synthInterval = setInterval(playAmbientChime, 1800);
-  }
-
-  function stopMusic() {
-    isPlaying = false;
-    musicBtn.classList.remove('playing');
-    musicBtn.innerHTML = '🔈';
-    if (synthInterval) clearInterval(synthInterval);
-  }
-
-  musicBtn.addEventListener('click', () => {
-    if (isPlaying) {
-      stopMusic();
-    } else {
-      startMusic();
+      window.toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
     }
   });
 }
 
 /* ==========================================================================
-   6. Polaroid Delight
+   4. Card Interactions
    ========================================================================== */
-function initPolaroidEffects() {
-  const polaroids = document.querySelectorAll('.polaroid-card');
-  polaroids.forEach((card) => {
+function initArtCards() {
+  const cards = document.querySelectorAll('.art-card');
+  cards.forEach(card => {
     card.addEventListener('click', () => {
+      const emoji = card.dataset.emoji || '💖';
       const rect = card.getBoundingClientRect();
-      triggerHeartConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2, 12);
+      for (let i = 0; i < 8; i++) {
+        spawnPopGraphic(
+          rect.left + rect.width / 2 + (Math.random() - 0.5) * 60,
+          rect.top + rect.height / 2 + (Math.random() - 0.5) * 60,
+          emoji
+        );
+      }
+    });
+  });
+
+  const heroHeart = document.querySelector('.graphic-hero-heart');
+  if (heroHeart) {
+    heroHeart.addEventListener('click', () => {
+      const rect = heroHeart.getBoundingClientRect();
+      for (let i = 0; i < 15; i++) {
+        spawnPopGraphic(
+          rect.left + rect.width / 2 + (Math.random() - 0.5) * 80,
+          rect.top + rect.height / 2 + (Math.random() - 0.5) * 80,
+          '💖'
+        );
+      }
+    });
+  }
+}
+
+/* ==========================================================================
+   5. Interactive Stickers
+   ========================================================================== */
+function initStickers() {
+  const stickers = document.querySelectorAll('.sticker');
+  stickers.forEach(s => {
+    s.addEventListener('click', () => {
+      const rect = s.getBoundingClientRect();
+      spawnPopGraphic(rect.left + rect.width / 2, rect.top, s.textContent);
     });
   });
 }
