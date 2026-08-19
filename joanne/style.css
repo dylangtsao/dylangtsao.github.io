@@ -1,18 +1,26 @@
 /* ==========================================================================
-   Romantic Visual & Photo Experience for Joanne
+   Romantic National Couples Day Web Experience for Joanne
    ========================================================================== */
 
 :root {
-  --bg-color: #0d0614;
-  --card-bg: rgba(255, 255, 255, 0.07);
-  --border-glow: rgba(255, 105, 180, 0.35);
-  --pink-primary: #ff4071;
-  --pink-glow: #ff758c;
-  --pink-light: #ffccd5;
-  --gold-accent: #ffd166;
-  --font-script: 'Great Vibes', cursive;
+  --bg-primary: #0f0a14;
+  --bg-secondary: #1a1024;
+  --accent-rose: #ff6584;
+  --accent-pink: #f48fb1;
+  --accent-blush: #fce4ec;
+  --accent-gold: #f6d365;
+  --accent-gold-gradient: linear-gradient(135deg, #fda085 0%, #f6d365 100%);
+  --accent-rose-gradient: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  --text-light: #fff0f5;
+  --text-muted: #d8b4c8;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 182, 193, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.15);
+  --card-glow: 0 0 25px rgba(255, 117, 140, 0.25);
   --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -22,17 +30,22 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: radial-gradient(circle at 50% 10%, #290f33 0%, #15071d 45%, #0a030f 100%);
-  color: #fff;
+  background-color: var(--bg-primary);
+  color: var(--text-light);
   font-family: var(--font-sans);
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
-  line-height: 1.5;
+  line-height: 1.6;
+  background: radial-gradient(circle at 50% 20%, #2a1133 0%, #15091e 50%, #0c0512 100%);
 }
 
-/* Background Particle Canvas */
+/* Background Canvas for Floating Hearts */
 #particle-canvas {
   position: fixed;
   top: 0;
@@ -43,510 +56,687 @@ body {
   z-index: 1;
 }
 
-/* Tap Hint */
-.tap-hint {
-  position: fixed;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  padding: 6px 18px;
-  border-radius: 30px;
-  font-size: 0.82rem;
-  color: var(--pink-light);
-  border: 1px solid rgba(255, 182, 193, 0.25);
-  z-index: 99;
-  letter-spacing: 0.5px;
-  pointer-events: none;
-  animation: pulseHint 2.5s infinite;
-}
-
-@keyframes pulseHint {
-  0%, 100% { opacity: 0.85; transform: translateX(-50%) scale(1); }
-  50% { opacity: 0.4; transform: translateX(-50%) scale(0.97); }
-}
-
 /* Main Container */
-.page-container {
+.page-wrapper {
   position: relative;
   z-index: 2;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 55px 20px 60px;
+  padding: 20px 20px 80px;
+}
+
+/* Floating Audio / Theme Controls */
+.top-controls {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
   display: flex;
-  flex-direction: column;
+  gap: 12px;
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  color: var(--text-light);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: var(--transition-smooth);
+  font-size: 1.1rem;
+}
+
+.control-btn:hover {
+  background: rgba(255, 101, 132, 0.3);
+  transform: scale(1.08);
+  border-color: var(--accent-rose);
+}
+
+.control-btn.playing {
+  animation: pulse-glow 2s infinite;
+  color: #ff758c;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(255, 117, 140, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(255, 117, 140, 0.8); }
 }
 
 /* ==========================================================================
-   Hero Graphic Section
+   Hero Section
    ========================================================================== */
-.hero-graphic-section {
-  text-align: center;
-  margin-bottom: 45px;
+.hero {
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 10px 60px;
 }
 
-.glow-pill {
+.badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 64, 113, 0.18);
-  border: 1px solid rgba(255, 117, 140, 0.4);
-  padding: 8px 24px;
-  border-radius: 40px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 1.5px;
+  padding: 8px 20px;
+  background: rgba(255, 117, 140, 0.15);
+  border: 1px solid rgba(255, 117, 140, 0.35);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--pink-light);
-  box-shadow: 0 0 20px rgba(255, 64, 113, 0.25);
-  margin-bottom: 25px;
-  animation: fadeInDown 0.8s ease-out;
+  color: var(--accent-pink);
+  margin-bottom: 24px;
+  backdrop-filter: blur(8px);
+  animation: fadeInDown 1s ease-out;
 }
 
-.pulse-emoji {
-  display: inline-block;
-  animation: heartPulse 1.2s infinite;
-}
-
-/* Big Graphic Heart */
-.graphic-hero-heart {
-  position: relative;
-  width: 170px;
-  height: 170px;
-  margin: 0 auto 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.graphic-hero-heart:hover {
-  transform: scale(1.1) rotate(2deg);
-}
-
-.main-svg-heart {
-  width: 100%;
-  height: 100%;
-  filter: drop-shadow(0 10px 30px rgba(255, 64, 113, 0.7));
-  animation: heartBeat 2s infinite ease-in-out;
-}
-
-.heart-pulse-layer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.heart-glow-1 {
-  width: 160px;
-  height: 160px;
-  background: radial-gradient(circle, rgba(255, 64, 113, 0.4) 0%, transparent 70%);
-  animation: glowPulse 2s infinite ease-in-out;
-}
-
-.heart-glow-2 {
-  width: 220px;
-  height: 220px;
-  background: radial-gradient(circle, rgba(255, 117, 140, 0.2) 0%, transparent 70%);
-  animation: glowPulse 2.8s infinite ease-in-out;
-}
-
-.couple-initials {
-  position: absolute;
-  top: 44%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: var(--font-script);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-  pointer-events: none;
-}
-
-.main-title {
+.hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
-  font-weight: 800;
+  font-size: clamp(2.6rem, 7vw, 4.5rem);
+  font-weight: 700;
   line-height: 1.15;
-  margin-bottom: 10px;
-  background: linear-gradient(135deg, #ffffff 40%, #ffccd5 100%);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #ffffff 30%, #ffccd5 70%, #ff8da1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: fadeIn 1.2s ease-out;
 }
 
-.main-title .joanne-name {
-  display: block;
+.hero-title .name-highlight {
   font-family: var(--font-script);
-  font-size: 1.35em;
+  font-size: 1.4em;
   font-weight: 400;
-  margin-top: 4px;
-  background: linear-gradient(135deg, #ff758c 0%, #ff4071 50%, #ffd166 100%);
+  display: block;
+  margin-top: 5px;
+  background: var(--accent-rose-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 15px rgba(255, 64, 113, 0.5));
+  filter: drop-shadow(0 2px 10px rgba(255, 105, 180, 0.4));
 }
 
-.tagline {
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-  color: var(--pink-light);
-  opacity: 0.9;
-  max-width: 520px;
-  font-weight: 400;
+.hero-subtitle {
+  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto 36px;
+  font-weight: 300;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeInUp 1.8s ease-out;
+}
+
+.btn-primary {
+  background: var(--accent-rose-gradient);
+  color: #fff;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(255, 101, 132, 0.4);
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(255, 101, 132, 0.6);
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  color: var(--text-light);
+  border: 1px solid var(--glass-border);
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  border-color: var(--accent-pink);
 }
 
 /* ==========================================================================
-   Polaroid Photo Gallery
+   Interactive Envelope & Love Letter Section
    ========================================================================== */
-.photo-gallery-section {
-  width: 100%;
-  margin-bottom: 50px;
-}
-
-.polaroid-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 30px;
-  justify-content: center;
-  align-items: center;
-  padding: 10px 5px;
-}
-
-.polaroid-frame {
-  background: #ffffff;
-  padding: 14px 14px 22px;
-  border-radius: 4px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 105, 180, 0.15);
+.section {
+  padding: 60px 0;
   position: relative;
-  color: #2b1720;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-tag {
+  font-family: var(--font-script);
+  font-size: 2rem;
+  color: var(--accent-pink);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  color: #fff;
+}
+
+.envelope-container {
+  max-width: 650px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.envelope-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  background: #251333;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 182, 193, 0.25);
+  box-shadow: var(--card-glow), 0 20px 50px rgba(0, 0, 0, 0.5);
+  padding: 30px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: var(--transition-smooth);
+  overflow: hidden;
 }
 
-.polaroid-frame[data-tilt="-2"] {
-  transform: rotate(-2.5deg);
+.envelope-wrapper:hover {
+  border-color: rgba(255, 105, 180, 0.5);
+  transform: translateY(-4px);
 }
 
-.polaroid-frame[data-tilt="1"] {
-  transform: rotate(1deg) translateY(-8px);
+.envelope-closed-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  text-align: center;
 }
 
-.polaroid-frame[data-tilt="3"] {
-  transform: rotate(3deg);
+.wax-seal {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #e63946 0%, #9d0208 80%, #6a040f 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 8px 25px rgba(230, 57, 70, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+  animation: floating 3s ease-in-out infinite;
+  transition: transform 0.3s;
 }
 
-.polaroid-frame:hover {
-  transform: translateY(-12px) scale(1.04) rotate(0deg) !important;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(255, 64, 113, 0.4);
+.envelope-wrapper:hover .wax-seal {
+  transform: scale(1.1) rotate(5deg);
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.envelope-hint {
+  font-size: 1.15rem;
+  color: var(--text-light);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.envelope-subhint {
+  font-size: 0.9rem;
+  color: var(--accent-pink);
+}
+
+/* Letter (Open state) */
+.letter-content {
+  display: none;
+  background: #fffdfa;
+  color: #2b2024;
+  padding: 40px 32px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 40px rgba(212, 163, 115, 0.2), 0 10px 30px rgba(0,0,0,0.3);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.letter-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.letter-header {
+  font-family: var(--font-script);
+  font-size: 2.4rem;
+  color: #c9184a;
+  margin-bottom: 18px;
+}
+
+.letter-body p {
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+  color: #3d2b33;
+}
+
+.letter-signature {
+  margin-top: 30px;
+  text-align: right;
+  font-family: var(--font-script);
+  font-size: 2.2rem;
+  color: #c9184a;
+}
+
+.letter-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.06);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #666;
+  transition: 0.2s;
+}
+
+.letter-close-btn:hover {
+  background: #c9184a;
+  color: #fff;
+}
+
+/* ==========================================================================
+   Moments / Polaroid Gallery
+   ========================================================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.polaroid-card {
+  background: #fff;
+  padding: 16px 16px 24px;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  transition: var(--transition-smooth);
+  position: relative;
+  color: #2b2024;
+  cursor: pointer;
+}
+
+.polaroid-card:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+.polaroid-card:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+.polaroid-card:hover {
+  transform: translateY(-8px) rotate(0deg) scale(1.03);
+  box-shadow: 0 25px 50px rgba(255, 105, 180, 0.35);
   z-index: 10;
 }
 
-.washi-tape {
+.polaroid-tape {
   position: absolute;
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
   width: 90px;
   height: 24px;
-  background: rgba(255, 220, 230, 0.7);
+  background: rgba(255, 230, 200, 0.6);
   backdrop-filter: blur(4px);
-  border: 1px dashed rgba(255, 105, 180, 0.35);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  z-index: 2;
+  border: 1px dashed rgba(200, 150, 100, 0.3);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.photo-container {
+.polaroid-img-wrapper {
   width: 100%;
-  height: 310px;
-  overflow: hidden;
+  height: 220px;
+  background: #fdf0f4;
   border-radius: 2px;
-  background: #1a0822;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 }
 
-.photo-container img {
+.polaroid-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 25%;
   transition: transform 0.5s ease;
 }
 
-.polaroid-frame:hover .photo-container img {
+.polaroid-card:hover .polaroid-img-wrapper img {
   transform: scale(1.06);
 }
 
-.polaroid-footer {
+.polaroid-caption {
   margin-top: 14px;
   text-align: center;
-}
-
-.polaroid-quote {
   font-family: var(--font-script);
-  font-size: 1.6rem;
-  color: #2b121e;
-  line-height: 1.25;
-  margin-bottom: 4px;
+  font-size: 1.55rem;
+  color: #2e1c25;
 }
 
-.polaroid-tag {
-  display: inline-block;
+.polaroid-date {
+  display: block;
   font-family: var(--font-sans);
   font-size: 0.75rem;
-  color: #885d71;
+  color: #88747f;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 600;
 }
 
 /* ==========================================================================
-   Interactive Love Meter Graphic
+   "Reasons Why I Love You" Flip Cards
    ========================================================================== */
-.love-meter-section {
-  width: 100%;
-  max-width: 600px;
-  margin-bottom: 40px;
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
 }
 
-.meter-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-glow);
-  border-radius: 24px;
-  padding: 28px 24px;
-  text-align: center;
+.reason-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.meter-tag {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--gold-accent);
-  font-weight: 700;
-  display: block;
-  margin-bottom: 6px;
-}
-
-.meter-card h2 {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  margin-bottom: 18px;
-}
-
-.meter-bar-container {
-  width: 100%;
-  height: 38px;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 50px;
-  padding: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px 24px;
+  text-align: center;
+  transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
 }
 
-.meter-bar-fill {
+.reason-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, #ff758c 0%, #ff4071 50%, #ffd166 100%);
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 15px rgba(255, 64, 113, 0.8);
-  animation: meterShimmer 2.5s infinite linear;
+  height: 4px;
+  background: var(--accent-rose-gradient);
+  opacity: 0;
+  transition: 0.3s;
 }
 
-.meter-label {
-  font-weight: 800;
-  font-size: 0.95rem;
-  color: #fff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-  letter-spacing: 0.5px;
+.reason-card:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--accent-rose);
+  transform: translateY(-6px);
+  box-shadow: var(--card-glow);
 }
 
-.meter-subtext {
-  margin-top: 14px;
+.reason-card:hover::before {
+  opacity: 1;
+}
+
+.reason-icon {
+  font-size: 2.4rem;
+  margin-bottom: 16px;
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reason-card:hover .reason-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.reason-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--text-light);
+}
+
+.reason-desc {
   font-size: 0.95rem;
-  color: var(--pink-light);
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 /* ==========================================================================
-   Floating Stickers Strip & Action Button
+   Love Counter & Milestone
    ========================================================================== */
-.action-section {
+.milestone-box {
+  background: linear-gradient(135deg, rgba(255, 117, 140, 0.12) 0%, rgba(246, 211, 101, 0.08) 100%);
+  border: 1px solid rgba(255, 182, 193, 0.25);
+  border-radius: 24px;
+  padding: 40px 30px;
   text-align: center;
-  margin-bottom: 30px;
+  backdrop-filter: blur(12px);
+  margin: 20px 0;
 }
 
-.sticker-strip {
-  display: flex;
-  gap: 16px;
-  justify-content: center;
-  margin-bottom: 25px;
-  font-size: 2.2rem;
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 15px;
+  max-width: 600px;
+  margin: 25px auto 10px;
 }
 
-.sticker {
-  display: inline-block;
-  cursor: pointer;
-  transition: transform 0.3s;
+.counter-item {
+  background: rgba(0, 0, 0, 0.25);
+  padding: 16px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.sticker:hover {
-  transform: scale(1.4) rotate(12deg);
+.counter-num {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: var(--font-serif);
+  color: #ff8da1;
+  display: block;
 }
 
-.bounce-1 { animation: floatUp 3s infinite ease-in-out; }
-.bounce-2 { animation: floatUp 3.4s infinite ease-in-out 0.4s; }
-.bounce-3 { animation: floatUp 3.8s infinite ease-in-out 0.8s; }
-.bounce-4 { animation: floatUp 3.2s infinite ease-in-out 1.2s; }
-.bounce-5 { animation: floatUp 3.6s infinite ease-in-out 1.6s; }
+.counter-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
 
-/* Giant Blast Button */
-.blast-button {
-  background: linear-gradient(135deg, #ff4071 0%, #ff758c 50%, #fda085 100%);
+/* ==========================================================================
+   Surprise Kiss & Heart Explosion Button
+   ========================================================================== */
+.surprise-section {
+  text-align: center;
+  padding: 50px 20px;
+  margin-top: 30px;
+}
+
+.hug-btn {
+  background: var(--accent-rose-gradient);
   border: none;
-  color: #fff;
-  font-size: clamp(1.1rem, 2.8vw, 1.35rem);
-  font-weight: 800;
-  padding: 18px 38px;
-  border-radius: 50px;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 20px 48px;
+  border-radius: 60px;
   cursor: pointer;
-  box-shadow: 0 10px 30px rgba(255, 64, 113, 0.5);
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 12px 35px rgba(255, 101, 132, 0.45);
+  transition: var(--transition-smooth);
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
 }
 
-.blast-button:hover {
-  transform: scale(1.06);
-  box-shadow: 0 15px 45px rgba(255, 64, 113, 0.8);
+.hug-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 18px 45px rgba(255, 101, 132, 0.7);
 }
 
-.blast-button:active {
-  transform: scale(0.95);
+.hug-btn:active {
+  transform: scale(0.96);
 }
 
-.counter-pill {
+.kiss-counter {
   margin-top: 15px;
   font-size: 0.95rem;
-  color: var(--pink-light);
+  color: var(--accent-pink);
 }
 
-.bold-count {
-  font-weight: 800;
-  color: #ff4071;
-  font-size: 1.2rem;
-}
-
-/* Floating Toast */
-.floating-toast {
+/* Floating Love Messages Toast */
+.love-toast {
   position: fixed;
-  bottom: 25px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%) translateY(100px);
-  background: rgba(26, 9, 36, 0.95);
-  border: 1px solid var(--pink-primary);
+  background: rgba(26, 16, 36, 0.95);
+  border: 1px solid var(--accent-rose);
   color: #fff;
-  padding: 12px 26px;
-  border-radius: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  padding: 14px 28px;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   backdrop-filter: blur(10px);
   z-index: 1000;
   opacity: 0;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   pointer-events: none;
+  font-size: 1rem;
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 600;
 }
 
-.floating-toast.show {
+.love-toast.show {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
 }
 
-/* Footer */
+/* ==========================================================================
+   Footer
+   ========================================================================== */
 footer {
   text-align: center;
-  color: var(--pink-light);
-  opacity: 0.7;
-  font-size: 0.85rem;
-  margin-top: 30px;
+  padding: 50px 20px 30px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 60px;
 }
 
-.footer-icons {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
+footer .footer-heart {
+  color: #ff6584;
+  display: inline-block;
+  animation: beat 1.4s infinite;
 }
 
-/* Animations */
-@keyframes heartBeat {
+@keyframes beat {
   0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.08); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.05); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.15); }
 }
 
-@keyframes heartPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.25); }
-}
-
-@keyframes glowPulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.9; }
-}
-
-@keyframes floatUp {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes meterShimmer {
-  0% { filter: hue-rotate(0deg); }
-  50% { filter: hue-rotate(15deg); }
-  100% { filter: hue-rotate(0deg); }
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-15px); }
+/* Keyframe animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Adjustments */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Mobile Responsive Adjustments
+   ========================================================================== */
 @media (max-width: 768px) {
-  .page-container {
-    padding: 45px 15px 50px;
+  .page-wrapper {
+    padding: 15px 15px 60px;
   }
-  .polaroid-grid {
+  
+  .hero {
+    min-height: 75vh;
+    padding: 20px 5px 40px;
+  }
+
+  .envelope-wrapper {
+    padding: 20px;
+    min-height: 300px;
+  }
+
+  .letter-content {
+    padding: 28px 20px;
+    font-size: 1rem;
+  }
+
+  .gallery-grid {
     grid-template-columns: 1fr;
     max-width: 320px;
-    margin: 0 auto;
+    margin: 20px auto 0;
   }
-  .photo-container {
-    height: 320px;
+
+  .counter-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  .graphic-hero-heart {
-    width: 150px;
-    height: 150px;
-  }
-  .blast-button {
-    padding: 16px 28px;
-    font-size: 1.05rem;
+
+  .top-controls {
+    top: 15px;
+    right: 15px;
   }
 }

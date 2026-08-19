@@ -5,166 +5,233 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Happy National Couples Day, Joanne ❤️</title>
   
-  <!-- Social Meta -->
-  <meta name="description" content="Happy National Couples Day, Joanne! ❤️">
+  <!-- SEO & Social Sharing Meta Tags -->
+  <meta name="description" content="A romantic National Couples Day celebration for Joanne.">
   <meta property="og:title" content="Happy National Couples Day, Joanne ❤️">
-  <meta property="og:description" content="A cute romantic visual celebration for Joanne.">
-  <meta property="og:image" content="images/photo1.jpg">
-  <meta name="theme-color" content="#120817">
+  <meta property="og:description" content="Every day with you is my favorite day.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#1a1024">
 
-  <!-- Google Fonts -->
+  <!-- Romantic Typography (Google Fonts) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Interactive Particle Background -->
+  <!-- Floating Ambient Particles Canvas -->
   <canvas id="particle-canvas"></canvas>
 
-  <!-- Tap Anywhere Hint -->
-  <div class="tap-hint">✨ Tap anywhere to pop hearts ✨</div>
+  <!-- Floating Audio Music Control -->
+  <div class="top-controls">
+    <button id="music-toggle-btn" class="control-btn" title="Toggle romantic music" aria-label="Toggle ambient music">🔈</button>
+  </div>
 
-  <main class="page-container">
+  <div class="page-wrapper">
     
     <!-- ================= HERO SECTION ================= -->
-    <header class="hero-graphic-section">
-      
-      <!-- Romantic Badge -->
-      <div class="glow-pill">
-        <span class="pulse-emoji">💖</span> National Couples Day · August 18 <span class="pulse-emoji">💖</span>
+    <header class="hero">
+      <div class="badge">
+        <span>✨</span> National Couples Day · August 18 <span>✨</span>
       </div>
-
-      <!-- Animated Graphic Heart Centerpiece -->
-      <div class="graphic-hero-heart">
-        <div class="heart-pulse-layer heart-glow-1"></div>
-        <div class="heart-pulse-layer heart-glow-2"></div>
-        <svg class="main-svg-heart" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#ff758c" />
-              <stop offset="50%" stop-color="#ff7eb3" />
-              <stop offset="100%" stop-color="#ff2a6d" />
-            </linearGradient>
-            <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="4" result="blur" />
-              <feComposite in="SourceGraphic" in2="blur" operator="over" />
-            </filter>
-          </defs>
-          <path d="M50 88.5 C25 65 5 45 5 28 C5 12 18 2 34 2 C43 2 50 8 50 8 C50 8 57 2 66 2 C82 2 95 12 95 28 C95 45 75 65 50 88.5 Z" 
-                fill="url(#heartGrad)" filter="url(#glow)"/>
-          <circle cx="35" cy="22" r="3.5" fill="#fff" opacity="0.8"/>
-          <circle cx="42" cy="16" r="1.5" fill="#fff" opacity="0.6"/>
-        </svg>
-        <span class="couple-initials">D + J</span>
-      </div>
-
-      <!-- Main Title -->
-      <h1 class="main-title">
-        Happy Couples Day,
-        <span class="joanne-name">Joanne ❤️</span>
+      <h1 class="hero-title">
+        For My Favorite Person,
+        <span class="name-highlight">Joanne</span>
       </h1>
-      
-      <p class="tagline">
-        To my favorite person, best friend, and forever love.
+      <p class="hero-subtitle">
+        Every day with you is my favorite day, but today is an extra excuse to remind you how deeply loved and cherished you are.
       </p>
-
+      <div class="hero-cta-group">
+        <a href="#letter-section" class="btn-primary">
+          <span>💌</span> Read My Love Letter
+        </a>
+        <a href="#reasons-section" class="btn-secondary">
+          <span>💫</span> Why I Love You
+        </a>
+      </div>
     </header>
 
-    <!-- ================= REAL PHOTOS POLAROID GALLERY ================= -->
-    <section class="photo-gallery-section">
-      <div class="polaroid-grid">
+    <!-- ================= INTERACTIVE LOVE LETTER ================= -->
+    <section id="letter-section" class="section">
+      <div class="section-header">
+        <span class="section-tag">A note from my heart</span>
+        <h2 class="section-title">A Special Letter For You</h2>
+      </div>
+
+      <div class="envelope-container">
+        <div id="love-envelope" class="envelope-wrapper">
+          <!-- Closed Envelope View -->
+          <div id="envelope-closed" class="envelope-closed-state">
+            <div class="wax-seal">💌</div>
+            <p class="envelope-hint">Tap the wax seal to open</p>
+            <span class="envelope-subhint">Written especially for Joanne ✨</span>
+          </div>
+
+          <!-- Open Letter Content -->
+          <div id="letter-content" class="letter-content">
+            <button id="letter-close-btn" class="letter-close-btn" title="Close letter">✕</button>
+            <div class="letter-header">Dearest Joanne,</div>
+            <div class="letter-body">
+              <p>
+                From the moment you came into my life, everything became warmer, brighter, and so much sweeter. Your laugh is my absolute favorite sound, and your smile never fails to turn my entire day around.
+              </p>
+              <p>
+                Whether we are out on big adventures, trying new foods, or simply lounging around talking about everything and nothing, every single moment by your side feels like home.
+              </p>
+              <p>
+                Thank you for being my best friend, my greatest comfort, and the love of my life. Happy National Couples Day, my beautiful girl. Here's to us, today and forever.
+              </p>
+            </div>
+            <div class="letter-signature">
+              Forever yours,<br>
+              Dylan ❤️
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= POLAROID MEMORIES GALLERY ================= -->
+    <section id="moments-section" class="section">
+      <div class="section-header">
+        <span class="section-tag">Snapshots of us</span>
+        <h2 class="section-title">Our Sweet Moments</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Memory 1 -->
+        <div class="polaroid-card">
+          <div class="polaroid-tape"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/photo1.jpg" alt="Dylan and Joanne smiling" style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%;">
+          </div>
+          <div class="polaroid-caption">Your Smile Is My Favorite 🌸</div>
+          <span class="polaroid-date">Our Golden Hour ✨</span>
+        </div>
+
+        <!-- Memory 2 -->
+        <div class="polaroid-card">
+          <div class="polaroid-tape"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/photo2.jpg" alt="Dylan and Joanne romantic mirror kiss" style="width: 100%; height: 100%; object-fit: cover; object-position: center 25%;">
+          </div>
+          <div class="polaroid-caption">Forever My Favorite Place 💖</div>
+          <span class="polaroid-date">With You Always 🌹</span>
+        </div>
+
+        <!-- Memory 3 -->
+        <div class="polaroid-card">
+          <div class="polaroid-tape"></div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/photo3.jpg" alt="Dylan and Joanne cute selfie" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+          </div>
+          <div class="polaroid-caption">Partner In Crime & Laughs 🥰</div>
+          <span class="polaroid-date">Endless Memories 💫</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REASONS WHY I LOVE YOU ================= -->
+    <section id="reasons-section" class="section">
+      <div class="section-header">
+        <span class="section-tag">Infinite reasons</span>
+        <h2 class="section-title">Why I Love You</h2>
+      </div>
+
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <span class="reason-icon">🌸</span>
+          <h3 class="reason-title">Your Beautiful Heart</h3>
+          <p class="reason-desc">The endless kindness, genuine warmth, and care you show to everyone around you inspires me every single day.</p>
+        </div>
+
+        <div class="reason-card">
+          <span class="reason-icon">💫</span>
+          <h3 class="reason-title">Your Contagious Laugh</h3>
+          <p class="reason-desc">No matter how crazy life gets, hearing you laugh instantly brings pure joy and peace to my world.</p>
+        </div>
+
+        <div class="reason-card">
+          <span class="reason-icon">🥐</span>
+          <h3 class="reason-title">Our Food Runs</h3>
+          <p class="reason-desc">From spontaneous midnight snacks to discovering new dessert spots, every meal is 100x better with you.</p>
+        </div>
+
+        <div class="reason-card">
+          <span class="reason-icon">🧸</span>
+          <h3 class="reason-title">Your Warm Hugs</h3>
+          <p class="reason-desc">The safest, coziest place in the entire world is right in your embrace. It immediately melts all my worries.</p>
+        </div>
+
+        <div class="reason-card">
+          <span class="reason-icon">✨</span>
+          <h3 class="reason-title">How Cute You Are</h3>
+          <p class="reason-desc">Every little expression, glance, and silly inside joke we share never fails to give me butterflies.</p>
+        </div>
+
+        <div class="reason-card">
+          <span class="reason-icon">🌌</span>
+          <h3 class="reason-title">My Forever Partner</h3>
+          <p class="reason-desc">Knowing that I get to walk through all of life's seasons, highs, and milestones with you is my greatest blessing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LOVE MILESTONE / TIME COUNTER ================= -->
+    <section class="section">
+      <div class="milestone-box" id="love-counter" data-start-date="2024-08-18T00:00:00">
+        <span class="section-tag">Every Second Counted</span>
+        <h2 class="section-title">Celebrating Every Moment With You</h2>
         
-        <!-- Polaroid 1 -->
-        <div class="polaroid-frame" data-tilt="-2">
-          <div class="washi-tape"></div>
-          <div class="photo-container">
-            <img src="images/photo1.jpg" alt="Dylan and Joanne smiling" loading="eager">
+        <div class="counter-grid">
+          <div class="counter-item">
+            <span class="counter-num" id="count-days">0</span>
+            <span class="counter-label">Days</span>
           </div>
-          <div class="polaroid-footer">
-            <p class="polaroid-quote">Your laugh is my favorite sound 🌸</p>
-            <span class="polaroid-tag">Our Golden Hour ✨</span>
+          <div class="counter-item">
+            <span class="counter-num" id="count-hours">00</span>
+            <span class="counter-label">Hours</span>
           </div>
-        </div>
-
-        <!-- Polaroid 2 -->
-        <div class="polaroid-frame polaroid-center" data-tilt="1">
-          <div class="washi-tape"></div>
-          <div class="photo-container">
-            <img src="images/photo2.jpg" alt="Dylan and Joanne romantic mirror kiss" loading="eager">
+          <div class="counter-item">
+            <span class="counter-num" id="count-minutes">00</span>
+            <span class="counter-label">Minutes</span>
           </div>
-          <div class="polaroid-footer">
-            <p class="polaroid-quote">Forever my favorite place to be 💖</p>
-            <span class="polaroid-tag">With You Always 🌹</span>
+          <div class="counter-item">
+            <span class="counter-num" id="count-seconds">00</span>
+            <span class="counter-label">Seconds</span>
           </div>
         </div>
-
-        <!-- Polaroid 3 -->
-        <div class="polaroid-frame" data-tilt="3">
-          <div class="washi-tape"></div>
-          <div class="photo-container">
-            <img src="images/photo3.jpg" alt="Dylan and Joanne cute selfie" loading="eager">
-          </div>
-          <div class="polaroid-footer">
-            <p class="polaroid-quote">Partner in crime & favorite human 🥰</p>
-            <span class="polaroid-tag">Endless Laughs & Ssilliness 💫</span>
-          </div>
-        </div>
-
+        <p style="margin-top: 15px; color: var(--text-muted); font-size: 0.95rem;">...and counting into forever! ✨</p>
       </div>
     </section>
 
-    <!-- ================= INTERACTIVE LOVE METER GRAPHIC ================= -->
-    <section class="love-meter-section">
-      <div class="meter-card">
-        <span class="meter-tag">Official Reading</span>
-        <h2>Love Meter For Joanne</h2>
-        <div class="meter-bar-container">
-          <div class="meter-bar-fill" id="meter-fill">
-            <span class="meter-label">1000000% 💖</span>
-          </div>
-        </div>
-        <p class="meter-subtext">Status: <strong>Infinitely In Love</strong> 🥰</p>
-      </div>
-    </section>
-
-    <!-- ================= FLOATING STICKERS & HEART EXPLOSION ================= -->
-    <section class="action-section">
-      <div class="sticker-strip">
-        <span class="sticker bounce-1">🧸</span>
-        <span class="sticker bounce-2">💐</span>
-        <span class="sticker bounce-3">💍</span>
-        <span class="sticker bounce-4">💌</span>
-        <span class="sticker bounce-5">🎀</span>
-      </div>
-
-      <button id="love-blast-btn" class="blast-button">
-        <span class="btn-sparkle">✨</span>
-        <span>Tap For A Hug & Kiss!</span>
-        <span class="btn-heart">💋❤️</span>
+    <!-- ================= SURPRISE KISS & HUG BUTTON ================= -->
+    <section class="surprise-section">
+      <button id="hug-btn" class="hug-btn">
+        <span>💖</span> Tap for a Hug & Kiss! <span>💋</span>
       </button>
-
-      <div class="counter-pill">
-        Kisses sent to Joanne: <span id="heart-count" class="bold-count">0</span>
+      <div class="kiss-counter">
+        Kisses sent today: <strong id="kiss-count" style="color: #ff6584; font-size: 1.15rem;">0</strong>
       </div>
     </section>
 
-    <!-- Sweet Popup Message -->
-    <div id="toast" class="floating-toast">
-      <span id="toast-emoji">💖</span>
-      <span id="toast-text">I love you so much, Joanne!</span>
+    <!-- Toast Notification for Sweet Messages -->
+    <div id="love-toast" class="love-toast">
+      <span>💕</span> <span id="toast-text">Joanne, I love you to the moon and back!</span>
     </div>
 
     <!-- ================= FOOTER ================= -->
     <footer>
-      <div class="footer-icons">🌸 💖 🌸 💖 🌸</div>
-      <p>Happy National Couples Day · Dylan & Joanne</p>
+      <p>Made with all my <span class="footer-heart">❤️</span> for Joanne</p>
+      <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.7;">Happy National Couples Day · Dylan & Joanne</p>
     </footer>
 
-  </main>
+  </div>
 
+  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
