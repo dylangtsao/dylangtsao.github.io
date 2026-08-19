@@ -93,35 +93,32 @@ body {
   font-family: var(--font-serif);
   font-size: clamp(2.4rem, 6.5vw, 4.2rem);
   font-weight: 700;
-  line-height: 1.25;
-  margin-bottom: 20px;
+  line-height: 1.2;
+  margin-bottom: 0;
   background: linear-gradient(135deg, #ffffff 30%, #ffccd5 70%, #ff8da1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding: 0 10px 10px;
 }
 
 .hero-title .name-highlight {
   font-family: var(--font-script);
-  font-size: 1.38em;
+  font-size: 1.45em;
   font-weight: 400;
-  display: inline-block;
-  margin-top: 10px;
-  padding-bottom: 18px;
-  padding-left: 8px;
-  padding-right: 8px;
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  color: #ff6e96;
+  -webkit-text-fill-color: #ff6e96;
+  text-shadow: 0 0 25px rgba(255, 101, 132, 0.6), 0 0 45px rgba(255, 101, 132, 0.3);
   line-height: 1.35;
-  background: var(--accent-rose-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 4px 15px rgba(255, 105, 180, 0.45));
+  filter: none;
 }
 
 .hero-subtitle {
-  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-size: clamp(1.05rem, 2.5vw, 1.3rem);
   color: var(--text-muted);
   font-weight: 300;
-  margin-top: 4px;
+  margin-top: 24px;
   letter-spacing: 0.3px;
 }
 
@@ -130,7 +127,7 @@ body {
    ========================================================================== */
 .section {
   width: 100%;
-  padding: 10px 0 40px;
+  padding: 15px 0 40px;
 }
 
 .gallery-grid {
@@ -144,12 +141,11 @@ body {
 
 .polaroid-card {
   background: #ffffff;
-  padding: 16px 16px 24px;
-  border-radius: 4px;
+  padding: 14px 14px 18px;
+  border-radius: 6px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 105, 180, 0.12);
   transition: var(--transition-smooth);
   position: relative;
-  color: #2b2024;
   cursor: pointer;
 }
 
@@ -203,15 +199,15 @@ body {
 
 /* Face-Centered Alignment for each photo */
 .photo-1 {
-  object-position: center 68%;
+  object-position: center 75%;
 }
 
 .photo-2 {
-  object-position: center 58%;
+  object-position: center 72%;
 }
 
 .photo-3 {
-  object-position: center 45%;
+  object-position: center 60%;
 }
 
 .polaroid-card:hover .photo-img {
