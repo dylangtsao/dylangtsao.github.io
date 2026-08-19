@@ -55,22 +55,22 @@ body {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  width: 180px;
-  height: 600px;
-  max-height: 80vh;
+  width: 105px;
+  height: 520px;
+  max-height: 70vh;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.9;
-  filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.25));
+  opacity: 0.8;
+  filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.2));
 }
 
 .floral-left {
-  left: 0;
+  left: -8px;
   animation: swayLeft 6s ease-in-out infinite alternate;
 }
 
 .floral-right {
-  right: 0;
+  right: -8px;
   animation: swayRight 6.5s ease-in-out infinite alternate;
 }
 
@@ -326,17 +326,17 @@ footer .footer-heart {
   }
 
   .floral-frame {
-    width: 80px;
-    height: 380px;
-    opacity: 0.45;
+    width: 48px;
+    height: 320px;
+    opacity: 0.35;
   }
 
   .floral-left {
-    left: -15px;
+    left: -12px;
   }
 
   .floral-right {
-    right: -15px;
+    right: -12px;
   }
 
   .gallery-grid {
