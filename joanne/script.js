@@ -1,12 +1,12 @@
 /* ==========================================================================
-   National Couples Day - Graphic & Visual Experience for Joanne
+   National Couples Day - Photo & Visual Experience for Joanne
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   initParticleCanvas();
   initTapSpawner();
   initBlastButton();
-  initArtCards();
+  initPolaroidTaps();
   initStickers();
 });
 
@@ -107,7 +107,6 @@ function initTapSpawner() {
   const graphicPool = ['💖', '❤️', '🌸', '✨', '🧸', '🌹', '🥰', '💐', '🎀', '💋'];
 
   window.addEventListener('pointerdown', (e) => {
-    // Avoid double spawning when tapping buttons
     if (e.target.closest('button')) return;
     spawnPopGraphic(e.clientX, e.clientY, graphicPool[Math.floor(Math.random() * graphicPool.length)]);
   });
@@ -158,14 +157,14 @@ function initBlastButton() {
   const toastEmoji = document.getElementById('toast-emoji');
   const toastText = document.getElementById('toast-text');
 
-  let total = parseInt(localStorage.getItem('joanne_graphic_hearts') || '0', 10);
+  let total = parseInt(localStorage.getItem('joanne_photo_kisses') || '0', 10);
   if (countEl) countEl.textContent = total;
 
   if (!btn) return;
 
   btn.addEventListener('click', () => {
-    total += 10;
-    localStorage.setItem('joanne_graphic_hearts', total);
+    total++;
+    localStorage.setItem('joanne_photo_kisses', total);
     if (countEl) countEl.textContent = total;
 
     // Full screen blast
@@ -216,19 +215,19 @@ function initBlastButton() {
 }
 
 /* ==========================================================================
-   4. Card Interactions
+   4. Polaroid Photo Card Taps
    ========================================================================== */
-function initArtCards() {
-  const cards = document.querySelectorAll('.art-card');
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const emoji = card.dataset.emoji || '💖';
-      const rect = card.getBoundingClientRect();
-      for (let i = 0; i < 8; i++) {
+function initPolaroidTaps() {
+  const polaroids = document.querySelectorAll('.polaroid-frame');
+  polaroids.forEach(p => {
+    p.addEventListener('click', () => {
+      const rect = p.getBoundingClientRect();
+      const emojis = ['💖', '✨', '🥰', '🌸', '🌹'];
+      for (let i = 0; i < 12; i++) {
         spawnPopGraphic(
-          rect.left + rect.width / 2 + (Math.random() - 0.5) * 60,
-          rect.top + rect.height / 2 + (Math.random() - 0.5) * 60,
-          emoji
+          rect.left + rect.width / 2 + (Math.random() - 0.5) * 80,
+          rect.top + rect.height / 2 + (Math.random() - 0.5) * 80,
+          emojis[Math.floor(Math.random() * emojis.length)]
         );
       }
     });

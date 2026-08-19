@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Romantic Visual & Graphic Experience for Joanne
+   Romantic Visual & Photo Experience for Joanne
    ========================================================================== */
 
 :root {
@@ -49,13 +49,13 @@ body {
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   padding: 6px 18px;
   border-radius: 30px;
   font-size: 0.82rem;
   color: var(--pink-light);
-  border: 1px solid rgba(255, 182, 193, 0.2);
+  border: 1px solid rgba(255, 182, 193, 0.25);
   z-index: 99;
   letter-spacing: 0.5px;
   pointer-events: none;
@@ -71,7 +71,7 @@ body {
 .page-container {
   position: relative;
   z-index: 2;
-  max-width: 960px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 55px 20px 60px;
   display: flex;
@@ -84,7 +84,7 @@ body {
    ========================================================================== */
 .hero-graphic-section {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 45px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,7 +105,7 @@ body {
   text-transform: uppercase;
   color: var(--pink-light);
   box-shadow: 0 0 20px rgba(255, 64, 113, 0.25);
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   animation: fadeInDown 0.8s ease-out;
 }
 
@@ -117,9 +117,9 @@ body {
 /* Big Graphic Heart */
 .graphic-hero-heart {
   position: relative;
-  width: 180px;
-  height: 180px;
-  margin: 0 auto 25px;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -176,10 +176,10 @@ body {
 
 .main-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.3rem, 6vw, 3.8rem);
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
   font-weight: 800;
   line-height: 1.15;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   background: linear-gradient(135deg, #ffffff 40%, #ffccd5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -201,165 +201,112 @@ body {
   font-size: clamp(1.05rem, 2.2vw, 1.25rem);
   color: var(--pink-light);
   opacity: 0.9;
-  max-width: 500px;
+  max-width: 520px;
   font-weight: 400;
 }
 
 /* ==========================================================================
-   Graphic Moment Cards Grid
+   Polaroid Photo Gallery
    ========================================================================== */
-.graphics-showcase {
+.photo-gallery-section {
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.polaroid-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
-  width: 100%;
-  margin-bottom: 45px;
-}
-
-.art-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-glow);
-  border-radius: 20px;
-  overflow: hidden;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.art-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: var(--pink-primary);
-  box-shadow: 0 15px 40px rgba(255, 64, 113, 0.35);
-}
-
-.art-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #fff;
-  z-index: 5;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.art-illustration {
-  height: 170px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 30px;
   justify-content: center;
+  align-items: center;
+  padding: 10px 5px;
 }
 
-/* Illustration 1: Sunset */
-.sunset-bg {
-  background: linear-gradient(180deg, #ff758c 0%, #ff7eb3 40%, #f6d365 100%);
+.polaroid-frame {
+  background: #ffffff;
+  padding: 14px 14px 22px;
+  border-radius: 4px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 105, 180, 0.15);
+  position: relative;
+  color: #2b1720;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-.sun {
-  width: 60px;
-  height: 60px;
-  background: radial-gradient(circle, #fff 0%, #ffd166 60%, transparent 100%);
-  border-radius: 50%;
-  position: absolute;
-  bottom: 25px;
-  filter: drop-shadow(0 0 20px #ffd166);
+
+.polaroid-frame[data-tilt="-2"] {
+  transform: rotate(-2.5deg);
 }
-.cloud {
-  position: absolute;
-  font-size: 1.5rem;
-  opacity: 0.85;
+
+.polaroid-frame[data-tilt="1"] {
+  transform: rotate(1deg) translateY(-8px);
 }
-.cloud-1 { top: 15px; left: 15px; animation: floatLeft 6s ease-in-out infinite alternate; }
-.cloud-2 { top: 30px; right: 20px; animation: floatRight 7s ease-in-out infinite alternate; }
-.birds { position: absolute; top: 25px; font-size: 0.9rem; }
-.landscape {
+
+.polaroid-frame[data-tilt="3"] {
+  transform: rotate(3deg);
+}
+
+.polaroid-frame:hover {
+  transform: translateY(-12px) scale(1.04) rotate(0deg) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(255, 64, 113, 0.4);
+  z-index: 10;
+}
+
+.washi-tape {
   position: absolute;
-  bottom: 0;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 24px;
+  background: rgba(255, 220, 230, 0.7);
+  backdrop-filter: blur(4px);
+  border: 1px dashed rgba(255, 105, 180, 0.35);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.photo-container {
   width: 100%;
-  height: 25px;
-  background: #180820;
-  border-radius: 50% 50% 0 0 / 20px 20px 0 0;
-}
-.couple-silhouette {
-  position: absolute;
-  bottom: 12px;
-  font-size: 1.6rem;
-  z-index: 3;
+  height: 310px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #1a0822;
+  position: relative;
 }
 
-/* Illustration 2: Galaxy */
-.galaxy-bg {
-  background: linear-gradient(135deg, #1b0a2a 0%, #2f104d 50%, #0d0614 100%);
-}
-.moon {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  font-size: 2.2rem;
-  filter: drop-shadow(0 0 15px #ffccd5);
-}
-.star {
-  position: absolute;
-  font-size: 1.1rem;
-}
-.s1 { top: 20px; left: 30px; animation: twinkle 1.5s infinite alternate; }
-.s2 { top: 60px; right: 40px; animation: twinkle 2.2s infinite alternate; }
-.s3 { bottom: 40px; left: 45px; animation: twinkle 1.8s infinite alternate; }
-
-/* Illustration 3: Cafe */
-.cafe-bg {
-  background: linear-gradient(135deg, #3d1b28 0%, #5e2638 50%, #2b111a 100%);
-}
-.art-center-emoji {
-  font-size: 2.8rem;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
-}
-.floating-bubble {
-  position: absolute;
-  font-size: 1.4rem;
-}
-.b1 { top: 20px; left: 25px; animation: floatUp 3s infinite ease-in-out; }
-.b2 { bottom: 25px; left: 30px; animation: floatUp 3.5s infinite ease-in-out 0.5s; }
-.b3 { top: 30px; right: 25px; animation: floatUp 4s infinite ease-in-out 1s; }
-
-/* Illustration 4: Adventure */
-.adventure-bg {
-  background: linear-gradient(135deg, #162a45 0%, #2b4566 50%, #151928 100%);
-}
-.airplane {
-  font-size: 2.2rem;
-  animation: planeFly 4s infinite ease-in-out;
+.photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 0.5s ease;
 }
 
-.art-info {
-  padding: 18px 16px;
+.polaroid-frame:hover .photo-container img {
+  transform: scale(1.06);
+}
+
+.polaroid-footer {
+  margin-top: 14px;
   text-align: center;
-  background: rgba(15, 6, 22, 0.7);
 }
 
-.art-info h3 {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  color: #fff;
+.polaroid-quote {
+  font-family: var(--font-script);
+  font-size: 1.6rem;
+  color: #2b121e;
+  line-height: 1.25;
   margin-bottom: 4px;
 }
 
-.art-info p {
-  font-size: 0.85rem;
-  color: var(--pink-light);
-  opacity: 0.8;
+.polaroid-tag {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: #885d71;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
 }
 
 /* ==========================================================================
@@ -539,7 +486,7 @@ footer {
   color: var(--pink-light);
   opacity: 0.7;
   font-size: 0.85rem;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .footer-icons {
@@ -570,26 +517,6 @@ footer {
   50% { transform: translateY(-8px); }
 }
 
-@keyframes floatLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-10px); }
-}
-
-@keyframes floatRight {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(10px); }
-}
-
-@keyframes planeFly {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  50% { transform: translate(12px, -8px) rotate(4deg); }
-}
-
-@keyframes twinkle {
-  0% { opacity: 0.3; transform: scale(0.8); }
-  100% { opacity: 1; transform: scale(1.2); }
-}
-
 @keyframes meterShimmer {
   0% { filter: hue-rotate(0deg); }
   50% { filter: hue-rotate(15deg); }
@@ -602,25 +529,17 @@ footer {
 }
 
 /* Mobile Adjustments */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .page-container {
     padding: 45px 15px 50px;
   }
-  .graphics-showcase {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+  .polaroid-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
   }
-  .art-illustration {
-    height: 140px;
-  }
-  .art-info {
-    padding: 12px 8px;
-  }
-  .art-info h3 {
-    font-size: 1rem;
-  }
-  .art-info p {
-    font-size: 0.78rem;
+  .photo-container {
+    height: 320px;
   }
   .graphic-hero-heart {
     width: 150px;

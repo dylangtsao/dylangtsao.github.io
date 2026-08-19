@@ -9,6 +9,7 @@
   <meta name="description" content="Happy National Couples Day, Joanne! ❤️">
   <meta property="og:title" content="Happy National Couples Day, Joanne ❤️">
   <meta property="og:description" content="A cute romantic visual celebration for Joanne.">
+  <meta property="og:image" content="images/photo1.jpg">
   <meta name="theme-color" content="#120817">
 
   <!-- Google Fonts -->
@@ -24,7 +25,7 @@
   <canvas id="particle-canvas"></canvas>
 
   <!-- Tap Anywhere Hint -->
-  <div class="tap-hint" id="tap-hint">✨ Tap anywhere to pop hearts ✨</div>
+  <div class="tap-hint">✨ Tap anywhere to pop hearts ✨</div>
 
   <main class="page-container">
     
@@ -54,7 +55,6 @@
           </defs>
           <path d="M50 88.5 C25 65 5 45 5 28 C5 12 18 2 34 2 C43 2 50 8 50 8 C50 8 57 2 66 2 C82 2 95 12 95 28 C95 45 75 65 50 88.5 Z" 
                 fill="url(#heartGrad)" filter="url(#glow)"/>
-          <!-- Inner sparkles -->
           <circle cx="35" cy="22" r="3.5" fill="#fff" opacity="0.8"/>
           <circle cx="42" cy="16" r="1.5" fill="#fff" opacity="0.6"/>
         </svg>
@@ -73,73 +73,47 @@
 
     </header>
 
-    <!-- ================= GRAPHIC MOMENT CARDS ================= -->
-    <section class="graphics-showcase">
-      
-      <!-- Card 1: Sunset Vibes -->
-      <div class="art-card" data-emoji="🌅">
-        <div class="art-badge">Always & Forever</div>
-        <div class="art-illustration sunset-bg">
-          <div class="sun"></div>
-          <div class="cloud cloud-1">☁️</div>
-          <div class="cloud cloud-2">☁️</div>
-          <div class="birds">🕊️ 🕊️</div>
-          <div class="landscape"></div>
-          <div class="couple-silhouette">👩‍❤️‍👨</div>
+    <!-- ================= REAL PHOTOS POLAROID GALLERY ================= -->
+    <section class="photo-gallery-section">
+      <div class="polaroid-grid">
+        
+        <!-- Polaroid 1 -->
+        <div class="polaroid-frame" data-tilt="-2">
+          <div class="washi-tape"></div>
+          <div class="photo-container">
+            <img src="images/photo1.jpg" alt="Dylan and Joanne smiling" loading="eager">
+          </div>
+          <div class="polaroid-footer">
+            <p class="polaroid-quote">Your laugh is my favorite sound 🌸</p>
+            <span class="polaroid-tag">Our Golden Hour ✨</span>
+          </div>
         </div>
-        <div class="art-info">
-          <h3>Golden Sunsets</h3>
-          <p>Every horizon is prettier with you.</p>
-        </div>
-      </div>
 
-      <!-- Card 2: Late Night Stargazing -->
-      <div class="art-card" data-emoji="🌌">
-        <div class="art-badge">You're My Universe</div>
-        <div class="art-illustration galaxy-bg">
-          <div class="moon">🌙</div>
-          <div class="star s1">✨</div>
-          <div class="star s2">⭐</div>
-          <div class="star s3">✨</div>
-          <div class="constellation-line"></div>
-          <div class="couple-silhouette">🪐 💕 🌠</div>
+        <!-- Polaroid 2 -->
+        <div class="polaroid-frame polaroid-center" data-tilt="1">
+          <div class="washi-tape"></div>
+          <div class="photo-container">
+            <img src="images/photo2.jpg" alt="Dylan and Joanne romantic mirror kiss" loading="eager">
+          </div>
+          <div class="polaroid-footer">
+            <p class="polaroid-quote">Forever my favorite place to be 💖</p>
+            <span class="polaroid-tag">With You Always 🌹</span>
+          </div>
         </div>
-        <div class="art-info">
-          <h3>Written In The Stars</h3>
-          <p>Out of the whole galaxy, I found you.</p>
-        </div>
-      </div>
 
-      <!-- Card 3: Cozy Dates & Treats -->
-      <div class="art-card" data-emoji="☕">
-        <div class="art-badge">Sweet Moments</div>
-        <div class="art-illustration cafe-bg">
-          <div class="floating-bubble b1">🥐</div>
-          <div class="floating-bubble b2">🧋</div>
-          <div class="floating-bubble b3">🍦</div>
-          <div class="art-center-emoji">☕❤️🍰</div>
+        <!-- Polaroid 3 -->
+        <div class="polaroid-frame" data-tilt="3">
+          <div class="washi-tape"></div>
+          <div class="photo-container">
+            <img src="images/photo3.jpg" alt="Dylan and Joanne cute selfie" loading="eager">
+          </div>
+          <div class="polaroid-footer">
+            <p class="polaroid-quote">Partner in crime & favorite human 🥰</p>
+            <span class="polaroid-tag">Endless Laughs & Ssilliness 💫</span>
+          </div>
         </div>
-        <div class="art-info">
-          <h3>Cute Food Runs</h3>
-          <p>Best food, best drinks, best company.</p>
-        </div>
-      </div>
 
-      <!-- Card 4: Adventures -->
-      <div class="art-card" data-emoji="✈️">
-        <div class="art-badge">Everywhere With You</div>
-        <div class="art-illustration adventure-bg">
-          <div class="airplane">✈️ 💨 💖</div>
-          <div class="floating-bubble b1">🎡</div>
-          <div class="floating-bubble b2">🏖️</div>
-          <div class="floating-bubble b3">🗺️</div>
-        </div>
-        <div class="art-info">
-          <h3>Endless Adventures</h3>
-          <p>Anywhere with you is my favorite place.</p>
-        </div>
       </div>
-
     </section>
 
     <!-- ================= INTERACTIVE LOVE METER GRAPHIC ================= -->
@@ -152,7 +126,7 @@
             <span class="meter-label">1000000% 💖</span>
           </div>
         </div>
-        <p class="meter-subtext">Level: <strong>Infinitely In Love</strong> 🥰</p>
+        <p class="meter-subtext">Status: <strong>Infinitely In Love</strong> 🥰</p>
       </div>
     </section>
 
@@ -168,12 +142,12 @@
 
       <button id="love-blast-btn" class="blast-button">
         <span class="btn-sparkle">✨</span>
-        <span>Shower Joanne With Love!</span>
-        <span class="btn-heart">💥❤️</span>
+        <span>Tap For A Hug & Kiss!</span>
+        <span class="btn-heart">💋❤️</span>
       </button>
 
       <div class="counter-pill">
-        Hearts sent to Joanne: <span id="heart-count" class="bold-count">0</span>
+        Kisses sent to Joanne: <span id="heart-count" class="bold-count">0</span>
       </div>
     </section>
 
@@ -186,7 +160,7 @@
     <!-- ================= FOOTER ================= -->
     <footer>
       <div class="footer-icons">🌸 💖 🌸 💖 🌸</div>
-      <p>Happy National Couples Day to Dylan & Joanne</p>
+      <p>Happy National Couples Day · Dylan & Joanne</p>
     </footer>
 
   </main>
