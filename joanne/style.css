@@ -516,9 +516,51 @@ footer .footer-heart {
    Mobile Responsive Experience (Scroll to Reveal Pictures)
    ========================================================================== */
 @media (max-width: 768px) {
-  /* Bypass intro overlay on mobile so she lands directly on the romantic hero greeting */
+  /* Tap to Open intro screen on mobile */
   .intro-overlay {
-    display: none !important;
+    display: flex !important;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    padding: 20px 16px;
+  }
+
+  .intro-card {
+    padding: 35px 22px;
+    max-width: 340px;
+    width: 92%;
+    border-radius: 24px;
+  }
+
+  .intro-badge {
+    font-size: 0.68rem;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+  }
+
+  .intro-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .intro-name {
+    font-size: 2.8rem;
+    margin-bottom: 24px;
+  }
+
+  .wax-seal-btn {
+    width: 86px;
+    height: 86px;
+  }
+
+  .seal-text {
+    font-size: 0.98rem;
+  }
+
+  .seal-prompt {
+    font-size: 0.95rem;
+    margin-top: 12px;
   }
 
   html, body {
@@ -529,8 +571,6 @@ footer .footer-heart {
 
   .page-wrapper {
     min-height: auto;
-    opacity: 1 !important;
-    transform: none !important;
     padding: 0 16px 60px;
     display: block;
     max-width: 100%;
