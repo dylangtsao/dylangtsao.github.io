@@ -1,14 +1,48 @@
 /* ==========================================================================
-   National Couples Day - Photo Experience for Joanne
+   National Couples Day - Interactive Press to Open Experience for Joanne
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   initParticleBackground();
+  initIntroOpen();
   initPolaroidInteractions();
 });
 
 /* ==========================================================================
-   1. Floating Particle & Heart Canvas
+   1. Press to Open Interactive Logic
+   ========================================================================== */
+function initIntroOpen() {
+  const openBtn = document.getElementById('open-btn');
+  const introScreen = document.getElementById('intro-screen');
+  const mainContent = document.getElementById('main-content');
+  const bouquets = document.querySelectorAll('.side-bouquets');
+
+  if (!openBtn || !introScreen || !mainContent) return;
+
+  function handleOpen(e) {
+    const rect = openBtn.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Big explosive floral & heart celebration
+    triggerHeartConfetti(centerX, centerY, 36);
+
+    // Fade & scale out intro screen
+    introScreen.classList.add('hidden');
+
+    // Reveal main page content & bouquets
+    setTimeout(() => {
+      mainContent.classList.add('visible');
+      bouquets.forEach(b => b.classList.add('visible'));
+      triggerHeartConfetti(window.innerWidth / 2, window.innerHeight / 3, 20);
+    }, 400);
+  }
+
+  openBtn.addEventListener('click', handleOpen);
+}
+
+/* ==========================================================================
+   2. Floating Particle & Heart Canvas
    ========================================================================== */
 function initParticleBackground() {
   const canvas = document.getElementById('particle-canvas');
@@ -103,14 +137,14 @@ function initParticleBackground() {
 }
 
 /* ==========================================================================
-   2. Polaroid Card Tap Interactions
+   3. Polaroid Card Tap Interactions
    ========================================================================== */
 function initPolaroidInteractions() {
   const cards = document.querySelectorAll('.polaroid-card');
   cards.forEach(card => {
     card.addEventListener('click', (e) => {
       const rect = card.getBoundingClientRect();
-      triggerHeartConfetti(e.clientX || rect.left + rect.width / 2, e.clientY || rect.top + rect.height / 2, 16);
+      triggerHeartConfetti(e.clientX || rect.left + rect.width / 2, e.clientY || rect.top + rect.height / 2, 18);
     });
   });
 }
@@ -127,16 +161,16 @@ function triggerHeartConfetti(startX, startY, count = 18) {
     el.style.top = `${startY}px`;
     el.style.pointerEvents = 'none';
     el.style.fontSize = `${Math.random() * 16 + 18}px`;
-    el.style.zIndex = '9999';
+    el.style.zIndex = '99999';
     el.style.transition = 'all 1.1s cubic-bezier(0.25, 1, 0.5, 1)';
     el.style.opacity = '1';
     el.style.transform = 'translate(-50%, -50%) scale(0.4)';
     document.body.appendChild(el);
 
     const angle = Math.random() * Math.PI * 2;
-    const velocity = Math.random() * 180 + 60;
+    const velocity = Math.random() * 220 + 70;
     const destX = Math.cos(angle) * velocity;
-    const destY = Math.sin(angle) * velocity - 60;
+    const destY = Math.sin(angle) * velocity - 70;
     const rot = (Math.random() - 0.5) * 360;
 
     requestAnimationFrame(() => {

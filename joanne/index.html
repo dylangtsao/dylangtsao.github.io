@@ -8,7 +8,7 @@
   <!-- SEO & Social Meta -->
   <meta name="description" content="Happy National Couples Day, Joanne! ❤️">
   <meta property="og:title" content="Happy National Couples Day, Joanne ❤️">
-  <meta property="og:description" content="Every day with you is my favorite day.">
+  <meta property="og:description" content="A surprise for my favorite person.">
   <meta property="og:image" content="images/photo1.jpg">
   <meta name="theme-color" content="#15091e">
 
@@ -17,12 +17,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=3.0">
+  <link rel="stylesheet" href="style.css?v=4.0">
 </head>
 <body>
 
   <!-- Floating Ambient Particles Canvas -->
   <canvas id="particle-canvas"></canvas>
+
+  <!-- ================= PRESS TO OPEN INTRO SCREEN ================= -->
+  <div id="intro-screen" class="intro-overlay">
+    <div class="intro-card" id="intro-card">
+      <div class="intro-badge">
+        <span>✨</span> National Couples Day · August 18 <span>✨</span>
+      </div>
+      
+      <h2 class="intro-subtitle">A Surprise For My Favorite Person</h2>
+      <h1 class="intro-name">Joanne ❤️</h1>
+      
+      <!-- Interactive Wax Seal Button -->
+      <div class="seal-container" id="open-btn">
+        <div class="seal-glow-ring"></div>
+        <div class="wax-seal-btn">
+          <span class="seal-text">D & J</span>
+          <span class="seal-heart">💖</span>
+        </div>
+        <p class="seal-prompt">Tap to Open ✨</p>
+      </div>
+
+      <p class="intro-hint">Made with all my love for you</p>
+    </div>
+  </div>
 
   <!-- SVG Botanical Assets Definitions -->
   <svg style="display: none;">
@@ -50,9 +74,8 @@
         <feComposite in="SourceGraphic" in2="blur" operator="over" />
       </filter>
 
-      <!-- Reusable Left Bouquet Symbol -->
+      <!-- Left Bouquet Symbol -->
       <g id="bouquet-left-symbol">
-        <!-- Lily of the Valley -->
         <g filter="url(#cornerGlow)">
           <path d="M 15 150 Q 30 90 75 45 T 125 20" stroke="url(#stemGreen)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
           <path d="M 10 145 Q 35 110 40 85 Q 20 115 10 145 Z" fill="#4a7c59" opacity="0.8"/>
@@ -62,7 +85,6 @@
           <path d="M 102 45 C 102 42 109 42 109 45 C 110 50 112 52 114 53 C 106 54 106 54 98 53 C 100 52 101 50 102 45 Z" fill="#ffffff"/>
           <circle cx="125" cy="20" r="3" fill="#f0fff0"/>
         </g>
-        <!-- Orchid -->
         <g transform="translate(65, 95)" filter="url(#cornerGlow)">
           <ellipse cx="0" cy="-18" rx="11" ry="17" fill="url(#orchidPetal)" transform="rotate(-10)" opacity="0.95"/>
           <ellipse cx="-17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(-60)" opacity="0.9"/>
@@ -72,7 +94,6 @@
           <path d="M -8 4 Q 0 -4 8 4 Q 10 15 0 19 Q -10 15 -8 4 Z" fill="#ff0055"/>
           <circle cx="0" cy="3" r="3.5" fill="#ffd166"/>
         </g>
-        <!-- Hydrangea -->
         <g transform="translate(30, 130)" filter="url(#cornerGlow)">
           <g transform="translate(-12, -8)">
             <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaBlue)"/><circle cx="4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
@@ -92,7 +113,7 @@
         </g>
       </g>
 
-      <!-- Reusable Right Bouquet Symbol -->
+      <!-- Right Bouquet Symbol -->
       <g id="bouquet-right-symbol">
         <g filter="url(#cornerGlow)">
           <path d="M 145 150 Q 130 90 85 45 T 35 20" stroke="url(#stemGreen)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
@@ -147,8 +168,8 @@
     <div class="mini-bouquet b-bot"><svg viewBox="0 0 160 160"><use href="#bouquet-right-symbol"/></svg></div>
   </div>
 
-  <!-- Main Single-Screen Wrapper -->
-  <div class="page-wrapper">
+  <!-- Main Single-Screen Content Wrapper -->
+  <div class="page-wrapper main-revealed" id="main-content">
     
     <!-- ================= HERO SECTION ================= -->
     <header class="hero">
@@ -203,6 +224,6 @@
 
   </div>
 
-  <script src="script.js?v=3.0"></script>
+  <script src="script.js?v=4.0"></script>
 </body>
 </html>
