@@ -17,152 +17,137 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="style.css?v=2.0">
+  <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
 
   <!-- Floating Ambient Particles Canvas -->
   <canvas id="particle-canvas"></canvas>
 
-  <!-- Bottom Left Corner Bouquet (Orchids, Hydrangeas, Lily of the Valley) -->
-  <div class="floral-frame floral-left" aria-hidden="true">
-    <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="floral-svg">
-      <defs>
-        <linearGradient id="orchidPetal" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#ffb3c6" />
-          <stop offset="60%" stop-color="#ff6b8b" />
-          <stop offset="100%" stop-color="#c9184a" />
-        </linearGradient>
-        <linearGradient id="hydrangeaBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#d0d1ff" />
-          <stop offset="60%" stop-color="#a3b8ff" />
-          <stop offset="100%" stop-color="#7286d3" />
-        </linearGradient>
-        <linearGradient id="hydrangeaPink" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#ffd6ff" />
-          <stop offset="100%" stop-color="#c77dff" />
-        </linearGradient>
-        <linearGradient id="stemGreen" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#70a072" />
-          <stop offset="100%" stop-color="#3b5e3d" />
-        </linearGradient>
-        <filter id="cornerGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="2" result="blur" />
-          <feComposite in="SourceGraphic" in2="blur" operator="over" />
-        </filter>
-      </defs>
+  <!-- SVG Botanical Assets Definitions -->
+  <svg style="display: none;">
+    <defs>
+      <linearGradient id="orchidPetal" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffb3c6" />
+        <stop offset="60%" stop-color="#ff6b8b" />
+        <stop offset="100%" stop-color="#c9184a" />
+      </linearGradient>
+      <linearGradient id="hydrangeaBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#d0d1ff" />
+        <stop offset="60%" stop-color="#a3b8ff" />
+        <stop offset="100%" stop-color="#7286d3" />
+      </linearGradient>
+      <linearGradient id="hydrangeaPink" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffd6ff" />
+        <stop offset="100%" stop-color="#c77dff" />
+      </linearGradient>
+      <linearGradient id="stemGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#70a072" />
+        <stop offset="100%" stop-color="#3b5e3d" />
+      </linearGradient>
+      <filter id="cornerGlow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2" result="blur" />
+        <feComposite in="SourceGraphic" in2="blur" operator="over" />
+      </filter>
 
-      <!-- Lily of the Valley Stem Arching to the Right -->
-      <g filter="url(#cornerGlow)">
-        <path d="M 15 150 Q 30 90 75 45 T 125 20" stroke="url(#stemGreen)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path d="M 10 145 Q 35 110 40 85 Q 20 115 10 145 Z" fill="#4a7c59" opacity="0.8"/>
-        
-        <!-- White Bells -->
-        <path d="M 70 50 Q 78 58 84 64" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
-        <path d="M 80 64 C 80 60 88 60 88 64 C 89 70 91 72 93 74 C 84 75 84 75 75 74 C 77 72 79 70 80 64 Z" fill="#ffffff"/>
-        
-        <path d="M 92 34 Q 100 40 106 45" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
-        <path d="M 102 45 C 102 42 109 42 109 45 C 110 50 112 52 114 53 C 106 54 106 54 98 53 C 100 52 101 50 102 45 Z" fill="#ffffff"/>
-
-        <circle cx="125" cy="20" r="3" fill="#f0fff0"/>
-      </g>
-
-      <!-- Pink Orchid Blossom (Center) -->
-      <g transform="translate(65, 95)" filter="url(#cornerGlow)">
-        <ellipse cx="0" cy="-18" rx="11" ry="17" fill="url(#orchidPetal)" transform="rotate(-10)" opacity="0.95"/>
-        <ellipse cx="-17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(-60)" opacity="0.9"/>
-        <ellipse cx="17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(60)" opacity="0.9"/>
-        <ellipse cx="-11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(-25)" opacity="0.85"/>
-        <ellipse cx="11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(25)" opacity="0.85"/>
-        <!-- Labellum -->
-        <path d="M -8 4 Q 0 -4 8 4 Q 10 15 0 19 Q -10 15 -8 4 Z" fill="#ff0055"/>
-        <circle cx="0" cy="3" r="3.5" fill="#ffd166"/>
-      </g>
-
-      <!-- Hydrangea Cluster (Bottom Left) -->
-      <g transform="translate(30, 130)" filter="url(#cornerGlow)">
-        <g transform="translate(-12, -8)">
-          <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="4" r="5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
+      <!-- Reusable Left Bouquet Symbol -->
+      <g id="bouquet-left-symbol">
+        <!-- Lily of the Valley -->
+        <g filter="url(#cornerGlow)">
+          <path d="M 15 150 Q 30 90 75 45 T 125 20" stroke="url(#stemGreen)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 10 145 Q 35 110 40 85 Q 20 115 10 145 Z" fill="#4a7c59" opacity="0.8"/>
+          <path d="M 70 50 Q 78 58 84 64" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
+          <path d="M 80 64 C 80 60 88 60 88 64 C 89 70 91 72 93 74 C 84 75 84 75 75 74 C 77 72 79 70 80 64 Z" fill="#ffffff"/>
+          <path d="M 92 34 Q 100 40 106 45" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
+          <path d="M 102 45 C 102 42 109 42 109 45 C 110 50 112 52 114 53 C 106 54 106 54 98 53 C 100 52 101 50 102 45 Z" fill="#ffffff"/>
+          <circle cx="125" cy="20" r="3" fill="#f0fff0"/>
         </g>
-        <g transform="translate(10, -10)">
-          <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaPink)"/>
-          <circle cx="4" cy="0" r="5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="4" r="5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
+        <!-- Orchid -->
+        <g transform="translate(65, 95)" filter="url(#cornerGlow)">
+          <ellipse cx="0" cy="-18" rx="11" ry="17" fill="url(#orchidPetal)" transform="rotate(-10)" opacity="0.95"/>
+          <ellipse cx="-17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(-60)" opacity="0.9"/>
+          <ellipse cx="17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(60)" opacity="0.9"/>
+          <ellipse cx="-11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(-25)" opacity="0.85"/>
+          <ellipse cx="11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(25)" opacity="0.85"/>
+          <path d="M -8 4 Q 0 -4 8 4 Q 10 15 0 19 Q -10 15 -8 4 Z" fill="#ff0055"/>
+          <circle cx="0" cy="3" r="3.5" fill="#ffd166"/>
         </g>
-        <g transform="translate(0, 8)">
-          <circle cx="-5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="-5" r="5.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="5" r="5.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
+        <!-- Hydrangea -->
+        <g transform="translate(30, 130)" filter="url(#cornerGlow)">
+          <g transform="translate(-12, -8)">
+            <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaBlue)"/><circle cx="4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
+            <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaBlue)"/><circle cx="0" cy="4" r="5" fill="url(#hydrangeaBlue)"/>
+            <circle cx="0" cy="0" r="1.5" fill="#fff"/>
+          </g>
+          <g transform="translate(10, -10)">
+            <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaPink)"/><circle cx="4" cy="0" r="5" fill="url(#hydrangeaPink)"/>
+            <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaPink)"/><circle cx="0" cy="4" r="5" fill="url(#hydrangeaPink)"/>
+            <circle cx="0" cy="0" r="1.5" fill="#fff"/>
+          </g>
+          <g transform="translate(0, 8)">
+            <circle cx="-5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/><circle cx="5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/>
+            <circle cx="0" cy="-5" r="5.5" fill="url(#hydrangeaBlue)"/><circle cx="0" cy="5" r="5.5" fill="url(#hydrangeaBlue)"/>
+            <circle cx="0" cy="0" r="1.5" fill="#fff"/>
+          </g>
         </g>
       </g>
-    </svg>
+
+      <!-- Reusable Right Bouquet Symbol -->
+      <g id="bouquet-right-symbol">
+        <g filter="url(#cornerGlow)">
+          <path d="M 145 150 Q 130 90 85 45 T 35 20" stroke="url(#stemGreen)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M 150 145 Q 125 110 120 85 Q 140 115 150 145 Z" fill="#4a7c59" opacity="0.8"/>
+          <path d="M 90 50 Q 82 58 76 64" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
+          <path d="M 72 64 C 72 60 80 60 80 64 C 81 70 83 72 85 74 C 76 75 76 75 67 74 C 69 72 71 70 72 64 Z" fill="#ffffff"/>
+          <path d="M 68 34 Q 60 40 54 45" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
+          <path d="M 50 45 C 50 42 57 42 57 45 C 58 50 60 52 62 53 C 54 54 54 54 46 53 C 48 52 49 50 50 45 Z" fill="#ffffff"/>
+          <circle cx="35" cy="20" r="3" fill="#f0fff0"/>
+        </g>
+        <g transform="translate(95, 95)" filter="url(#cornerGlow)">
+          <ellipse cx="0" cy="-18" rx="11" ry="17" fill="url(#orchidPetal)" transform="rotate(10)" opacity="0.95"/>
+          <ellipse cx="17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(60)" opacity="0.9"/>
+          <ellipse cx="-17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(-60)" opacity="0.9"/>
+          <ellipse cx="11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(25)" opacity="0.85"/>
+          <ellipse cx="-11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(-25)" opacity="0.85"/>
+          <path d="M -8 4 Q 0 -4 8 4 Q 10 15 0 19 Q -10 15 -8 4 Z" fill="#ff0055"/>
+          <circle cx="0" cy="3" r="3.5" fill="#ffd166"/>
+        </g>
+        <g transform="translate(130, 130)" filter="url(#cornerGlow)">
+          <g transform="translate(12, -8)">
+            <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaBlue)"/><circle cx="4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
+            <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaBlue)"/><circle cx="0" cy="4" r="5" fill="url(#hydrangeaBlue)"/>
+            <circle cx="0" cy="0" r="1.5" fill="#fff"/>
+          </g>
+          <g transform="translate(-10, -10)">
+            <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaPink)"/><circle cx="4" cy="0" r="5" fill="url(#hydrangeaPink)"/>
+            <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaPink)"/><circle cx="0" cy="4" r="5" fill="url(#hydrangeaPink)"/>
+            <circle cx="0" cy="0" r="1.5" fill="#fff"/>
+          </g>
+          <g transform="translate(0, 8)">
+            <circle cx="-5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/><circle cx="5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/>
+            <circle cx="0" cy="-5" r="5.5" fill="url(#hydrangeaBlue)"/><circle cx="0" cy="5" r="5.5" fill="url(#hydrangeaBlue)"/>
+            <circle cx="0" cy="0" r="1.5" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- Multiple Bouquets on the Left Side -->
+  <div class="side-bouquets side-left" aria-hidden="true">
+    <div class="mini-bouquet b-top"><svg viewBox="0 0 160 160"><use href="#bouquet-left-symbol"/></svg></div>
+    <div class="mini-bouquet b-mid"><svg viewBox="0 0 160 160"><use href="#bouquet-left-symbol"/></svg></div>
+    <div class="mini-bouquet b-bot"><svg viewBox="0 0 160 160"><use href="#bouquet-left-symbol"/></svg></div>
   </div>
 
-  <!-- Bottom Right Corner Bouquet (Orchids, Hydrangeas, Lily of the Valley) -->
-  <div class="floral-frame floral-right" aria-hidden="true">
-    <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="floral-svg">
-      <!-- Lily of the Valley Stem Arching to the Left -->
-      <g filter="url(#cornerGlow)">
-        <path d="M 145 150 Q 130 90 85 45 T 35 20" stroke="url(#stemGreen)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <path d="M 150 145 Q 125 110 120 85 Q 140 115 150 145 Z" fill="#4a7c59" opacity="0.8"/>
-        
-        <!-- White Bells -->
-        <path d="M 90 50 Q 82 58 76 64" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
-        <path d="M 72 64 C 72 60 80 60 80 64 C 81 70 83 72 85 74 C 76 75 76 75 67 74 C 69 72 71 70 72 64 Z" fill="#ffffff"/>
-        
-        <path d="M 68 34 Q 60 40 54 45" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
-        <path d="M 50 45 C 50 42 57 42 57 45 C 58 50 60 52 62 53 C 54 54 54 54 46 53 C 48 52 49 50 50 45 Z" fill="#ffffff"/>
-
-        <circle cx="35" cy="20" r="3" fill="#f0fff0"/>
-      </g>
-
-      <!-- Pink Orchid Blossom (Center) -->
-      <g transform="translate(95, 95)" filter="url(#cornerGlow)">
-        <ellipse cx="0" cy="-18" rx="11" ry="17" fill="url(#orchidPetal)" transform="rotate(10)" opacity="0.95"/>
-        <ellipse cx="17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(60)" opacity="0.9"/>
-        <ellipse cx="-17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(-60)" opacity="0.9"/>
-        <ellipse cx="11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(25)" opacity="0.85"/>
-        <ellipse cx="-11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(-25)" opacity="0.85"/>
-        <!-- Labellum -->
-        <path d="M -8 4 Q 0 -4 8 4 Q 10 15 0 19 Q -10 15 -8 4 Z" fill="#ff0055"/>
-        <circle cx="0" cy="3" r="3.5" fill="#ffd166"/>
-      </g>
-
-      <!-- Hydrangea Cluster (Bottom Right) -->
-      <g transform="translate(130, 130)" filter="url(#cornerGlow)">
-        <g transform="translate(12, -8)">
-          <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="4" r="5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
-        </g>
-        <g transform="translate(-10, -10)">
-          <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaPink)"/>
-          <circle cx="4" cy="0" r="5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="4" r="5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
-        </g>
-        <g transform="translate(0, 8)">
-          <circle cx="-5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="-5" r="5.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="5" r="5.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
-        </g>
-      </g>
-    </svg>
+  <!-- Multiple Bouquets on the Right Side -->
+  <div class="side-bouquets side-right" aria-hidden="true">
+    <div class="mini-bouquet b-top"><svg viewBox="0 0 160 160"><use href="#bouquet-right-symbol"/></svg></div>
+    <div class="mini-bouquet b-mid"><svg viewBox="0 0 160 160"><use href="#bouquet-right-symbol"/></svg></div>
+    <div class="mini-bouquet b-bot"><svg viewBox="0 0 160 160"><use href="#bouquet-right-symbol"/></svg></div>
   </div>
 
+  <!-- Main Single-Screen Wrapper -->
   <div class="page-wrapper">
     
     <!-- ================= HERO SECTION ================= -->
@@ -185,7 +170,7 @@
         
         <!-- Photo 1: Sunny Laugh -->
         <div class="polaroid-card">
-          <div class="polaroid-tape"></div>
+          <div class="washi-tape"></div>
           <div class="polaroid-img-wrapper">
             <img src="images/photo1.jpg" alt="Dylan and Joanne smiling" class="photo-img photo-1">
           </div>
@@ -193,7 +178,7 @@
 
         <!-- Photo 2: Romantic Mirror Kiss -->
         <div class="polaroid-card polaroid-center">
-          <div class="polaroid-tape"></div>
+          <div class="washi-tape"></div>
           <div class="polaroid-img-wrapper">
             <img src="images/photo2.jpg" alt="Dylan and Joanne mirror kiss" class="photo-img photo-2">
           </div>
@@ -201,7 +186,7 @@
 
         <!-- Photo 3: Silly Selfie -->
         <div class="polaroid-card">
-          <div class="polaroid-tape"></div>
+          <div class="washi-tape"></div>
           <div class="polaroid-img-wrapper">
             <img src="images/photo3.jpg" alt="Dylan and Joanne cute selfie" class="photo-img photo-3">
           </div>
@@ -213,11 +198,11 @@
     <!-- ================= FOOTER ================= -->
     <footer>
       <p>Made with all my <span class="footer-heart">❤️</span> for Joanne</p>
-      <p style="margin-top: 6px; font-size: 0.8rem; opacity: 0.75;">Happy National Couples Day · Dylan & Joanne</p>
+      <p style="margin-top: 3px; font-size: 0.75rem; opacity: 0.75;">Happy National Couples Day · Dylan & Joanne</p>
     </footer>
 
   </div>
 
-  <script src="script.js?v=2.0"></script>
+  <script src="script.js?v=3.0"></script>
 </body>
 </html>
