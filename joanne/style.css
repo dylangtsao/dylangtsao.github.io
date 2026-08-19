@@ -49,29 +49,27 @@ body {
 }
 
 /* ==========================================================================
-   Floral Botanical Frames (Orchids, Hydrangeas, Lily of the Valley)
+   Floral Botanical Accents (Orchids, Hydrangeas, Lily of the Valley)
    ========================================================================== */
 .floral-frame {
   position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 105px;
-  height: 520px;
-  max-height: 70vh;
+  bottom: 16px;
+  width: 85px;
+  height: 85px;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.8;
-  filter: drop-shadow(0 0 12px rgba(255, 105, 180, 0.2));
+  opacity: 0.9;
+  filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.25));
 }
 
 .floral-left {
-  left: -8px;
-  animation: swayLeft 6s ease-in-out infinite alternate;
+  left: 16px;
+  animation: swayLeft 5s ease-in-out infinite alternate;
 }
 
 .floral-right {
-  right: -8px;
-  animation: swayRight 6.5s ease-in-out infinite alternate;
+  right: 16px;
+  animation: swayRight 5s ease-in-out infinite alternate;
 }
 
 .floral-svg {
@@ -80,29 +78,14 @@ body {
   object-fit: contain;
 }
 
-.lily-valley-stem {
-  animation: gentleBreeze 4s ease-in-out infinite alternate;
-  transform-origin: bottom center;
-}
-
-.orchid-flower {
-  animation: gentlePulse 3.5s ease-in-out infinite alternate;
-  transform-origin: center center;
-}
-
-.hydrangea-cluster {
-  animation: gentleShimmer 5s ease-in-out infinite alternate;
-  transform-origin: center center;
-}
-
 @keyframes swayLeft {
-  0% { transform: translateY(-50%) rotate(0deg); }
-  100% { transform: translateY(-52%) rotate(2.5deg); }
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(3deg) scale(1.04); }
 }
 
 @keyframes swayRight {
-  0% { transform: translateY(-50%) rotate(0deg); }
-  100% { transform: translateY(-48%) rotate(-2.5deg); }
+  0% { transform: rotate(0deg) scale(1); }
+  100% { transform: rotate(-3deg) scale(1.04); }
 }
 
 @keyframes gentleBreeze {
@@ -326,17 +309,18 @@ footer .footer-heart {
   }
 
   .floral-frame {
-    width: 48px;
-    height: 320px;
-    opacity: 0.35;
+    width: 55px;
+    height: 55px;
+    bottom: 10px;
+    opacity: 0.8;
   }
 
   .floral-left {
-    left: -12px;
+    left: 10px;
   }
 
   .floral-right {
-    right: -12px;
+    right: 10px;
   }
 
   .gallery-grid {

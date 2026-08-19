@@ -24,9 +24,9 @@
   <!-- Floating Ambient Particles Canvas -->
   <canvas id="particle-canvas"></canvas>
 
-  <!-- Left Floral Frame (Orchids, Hydrangeas, Lily of the Valley) -->
+  <!-- Bottom Left Corner Bouquet (Orchids, Hydrangeas, Lily of the Valley) -->
   <div class="floral-frame floral-left" aria-hidden="true">
-    <svg viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg" class="floral-svg">
+    <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="floral-svg">
       <defs>
         <linearGradient id="orchidPetal" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#ffb3c6" />
@@ -46,170 +46,118 @@
           <stop offset="0%" stop-color="#70a072" />
           <stop offset="100%" stop-color="#3b5e3d" />
         </linearGradient>
-        <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="3" result="blur" />
+        <filter id="cornerGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
       </defs>
 
-      <!-- Lily of the Valley (Arching Stem with White Bells) -->
-      <g class="lily-valley-stem" filter="url(#softGlow)">
-        <path d="M 20 500 Q 50 320 85 180 T 140 80" stroke="url(#stemGreen)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-        <!-- Leaves -->
-        <path d="M 20 480 Q 70 420 80 340 Q 40 400 20 480 Z" fill="#4a7c59" opacity="0.85"/>
-        <path d="M 30 520 Q 90 460 95 380 Q 60 460 30 520 Z" fill="#3b5e3d" opacity="0.7"/>
-
-        <!-- Hanging Bell Flowers -->
-        <!-- Bell 1 -->
-        <path d="M 85 180 Q 95 195 102 205" stroke="url(#stemGreen)" stroke-width="2" fill="none"/>
-        <path d="M 96 205 C 96 200 108 200 108 205 C 109 214 112 216 114 218 C 102 220 102 220 90 218 C 92 216 95 214 96 205 Z" fill="#ffffff" filter="drop-shadow(0 0 6px rgba(255,255,255,0.8))"/>
+      <!-- Lily of the Valley Stem Arching to the Right -->
+      <g filter="url(#cornerGlow)">
+        <path d="M 15 150 Q 30 90 75 45 T 125 20" stroke="url(#stemGreen)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M 10 145 Q 35 110 40 85 Q 20 115 10 145 Z" fill="#4a7c59" opacity="0.8"/>
         
-        <!-- Bell 2 -->
-        <path d="M 105 140 Q 118 152 126 160" stroke="url(#stemGreen)" stroke-width="2" fill="none"/>
-        <path d="M 120 160 C 120 155 132 155 132 160 C 133 169 136 171 138 173 C 126 175 126 175 114 173 C 116 171 119 169 120 160 Z" fill="#ffffff" filter="drop-shadow(0 0 6px rgba(255,255,255,0.8))"/>
+        <!-- White Bells -->
+        <path d="M 70 50 Q 78 58 84 64" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
+        <path d="M 80 64 C 80 60 88 60 88 64 C 89 70 91 72 93 74 C 84 75 84 75 75 74 C 77 72 79 70 80 64 Z" fill="#ffffff"/>
+        
+        <path d="M 92 34 Q 100 40 106 45" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
+        <path d="M 102 45 C 102 42 109 42 109 45 C 110 50 112 52 114 53 C 106 54 106 54 98 53 C 100 52 101 50 102 45 Z" fill="#ffffff"/>
 
-        <!-- Bell 3 -->
-        <path d="M 125 105 Q 138 115 146 122" stroke="url(#stemGreen)" stroke-width="2" fill="none"/>
-        <path d="M 140 122 C 140 117 152 117 152 122 C 153 131 156 133 158 135 C 146 137 146 137 134 135 C 136 133 139 131 140 122 Z" fill="#ffffff" filter="drop-shadow(0 0 6px rgba(255,255,255,0.8))"/>
-
-        <!-- Small top bud -->
-        <circle cx="142" cy="78" r="4.5" fill="#f0fff0" />
+        <circle cx="125" cy="20" r="3" fill="#f0fff0"/>
       </g>
 
-      <!-- Orchid Flower (Center Left) -->
-      <g transform="translate(60, 260)" class="orchid-flower" filter="url(#softGlow)">
-        <!-- Petals -->
-        <ellipse cx="0" cy="-28" rx="16" ry="26" fill="url(#orchidPetal)" transform="rotate(-15)" opacity="0.95"/>
-        <ellipse cx="-26" cy="10" rx="15" ry="24" fill="url(#orchidPetal)" transform="rotate(-65)" opacity="0.9"/>
-        <ellipse cx="26" cy="10" rx="15" ry="24" fill="url(#orchidPetal)" transform="rotate(65)" opacity="0.9"/>
-        <!-- Lower Broad Petals -->
-        <ellipse cx="-18" cy="-10" rx="14" ry="22" fill="url(#orchidPetal)" transform="rotate(-30)" opacity="0.85"/>
-        <ellipse cx="18" cy="-10" rx="14" ry="22" fill="url(#orchidPetal)" transform="rotate(30)" opacity="0.85"/>
-        <!-- Orchid Lip / Center Labellum -->
-        <path d="M -12 6 Q 0 -6 12 6 Q 16 22 0 28 Q -16 22 -12 6 Z" fill="#ff0055" filter="drop-shadow(0 0 5px rgba(255,0,85,0.6))"/>
-        <circle cx="0" cy="4" r="5" fill="#ffd166"/>
+      <!-- Pink Orchid Blossom (Center) -->
+      <g transform="translate(65, 95)" filter="url(#cornerGlow)">
+        <ellipse cx="0" cy="-18" rx="11" ry="17" fill="url(#orchidPetal)" transform="rotate(-10)" opacity="0.95"/>
+        <ellipse cx="-17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(-60)" opacity="0.9"/>
+        <ellipse cx="17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(60)" opacity="0.9"/>
+        <ellipse cx="-11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(-25)" opacity="0.85"/>
+        <ellipse cx="11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(25)" opacity="0.85"/>
+        <!-- Labellum -->
+        <path d="M -8 4 Q 0 -4 8 4 Q 10 15 0 19 Q -10 15 -8 4 Z" fill="#ff0055"/>
+        <circle cx="0" cy="3" r="3.5" fill="#ffd166"/>
       </g>
 
       <!-- Hydrangea Cluster (Bottom Left) -->
-      <g transform="translate(45, 430)" class="hydrangea-cluster" filter="url(#softGlow)">
-        <!-- Floret 1 -->
-        <g transform="translate(-20, -15)">
-          <circle cx="-6" cy="0" r="7" fill="url(#hydrangeaBlue)"/>
-          <circle cx="6" cy="0" r="7" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="-6" r="7" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="6" r="7" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="0" r="2" fill="#fff"/>
+      <g transform="translate(30, 130)" filter="url(#cornerGlow)">
+        <g transform="translate(-12, -8)">
+          <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="4" r="5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
         </g>
-        <!-- Floret 2 -->
-        <g transform="translate(15, -20)">
-          <circle cx="-6" cy="0" r="7" fill="url(#hydrangeaPink)"/>
-          <circle cx="6" cy="0" r="7" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="-6" r="7" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="6" r="7" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="0" r="2" fill="#fff"/>
+        <g transform="translate(10, -10)">
+          <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaPink)"/>
+          <circle cx="4" cy="0" r="5" fill="url(#hydrangeaPink)"/>
+          <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaPink)"/>
+          <circle cx="0" cy="4" r="5" fill="url(#hydrangeaPink)"/>
+          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
         </g>
-        <!-- Floret 3 -->
-        <g transform="translate(0, 10)">
-          <circle cx="-7" cy="0" r="7.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="7" cy="0" r="7.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="-7" r="7.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="7" r="7.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="0" r="2.5" fill="#fff"/>
-        </g>
-        <!-- Floret 4 -->
-        <g transform="translate(-25, 20)">
-          <circle cx="-6" cy="0" r="6.5" fill="url(#hydrangeaPink)"/>
-          <circle cx="6" cy="0" r="6.5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="-6" r="6.5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="6" r="6.5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="0" r="2" fill="#fff"/>
-        </g>
-        <!-- Floret 5 -->
-        <g transform="translate(25, 15)">
-          <circle cx="-6" cy="0" r="6.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="6" cy="0" r="6.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="-6" r="6.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="6" r="6.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="0" r="2" fill="#fff"/>
+        <g transform="translate(0, 8)">
+          <circle cx="-5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="-5" r="5.5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="5" r="5.5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
         </g>
       </g>
     </svg>
   </div>
 
-  <!-- Right Floral Frame (Orchids, Hydrangeas, Lily of the Valley) -->
+  <!-- Bottom Right Corner Bouquet (Orchids, Hydrangeas, Lily of the Valley) -->
   <div class="floral-frame floral-right" aria-hidden="true">
-    <svg viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg" class="floral-svg">
-      <!-- Lily of the Valley (Arching Stem Right) -->
-      <g class="lily-valley-stem" filter="url(#softGlow)">
-        <path d="M 180 500 Q 150 320 115 180 T 60 80" stroke="url(#stemGreen)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-        <!-- Leaves -->
-        <path d="M 180 480 Q 130 420 120 340 Q 160 400 180 480 Z" fill="#4a7c59" opacity="0.85"/>
-        <path d="M 170 520 Q 110 460 105 380 Q 140 460 170 520 Z" fill="#3b5e3d" opacity="0.7"/>
-
-        <!-- Hanging Bell Flowers -->
-        <!-- Bell 1 -->
-        <path d="M 115 180 Q 105 195 98 205" stroke="url(#stemGreen)" stroke-width="2" fill="none"/>
-        <path d="M 92 205 C 92 200 104 200 104 205 C 105 214 108 216 110 218 C 98 220 98 220 86 218 C 88 216 91 214 92 205 Z" fill="#ffffff" filter="drop-shadow(0 0 6px rgba(255,255,255,0.8))"/>
+    <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="floral-svg">
+      <!-- Lily of the Valley Stem Arching to the Left -->
+      <g filter="url(#cornerGlow)">
+        <path d="M 145 150 Q 130 90 85 45 T 35 20" stroke="url(#stemGreen)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <path d="M 150 145 Q 125 110 120 85 Q 140 115 150 145 Z" fill="#4a7c59" opacity="0.8"/>
         
-        <!-- Bell 2 -->
-        <path d="M 95 140 Q 82 152 74 160" stroke="url(#stemGreen)" stroke-width="2" fill="none"/>
-        <path d="M 68 160 C 68 155 80 155 80 160 C 81 169 84 171 86 173 C 74 175 74 175 62 173 C 64 171 67 169 68 160 Z" fill="#ffffff" filter="drop-shadow(0 0 6px rgba(255,255,255,0.8))"/>
+        <!-- White Bells -->
+        <path d="M 90 50 Q 82 58 76 64" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
+        <path d="M 72 64 C 72 60 80 60 80 64 C 81 70 83 72 85 74 C 76 75 76 75 67 74 C 69 72 71 70 72 64 Z" fill="#ffffff"/>
+        
+        <path d="M 68 34 Q 60 40 54 45" stroke="url(#stemGreen)" stroke-width="1.5" fill="none"/>
+        <path d="M 50 45 C 50 42 57 42 57 45 C 58 50 60 52 62 53 C 54 54 54 54 46 53 C 48 52 49 50 50 45 Z" fill="#ffffff"/>
 
-        <!-- Bell 3 -->
-        <path d="M 75 105 Q 62 115 54 122" stroke="url(#stemGreen)" stroke-width="2" fill="none"/>
-        <path d="M 48 122 C 48 117 60 117 60 122 C 61 131 64 133 66 135 C 54 137 54 137 42 135 C 44 133 47 131 48 122 Z" fill="#ffffff" filter="drop-shadow(0 0 6px rgba(255,255,255,0.8))"/>
-
-        <!-- Small top bud -->
-        <circle cx="58" cy="78" r="4.5" fill="#f0fff0" />
+        <circle cx="35" cy="20" r="3" fill="#f0fff0"/>
       </g>
 
-      <!-- Orchid Flower (Center Right) -->
-      <g transform="translate(140, 270)" class="orchid-flower" filter="url(#softGlow)">
-        <!-- Petals -->
-        <ellipse cx="0" cy="-28" rx="16" ry="26" fill="url(#orchidPetal)" transform="rotate(15)" opacity="0.95"/>
-        <ellipse cx="26" cy="10" rx="15" ry="24" fill="url(#orchidPetal)" transform="rotate(65)" opacity="0.9"/>
-        <ellipse cx="-26" cy="10" rx="15" ry="24" fill="url(#orchidPetal)" transform="rotate(-65)" opacity="0.9"/>
-        <!-- Lower Broad Petals -->
-        <ellipse cx="18" cy="-10" rx="14" ry="22" fill="url(#orchidPetal)" transform="rotate(30)" opacity="0.85"/>
-        <ellipse cx="-18" cy="-10" rx="14" ry="22" fill="url(#orchidPetal)" transform="rotate(-30)" opacity="0.85"/>
-        <!-- Orchid Lip / Center Labellum -->
-        <path d="M -12 6 Q 0 -6 12 6 Q 16 22 0 28 Q -16 22 -12 6 Z" fill="#ff0055" filter="drop-shadow(0 0 5px rgba(255,0,85,0.6))"/>
-        <circle cx="0" cy="4" r="5" fill="#ffd166"/>
+      <!-- Pink Orchid Blossom (Center) -->
+      <g transform="translate(95, 95)" filter="url(#cornerGlow)">
+        <ellipse cx="0" cy="-18" rx="11" ry="17" fill="url(#orchidPetal)" transform="rotate(10)" opacity="0.95"/>
+        <ellipse cx="17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(60)" opacity="0.9"/>
+        <ellipse cx="-17" cy="6" rx="10" ry="16" fill="url(#orchidPetal)" transform="rotate(-60)" opacity="0.9"/>
+        <ellipse cx="11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(25)" opacity="0.85"/>
+        <ellipse cx="-11" cy="-6" rx="9" ry="14" fill="url(#orchidPetal)" transform="rotate(-25)" opacity="0.85"/>
+        <!-- Labellum -->
+        <path d="M -8 4 Q 0 -4 8 4 Q 10 15 0 19 Q -10 15 -8 4 Z" fill="#ff0055"/>
+        <circle cx="0" cy="3" r="3.5" fill="#ffd166"/>
       </g>
 
       <!-- Hydrangea Cluster (Bottom Right) -->
-      <g transform="translate(155, 430)" class="hydrangea-cluster" filter="url(#softGlow)">
-        <!-- Floret 1 -->
-        <g transform="translate(20, -15)">
-          <circle cx="-6" cy="0" r="7" fill="url(#hydrangeaBlue)"/>
-          <circle cx="6" cy="0" r="7" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="-6" r="7" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="6" r="7" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="0" r="2" fill="#fff"/>
+      <g transform="translate(130, 130)" filter="url(#cornerGlow)">
+        <g transform="translate(12, -8)">
+          <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="4" cy="0" r="5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="4" r="5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
         </g>
-        <!-- Floret 2 -->
-        <g transform="translate(-15, -20)">
-          <circle cx="-6" cy="0" r="7" fill="url(#hydrangeaPink)"/>
-          <circle cx="6" cy="0" r="7" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="-6" r="7" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="6" r="7" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="0" r="2" fill="#fff"/>
+        <g transform="translate(-10, -10)">
+          <circle cx="-4" cy="0" r="5" fill="url(#hydrangeaPink)"/>
+          <circle cx="4" cy="0" r="5" fill="url(#hydrangeaPink)"/>
+          <circle cx="0" cy="-4" r="5" fill="url(#hydrangeaPink)"/>
+          <circle cx="0" cy="4" r="5" fill="url(#hydrangeaPink)"/>
+          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
         </g>
-        <!-- Floret 3 -->
-        <g transform="translate(0, 10)">
-          <circle cx="-7" cy="0" r="7.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="7" cy="0" r="7.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="-7" r="7.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="7" r="7.5" fill="url(#hydrangeaBlue)"/>
-          <circle cx="0" cy="0" r="2.5" fill="#fff"/>
-        </g>
-        <!-- Floret 4 -->
-        <g transform="translate(25, 20)">
-          <circle cx="-6" cy="0" r="6.5" fill="url(#hydrangeaPink)"/>
-          <circle cx="6" cy="0" r="6.5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="-6" r="6.5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="6" r="6.5" fill="url(#hydrangeaPink)"/>
-          <circle cx="0" cy="0" r="2" fill="#fff"/>
+        <g transform="translate(0, 8)">
+          <circle cx="-5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="5" cy="0" r="5.5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="-5" r="5.5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="5" r="5.5" fill="url(#hydrangeaBlue)"/>
+          <circle cx="0" cy="0" r="1.5" fill="#fff"/>
         </g>
       </g>
     </svg>
