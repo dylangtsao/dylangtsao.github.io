@@ -115,8 +115,9 @@ function initPolaroidInteractions() {
   });
 }
 
-function triggerHeartConfetti(startX, startY, count = 16) {
-  const emojis = ['❤️', '💖', '💕', '✨', '🌸', '🥰', '🌹'];
+function triggerHeartConfetti(startX, startY, count = 18) {
+  // Orchids (🌸), Hydrangeas (💠), Lily of the Valley (🤍), Hearts (💖, ❤️), and Sparkles (✨)
+  const emojis = ['🌸', '💠', '🤍', '💖', '❤️', '✨', '🌹', '🥰'];
 
   for (let i = 0; i < count; i++) {
     const el = document.createElement('div');

@@ -48,6 +48,78 @@ body {
   z-index: 1;
 }
 
+/* ==========================================================================
+   Floral Botanical Frames (Orchids, Hydrangeas, Lily of the Valley)
+   ========================================================================== */
+.floral-frame {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 180px;
+  height: 600px;
+  max-height: 80vh;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.25));
+}
+
+.floral-left {
+  left: 0;
+  animation: swayLeft 6s ease-in-out infinite alternate;
+}
+
+.floral-right {
+  right: 0;
+  animation: swayRight 6.5s ease-in-out infinite alternate;
+}
+
+.floral-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.lily-valley-stem {
+  animation: gentleBreeze 4s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+.orchid-flower {
+  animation: gentlePulse 3.5s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+
+.hydrangea-cluster {
+  animation: gentleShimmer 5s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+
+@keyframes swayLeft {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-52%) rotate(2.5deg); }
+}
+
+@keyframes swayRight {
+  0% { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-48%) rotate(-2.5deg); }
+}
+
+@keyframes gentleBreeze {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(2deg); }
+}
+
+@keyframes gentlePulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+@keyframes gentleShimmer {
+  0% { opacity: 0.85; }
+  100% { opacity: 1; filter: drop-shadow(0 0 8px rgba(163, 184, 255, 0.4)); }
+}
+
 /* Main Container */
 .page-wrapper {
   position: relative;
@@ -214,27 +286,6 @@ body {
   transform: scale(1.05);
 }
 
-.polaroid-caption {
-  margin-top: 14px;
-  text-align: center;
-  font-family: var(--font-script);
-  font-size: 1.65rem;
-  color: #2e1c25;
-  line-height: 1.25;
-}
-
-.polaroid-date {
-  display: block;
-  font-family: var(--font-sans);
-  font-size: 0.75rem;
-  color: #88747f;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 3px;
-  font-weight: 600;
-}
-
 /* ==========================================================================
    Footer
    ========================================================================== */
@@ -272,6 +323,20 @@ footer .footer-heart {
   
   .hero {
     padding: 20px 5px 30px;
+  }
+
+  .floral-frame {
+    width: 80px;
+    height: 380px;
+    opacity: 0.45;
+  }
+
+  .floral-left {
+    left: -15px;
+  }
+
+  .floral-right {
+    right: -15px;
   }
 
   .gallery-grid {
