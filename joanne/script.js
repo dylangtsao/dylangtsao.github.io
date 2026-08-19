@@ -6,7 +6,29 @@ document.addEventListener('DOMContentLoaded', () => {
   initParticleBackground();
   initIntroOpen();
   initPolaroidInteractions();
+  initMobileScrollReveal();
 });
+
+/* ==========================================================================
+   Mobile Scroll Reveal Observer
+   ========================================================================== */
+function initMobileScrollReveal() {
+  const cards = document.querySelectorAll('.polaroid-card');
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  cards.forEach(card => observer.observe(card));
+}
 
 /* ==========================================================================
    1. Press to Open Interactive Logic
